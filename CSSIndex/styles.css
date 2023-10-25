@@ -1,0 +1,41 @@
+.titulo {
+    color: #FF6F61; 
+}
+
+.subtitulo {
+    color: #7EC0EE; 
+}
+
+.personajes-lista {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.personajes-principales,
+.maldiciones {
+    margin-bottom: 20px;
+}
+
+.separador {
+    border: 1px dashed #FF6F61; 
+}
+
+.disclaimer {
+    color: #7EC0EE; 
+}
+
+.boton-fin {
+    background-color: #FF6F61; 
+    color: white; 
+    padding: 10px 20px;
+    border: 1px;
+    cursor: pointer;
+}
+
+.boton-fin:hover {
+    background-color: #B22222; 
+}
+
+body, button {
+    font-family: 'Lexend', sans-serif;
+}

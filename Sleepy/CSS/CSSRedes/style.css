@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-family: 'Lexend', sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+}
+
+.icono-red-social {
+    font-size: 30px;
+    margin: 10px;
+}
+
+.icono-red-social a {
+    color: #333;
+}

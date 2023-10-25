@@ -1,0 +1,23 @@
+body{
+    font-family: 'Lexend', sans-serif;
+}
+button{
+    font-family: 'Lexend', sans-serif;
+}
+.botones-sleepy, footer {
+    text-align: center;
+}
+
+.boton1, .botonfin1 {
+    display: inline;
+    margin: 10px;
+    background-color: #1900ff; 
+    color: #ffffff; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    text-decoration: none; 
+}
+.boton1:hover, .botonfin1:hover {
+    background-color: #00e1ff;
+}

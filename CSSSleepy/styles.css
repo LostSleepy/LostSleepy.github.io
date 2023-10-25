@@ -1,0 +1,23 @@
+.titulo1{
+    font-family: cursive;
+    color: blue;
+}
+
+.parrafos{
+font-family: cursive;
+color: red;  
+}
+
+.fondo{
+    background-color: yellow;
+}
+.contenedor1{
+    position: fixed;
+    bottom: 20px;
+    left: 50%; 
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+}
