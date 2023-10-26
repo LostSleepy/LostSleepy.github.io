@@ -106,11 +106,12 @@ nav a:hover {
         width: 100%;
         overflow-x: auto;
         text-align: left;
-        border-spacing: 10px; /* Ajusta el valor según tus necesidades */
+        border-spacing: 10px;
         margin-bottom: 10px;
     }
     img {
         max-width: 100%;
         height: auto;
+        width: auto;
     }
 }
