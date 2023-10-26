@@ -107,7 +107,7 @@ nav a:hover {
         overflow-x: auto;
         text-align: left;
         border-spacing: 10px; /* Ajusta el valor según tus necesidades */
-
+        margin-bottom: 10px;
     }
     img {
         max-width: 100%;
