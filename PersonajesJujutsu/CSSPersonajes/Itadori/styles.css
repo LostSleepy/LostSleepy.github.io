@@ -113,8 +113,8 @@ nav a:hover {
         max-width: 100%;
         height: auto;
         width: auto;
-        width: 100%; /* Aumenta el ancho de la imagen al 100% del contenedor */
-        min-width: 200px; /* Tamaño mínimo para la imagen */
+        width: 100%;
+        min-width: 200px;
         height: auto;
     }
 }
