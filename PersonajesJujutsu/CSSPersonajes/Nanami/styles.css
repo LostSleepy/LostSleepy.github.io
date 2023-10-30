@@ -1,0 +1,120 @@
+.imagenes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nombrepers {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.izquierda {
+    margin-right: auto;
+}
+
+.derecha {
+    margin-left: auto;
+}
+
+.tablaimg{
+    width: 112px;
+    height: 200px;
+    border: 1px solid#811010;
+    padding: 10px;
+    border-spacing: 0;
+    margin-left: 20px;
+}
+
+.filaimg {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+}
+
+
+.textoimg{
+    text-align: center;
+
+}
+
+.imagen-nanami {
+    float: right;
+}
+
+.imgpers{
+    float: right;
+    border: 1px solid #811010;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.textpers{
+    text-align: center;
+    color: black;
+}
+
+.containerskill{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+}
+.containertabla{
+    border: 1px solid  #811010;
+}
+
+body{
+    background-color:#d6b210;
+    color: black;
+    font-family: 'Lexend', sans-serif;
+}
+th{
+    text-align: center;
+}
+
+.titutabla{
+    text-align: center;
+}
+
+nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffffff; 
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        overflow-x: auto;
+        text-align: left;
+        border-spacing: 10px;
+        margin-bottom: 10px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        width: 100%;
+        min-width: 200px;
+        height: auto;
+    }
+}
