@@ -21,7 +21,7 @@
 .tablaimg{
     width: 112px;
     height: 200px;
-    border: 1px solid#811010;
+    border: 1px solid#000000;
     padding: 10px;
     border-spacing: 0;
     margin-left: 20px;
@@ -45,7 +45,7 @@
 
 .imgpers{
     float: right;
-    border: 1px solid #811010;
+    border: 1px solid #000000;
     border-spacing: 0;
     text-align: center;
 }
@@ -62,7 +62,7 @@
     justify-content: center;
 }
 .containertabla{
-    border: 1px solid  #811010;
+    border: 1px solid  #000000;
 }
 
 body{
