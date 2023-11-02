@@ -65,10 +65,32 @@
     border: 1px solid  #811010;
 }
 
-body{
-    background-color:#FFB6C1;
+body {
+    background-color: #FFB6C1;
     color: black;
     font-family: 'Lexend', sans-serif;
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slidein {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 th{
     text-align: center;
@@ -118,3 +140,16 @@ nav a:hover {
         height: auto;
     }
 }
+#btn-arriba {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Hace que el botón sea fijo en la pantalla */
+    bottom: 20px; /* Ajusta la posición vertical */
+    right: 20px; /* Ajusta la posición horizontal */
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    background-color: #ff0000; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Quita el borde del botón */
+    border-radius: 4px; /* Añade bordes redondeados al botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-family: 'Lexend', sans-serif;
+  }
