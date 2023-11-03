@@ -12,28 +12,7 @@
             rel="stylesheet">
         <title>Itadori Yūji</title>
     </head>
-    <script>
-        // Esta función se ejecuta cuando se hace clic en el botón
-        function scrollToTop() {
-          window.scrollTo({
-            top: 0, // Desplázate al principio de la página
-            behavior: 'smooth' // Hace que el desplazamiento sea suave
-          });
-        }
-      
-        // Esta función se ejecuta cuando se desplaza la página
-        window.onscroll = function() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            // Muestra el botón cuando el desplazamiento es mayor de 20px
-            document.getElementById('btn-arriba').style.display = 'block';
-          } else {
-            // Oculta el botón cuando el desplazamiento es menor de 20px
-            document.getElementById('btn-arriba').style.display = 'none';
-          }
-        };
-      </script>
     <body>
-        <button id="btn-arriba" onclick="scrollToTop()">Ir Arriba</button>
         <header class="nombrepers">
             <a href="../index.html" class="izquierda">Índice</a>
             <h1><u>Itadori Yuuji</u></h1>
