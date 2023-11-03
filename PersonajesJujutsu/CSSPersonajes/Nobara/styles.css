@@ -19,6 +19,18 @@
     margin-left: auto;
 }
 
+.nombrepers a {
+    text-decoration: none;
+    color: #000; 
+    transition: color 0.3s; 
+    margin: 0 10px; 
+}
+
+
+.nombrepers a:hover {
+    color: #ff5100; 
+}
+
 .tablaimg {
     width: 112px;
     height: 200px;
