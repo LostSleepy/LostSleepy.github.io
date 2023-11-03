@@ -21,20 +21,20 @@
 
 .nombrepers a {
     text-decoration: none;
-    color: #000; 
+    color: #ffffff; 
     transition: color 0.3s; 
     margin: 0 10px; 
 }
 
 
 .nombrepers a:hover {
-    color: #35a81e; 
+    color: #ffffff; 
 }
 
 .tablaimg {
     width: 112px;
     height: 200px;
-    border: 1px solid rgb(1, 94, 29);
+    border: 1px solid #ffffff;
     padding: 10px;
     border-spacing: 0;
     margin-left: 20px;
@@ -50,13 +50,13 @@
     text-align: center;
 }
 
-.imagen-maki {
+.imagen-panda {
     float: right;
 }
 
 .imgpers {
     float: right;
-    border: 1px solid rgb(1, 94, 29);
+    border: 1px solid #ffffff;
     border-spacing: 0;
     text-align: center;
 }
@@ -72,13 +72,13 @@
     justify-content: center;
 }
 .containertabla{
-    border: 1px solid  rgb(1, 94, 29);
+    border: 1px solid  #ffffff;
 }
 
 
 body {
-    background-color: #23df97;
-    color: black;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
     font-family: 'Lexend', sans-serif;
 }
 th{
@@ -103,10 +103,10 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #000000;
+    color: #ffffff;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #ffffff; 
+    color: #867878; 
 }
