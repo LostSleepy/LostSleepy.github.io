@@ -110,3 +110,66 @@ nav a {
 nav a:hover {
     color: #867878; 
 }
+@media (max-width: 768px) {
+    .imagenes-container {
+        display: block;
+    }
+
+
+    .nombrepers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .izquierda, .derecha {
+        margin: 10px 0; 
+        text-align: center; 
+    }
+
+    .nombrepers a {
+        display: block;
+        margin: 10px 0;
+    }
+    .tablaimg {
+        width: 100%; 
+        margin: 10px 0;
+        
+    }
+    .imagen-panda, .imgpers{
+        float: none;
+        display: table-caption;
+    }
+
+    body {
+        color: rgb(255, 255, 255);
+        font-family: 'Lexend', sans-serif;
+    }
+
+
+    th, .titutabla {
+        text-align: center;
+    }
+
+    nav ol {
+        display: block;
+    }
+
+    nav li {
+        margin: 10px 0; 
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0; 
+    }
+    .containertabla {
+        width: 100%;
+    }
+    .containertabla img {
+        max-width: 100%; /* Aumenta el ancho máximo al 150% */
+        max-height: 100%; /* Ajusta la altura máxima al 100% */
+    }
+    .titutabla {
+        font-size: 1.2em;
+    }
+}

@@ -136,20 +136,71 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
-    table {
-        width: 100%;
-        overflow-x: auto;
-        text-align: left;
-        border-spacing: 10px;
-        margin-bottom: 10px;
+    .imagenes-container {
+        display: block;
     }
-    img {
-        max-width: 100%;
-        height: auto;
-        width: auto;
+
+
+    .nombrepers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .izquierda, .derecha {
+        margin: 10px 0; 
+        text-align: center; 
+    }
+
+    .nombrepers a {
+        display: block;
+        margin: 10px 0;
+    }
+
+
+    .tablaimg {
+        width: 100%; 
+        margin: 10px 0;
+    }
+
+
+    .imagen-itadori, .imgpers {
+        float: none;
+    }
+
+    body {
+        background-color: #FFB6C1;
+        color: black;
+        font-family: 'Lexend', sans-serif;
+    }
+
+
+    th, .titutabla {
+        text-align: center;
+    }
+
+    nav ol {
+        display: block;
+    }
+
+    nav li {
+        margin: 10px 0; 
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0; 
+    }
+    .containertabla {
         width: 100%;
-        min-width: 200px;
+    }
+    .containertabla img {
+        width: 100%;
         height: auto;
     }
+    .titutabla {
+        font-size: 1.2em;
+    }
+    
 }
+
 
