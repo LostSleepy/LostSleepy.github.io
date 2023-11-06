@@ -162,15 +162,20 @@ nav a:hover {
         display: block;
         margin: 10px 0; 
     }
+    .containerskill {
+        display: block;
+    }
+
     .containertabla {
         width: 100%;
     }
-    .containertabla img {
+
+    .titutabla {
+        font-size: 1.5em;
+    }
+
+    td figure {
         width: 100%;
         height: auto;
     }
-    .titutabla {
-        font-size: 1.2em;
-    }
-    
 }
