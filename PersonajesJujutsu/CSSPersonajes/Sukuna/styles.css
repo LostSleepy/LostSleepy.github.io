@@ -1,0 +1,212 @@
+.imagenes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nombrepers {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.izquierda {
+    margin-right: auto;
+}
+
+.derecha {
+    margin-left: auto;
+}
+.nombrepers a {
+    text-decoration: none;
+    color: #000; 
+    transition: color 0.3s; 
+    margin: 0 10px; 
+}
+
+
+.nombrepers a:hover {
+    color: #ff0000; 
+}
+
+.tablaimg{
+    width: 112px;
+    height: 200px;
+    border: 1px solid#000000;
+    padding: 10px;
+    border-spacing: 0;
+    margin-left: 20px;
+    
+}
+
+.filaimg {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+}
+
+
+.textoimg{
+    text-align: center;
+
+}
+
+.imagen-Sukuna {
+    float: right;
+}
+
+.imgpers{
+    float: right;
+    border: 1px solid #000000;
+    border-spacing: 0;
+    text-align: center;
+}
+
+.textpers{
+    text-align: center;
+    color: black;
+}
+
+.containerskill{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+}
+.containertabla{
+    border: 1px solid  #811010;
+}
+
+body {
+    background-color: #b81a32;
+    color: black;
+    font-family: 'Lexend', sans-serif;
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slidein {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+th{
+    text-align: center;
+}
+
+.titutabla{
+    text-align: center;
+}
+
+nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffffff; 
+}
+
+@media (max-width: 768px) {
+    .imagenes-container {
+        display: block;
+    }
+
+
+    .nombrepers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .izquierda, .derecha {
+        margin: 10px 0; 
+        text-align: center; 
+    }
+
+    .nombrepers a {
+        display: block;
+        margin: 10px 0;
+    }
+
+
+    .tablaimg {
+        width: 100%; 
+        margin: 10px 0;
+    }
+
+
+    .imagen-Sukuna, .imgpers {
+        float: none;
+    }
+
+    body {
+        background-color: #FFB6C1;
+        color: black;
+        font-family: 'Lexend', sans-serif;
+    }
+
+
+    th, .titutabla {
+        text-align: center;
+    }
+
+    nav ol {
+        display: block;
+    }
+
+    nav li {
+        margin: 10px 0; 
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0; 
+    }
+    .containerskill {
+        display: block;
+    }
+
+    .containertabla {
+        width: 100%;
+    }
+
+    .titutabla {
+        font-size: 1.5em;
+    }
+
+    td figure {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+
