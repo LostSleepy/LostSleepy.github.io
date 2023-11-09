@@ -183,3 +183,26 @@ nav a:hover {
         height: auto;
     }
 }
+@keyframes slideFromRight {
+    from {
+        transform: translateX(200%); 
+    }
+    to {
+        transform: translateX(0); 
+    }
+  }
+  
+  @keyframes slideFromTop {
+    from {
+        transform: translateY(-300%);
+    }
+    to {
+        transform: rotateY(0);
+    }
+  }
+  p, h1, li, ul {
+    animation: slideFromRight 2s ease-in-out forwards;
+}
+table, img, a, nav{
+    animation: slideFromTop 2s ease-in-out forwards;
+}

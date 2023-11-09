@@ -22,6 +22,7 @@
 
 .disclaimer {
     color: #7EC0EE; 
+    animation: slideFromRight 2s ease-in-out forwards;
 }
 
 .boton-fin {
@@ -31,7 +32,9 @@
     border: 1px;
     cursor: pointer;
     font-family: 'Lexend', sans-serif;
-}
+    animation: slideFromTop 2s ease-in-out forwards;
+
+  }
 
 .boton-fin:hover {
     background-color: #B22222;
@@ -104,6 +107,7 @@ body {
       background-color: #172136;
       color: #fff;
     }
+    /* Animaciones*/
     body {
       opacity: 0;
       animation: fadeIn 2s ease-in-out forwards;
@@ -117,9 +121,10 @@ body {
         opacity: 1;
       }
     }
+  
   a{
-  padding: 8px 16px;
-  display: inline-block;
+    padding: 12px;
+    display: inline-block;
     transition-property: all;
     transition-duration: 0.5s;
     transition-timing-function: linear;
@@ -127,7 +132,7 @@ body {
   a:hover {
     background: #000000;
     color: rgb(255, 255, 255);
-    padding: 32px;
+    padding: 17px;
     border: 1px solid rgb(255, 255, 255);
   }
   p {
@@ -140,5 +145,22 @@ body {
   @keyframes writeIn {
     to {
       width: 100%;
+    }
+  }
+  @keyframes slideFromRight {
+    from {
+        transform: translateX(200%); 
+    }
+    to {
+        transform: translateX(0); 
+    }
+  }
+  
+  @keyframes slideFromTop {
+    from {
+        transform: translateY(-300%);
+    }
+    to {
+        transform: rotateY(0);
     }
   }

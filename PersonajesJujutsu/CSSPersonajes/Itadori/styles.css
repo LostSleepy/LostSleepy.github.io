@@ -21,12 +21,14 @@
     text-decoration: none;
     color: #000; 
     transition: color 0.3s; 
-    margin: 0 10px; 
+    margin: 0 10px;
+ 
 }
 
 
 .nombrepers a:hover {
-    color: #ff0000; 
+    color: #ff0000;
+
 }
 
 .tablaimg{
@@ -36,23 +38,25 @@
     padding: 10px;
     border-spacing: 0;
     margin-left: 20px;
-    
 }
 
 .filaimg {
     text-align: center;
     vertical-align: middle;
     padding: 0px;
+
 }
 
 
 .textoimg{
     text-align: center;
 
+
 }
 
 .imagen-itadori {
     float: right;
+
 }
 
 .imgpers{
@@ -72,6 +76,7 @@
     align-items: center;
     text-align: left;
     justify-content: center;
+
 }
 .containertabla{
     border: 1px solid  #811010;
@@ -81,11 +86,6 @@ body {
     background-color: #FFB6C1;
     color: black;
     font-family: 'Lexend', sans-serif;
-    animation-duration: 2s;
-    animation-name: slidein;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 
 }
 th{
@@ -103,16 +103,19 @@ nav ol {
     display: flex;
     justify-content: center;
 
+
 }
 
 nav li {
     margin-right: 20px;
+
 }
 
 nav a {
     text-decoration: none;
     color: #000000;
     font-weight: bold;
+
 }
 
 nav a:hover {
@@ -208,4 +211,26 @@ nav a:hover {
     opacity: 1;
     transform: translateY(0);
 }
-
+@keyframes slideFromRight {
+    from {
+        transform: translateX(200%); 
+    }
+    to {
+        transform: translateX(0); 
+    }
+  }
+  
+  @keyframes slideFromTop {
+    from {
+        transform: translateY(-300%);
+    }
+    to {
+        transform: rotateY(0);
+    }
+  }
+  p, h1, li, ul {
+    animation: slideFromRight 2s ease-in-out forwards;
+}
+table, img, a, nav{
+    animation: slideFromTop 2s ease-in-out forwards;
+}
