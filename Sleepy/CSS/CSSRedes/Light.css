@@ -11,7 +11,6 @@ h1 {
 }
 
 .redes-sociales {
-    display: flex;
     justify-content: center;
 }
 
@@ -51,9 +50,7 @@ a:hover {
   border: 1px solid darkred;
 }
 p {
-  width: 0; 
-  white-space: nowrap; 
-  overflow: hidden; 
+  width: 0;
   animation: writeIn 3s linear forwards; 
 }
 

@@ -48,9 +48,7 @@ a:hover {
   border: 1px solid rgb(255, 255, 255);
 }
 p {
-  width: 0; 
-  white-space: nowrap; 
-  overflow: hidden; 
+  width: 1; 
   animation: writeIn 3s linear forwards; 
 }
 
