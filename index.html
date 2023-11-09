@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="./JavaScript/Themes.js"></script>
     <script src="./JavaScript/minimenu.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,18 +17,18 @@
         <h1 class="titulo">¡Bienvenido a mi wiki personal de Jujutsu Kaisen!</h1>
         <h2 class="subtitulo">Clickea en alguno de los personajes para saber acerca de ellos:</h2>
     </header>
+    <aside class="minimenu">
+        <div class="dropdown">
+            <img class="minimenutext" src="./multimediajujutsu/Iconos/palette-solid.svg" alt="Themes" width="20" height="20" id="minimenu-button">
+            <div class="dropdown-content" id="minimenu-content">
+                <button class="minimenuimages" onclick="toggleTheme('./CSSIndex/Dark.css')"><img style="margin-top: 3px;" src="./multimediajujutsu/Iconos/moon-solid.svg" alt="Dark" width="20" height="20"></button>
+                <button class="minimenuimages" onclick="toggleTheme('./CSSIndex/Light.css')"><img style="margin-top: 3px;" src="./multimediajujutsu/Iconos/sun-solid.svg" alt="Dark" width="20" height="20"></button>
+            </div>
+    </aside>
     <nav>
-        <aside class="minimenu">
-            <div class="dropdown">
-                <img class="minimenutext" src="./multimediajujutsu/Iconos/palette-solid.svg" alt="Themes" width="20" height="20" id="minimenu-button">
-                <div class="dropdown-content" id="minimenu-content">
-                    <button class="minimenuimages" onclick="toggleTheme('./CSSIndex/Dark.css')"><img style="margin-top: 3px;" src="./multimediajujutsu/Iconos/moon-solid.svg" alt="Dark" width="20" height="20"></button>
-                    <button class="minimenuimages" onclick="toggleTheme('./CSSIndex/Light.css')"><img style="margin-top: 3px;" src="./multimediajujutsu/Iconos/sun-solid.svg" alt="Dark" width="20" height="20"></button>
-                </div>
-        </aside>
-    <ul class="personajes-lista">
+    <ul class="personajes-lista" id="random-list">
         <li class="personajes-principales">Personajes Principales
-            <ol>
+            <ol id="random-list">
                 <li><a href="PersonajesJujutsu/Itadori.html">Itadori Yuuji</a></li>
                 <li><a href="PersonajesJujutsu/Megumi.html">Megumi Fushiguro</a></li>
                 <li><a href="PersonajesJujutsu/Nobara.html">Nobara Kugisaki</a></li>

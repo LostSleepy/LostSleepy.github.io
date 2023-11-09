@@ -88,22 +88,6 @@ body {
     animation-fill-mode: forwards;
 
 }
-
-@keyframes slidein {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
 th{
     text-align: center;
 }
@@ -209,4 +193,19 @@ nav a:hover {
 
 }
 
+@keyframes slidein {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
 
