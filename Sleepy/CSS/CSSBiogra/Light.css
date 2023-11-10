@@ -29,7 +29,7 @@ a:hover {
   border: 1px solid darkred;
 }
 p {
-  width: 1;
+  width: 0;
   animation: writeIn 3s linear forwards; 
 }
 
