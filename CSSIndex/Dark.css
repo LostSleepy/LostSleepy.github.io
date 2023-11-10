@@ -40,7 +40,6 @@
     background-color: #B22222;
      
 }
-
 body {
     font-family: 'Lexend', sans-serif;
     background-color: black;
@@ -136,10 +135,8 @@ body {
     border: 1px solid rgb(255, 255, 255);
   }
   p {
-    width: 0; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    animation: writeIn 3s linear forwards; 
+    width: 1px; /* Ancho inicial de 1 píxel */
+    animation: writeIn 3s linear forwards;
   }
   
   @keyframes writeIn {
