@@ -1,236 +1,359 @@
-.imagenes-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.nombrepers {
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.izquierda {
-    margin-right: auto;
-}
-
-.derecha {
-    margin-left: auto;
-}
-.nombrepers a {
-    text-decoration: none;
-    color: #000; 
-    transition: color 0.3s; 
-    margin: 0 10px;
- 
-}
-
-
-.nombrepers a:hover {
-    color: #ff0000;
-
-}
-
-.tablaimg{
-    width: 112px;
-    height: 200px;
-    border: 1px solid#811010;
-    padding: 10px;
-    border-spacing: 0;
-    margin-left: 20px;
-}
-
-.filaimg {
-    text-align: center;
-    vertical-align: middle;
-    padding: 0px;
-
-}
-
-
-.textoimg{
-    text-align: center;
-
-
-}
-
-.imagen-itadori {
-    float: right;
-
-}
-
-.imgpers{
-    float: right;
-    border: 1px solid #811010;
-    border-spacing: 0;
-    text-align: center;
-}
-
-.textpers{
-    text-align: center;
-    color: black;
-}
-
-.containerskill{
-    display: flex;
-    align-items: center;
-    text-align: left;
-    justify-content: center;
-
-}
-.containertabla{
-    border: 1px solid  #811010;
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
 body {
-    background-color: #FFB6C1;
-    color: black;
     font-family: 'Lexend', sans-serif;
-
-}
-th{
-    text-align: center;
-}
-
-.titutabla{
-    text-align: center;
-}
-
-nav ol {
-    list-style: none;
-    padding: 0;
+    line-height: 1.7;
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333; /* Dark grey text for readability */
     margin: 0;
     display: flex;
-    justify-content: center;
-
-
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-nav li {
-    margin-right: 20px;
-
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 0.75em;
+    color: #1a2a4a; /* Dark blue for headings */
+    line-height: 1.3;
 }
 
-nav a {
+h1.character-name {
+    font-size: 2.8rem;
+    color: #E50914; /* Jujutsu Kaisen red accent */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 0; /* Reset margin for header layout */
+}
+
+h2.section-title {
+    font-size: 2rem;
+    border-bottom: 3px solid #E50914; /* Red accent border */
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+}
+
+p {
+    margin-bottom: 1.2em;
+}
+
+a {
     text-decoration: none;
-    color: #000000;
-    font-weight: bold;
-
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-nav a:hover {
-    color: #ffffff; 
+a.nav-link {
+    color: #f0f2f5; /* Light color for contrast on dark header/footer */
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+}
+
+a.nav-link:hover, a.nav-link:focus {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+}
+
+/* Header and Footer */
+.site-header, .site-footer {
+    background-color: #1a2a4a; /* Dark blue background */
+    color: #f0f2f5;
+    padding: 1.5em 5%; /* Use percentage for responsiveness */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.site-footer {
+    margin-top: auto; /* Push footer to the bottom */
+    text-align: center;
+    justify-content: center;
+}
+
+.site-footer p {
+    margin-bottom: 0;
+}
+
+/* Main Navigation */
+.main-nav {
+    background-color: #ffffff; /* White background for nav */
+    padding: 0.8em 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: sticky; /* Make nav sticky */
+    top: 0;
+    z-index: 100; /* Ensure nav stays on top */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1.5em; /* Spacing between items */
+}
+
+.main-nav a {
+    color: #1a2a4a; /* Dark blue links */
+    font-weight: 600;
+    padding: 0.5em 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #E50914;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover, .main-nav a:focus {
+    color: #E50914; /* Red hover color */
+}
+
+.main-nav a:hover::after, .main-nav a:focus::after {
+    width: 100%;
+}
+
+/* Main Content Area */
+.content-area {
+    width: 90%; /* Responsive width */
+    max-width: 1100px; /* Max width for larger screens */
+    margin: 2em auto; /* Center content with top/bottom margin */
+    padding: 2em;
+    background-color: #ffffff; /* White background for content */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.content-section {
+    margin-bottom: 2.5em;
+}
+
+/* Images and Figures */
+figure {
+    margin: 0 0 1.5em 0; /* Reset default figure margin */
+    text-align: center;
+}
+
+figure.character-image-main {
+    max-width: 600px; /* Control max size */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+}
+
+figure.character-image-main.float-right {
+    float: right;
+    margin-left: 2em; /* Add space when floating */
+    margin-bottom: 1em; /* Adjust bottom margin when floating */
+    max-width: 40%; /* Control size when floating */
+}
+
+img, figure img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below images */
+    border-radius: 6px; /* Slightly rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+}
+
+figcaption {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+/* Skills Table */
+.skills-table-container {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+    margin-top: 1.5em;
+}
+
+.skills-table {
+    width: 100%;
+    border-collapse: collapse; /* Cleaner borders */
+    border: 1px solid #ddd; /* Light grey border */
+}
+
+.skills-table th, .skills-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px; /* More padding */
+    text-align: left;
+    vertical-align: top; /* Align content to top */
+}
+
+.skills-table th {
+    background-color: #e9ecef; /* Light grey header */
+    font-weight: 600;
+    color: #1a2a4a; /* Dark blue header text */
+    text-align: center;
+}
+
+.skills-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa; /* Zebra striping */
+}
+
+.skills-table td.skill-name {
+    font-weight: 600;
+    color: #0056b3; /* Slightly darker blue for skill names */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.skills-table img.skill-image {
+    max-width: 300px; /* Limit image size in table */
+    margin: 0 auto; /* Center image */
+}
+
+.skills-table ol {
+    margin-top: 0.5em;
+    padding-left: 1.5em; /* Indent list */
+}
+
+/* Image Gallery */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    gap: 1.5em; /* Space between items */
+    margin-top: 1.5em;
+}
+
+.gallery-item {
+    background-color: #f8f9fa; /* Light background for each item */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 1em;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-image {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the area */
+    margin-bottom: 0.8em;
+}
+
+/* Curiosities List */
+.curiosities-list {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+.curiosities-list li {
+    padding: 0.6em 0 0.6em 1.8em; /* Add padding */
+    position: relative;
+    border-bottom: 1px dashed #ccc; /* Dashed separator */
+}
+
+.curiosities-list li:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+.curiosities-list li::before { /* Custom bullet */
+    content: '»'; /* Double arrow character */
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    color: #E50914; /* Red accent color */
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+/* Animations (Subtle Fade-in) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Remove previous complex/jarring animations */
+/* Ensure no conflicting animation properties remain */
+p, h1, h2, h3, li, ul, table, img, a, nav {
+    animation: none; /* Disable old animations */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h1.character-name { font-size: 2.4rem; }
+    h2.section-title { font-size: 1.8rem; }
+    .content-area { width: 95%; padding: 1.5em; }
 }
 
 @media (max-width: 768px) {
-    .imagenes-container {
-        display: block;
-    }
-
-
-    .nombrepers {
+    .site-header {
         flex-direction: column;
-        align-items: center;
-    }
-
-    .izquierda, .derecha {
-        margin: 10px 0; 
-        text-align: center; 
-    }
-
-    .nombrepers a {
-        display: block;
-        margin: 10px 0;
-    }
-
-
-    .tablaimg {
-        width: 100%; 
-        margin: 10px 0;
-    }
-
-
-    .imagen-itadori, .imgpers {
-        float: none;
-    }
-
-    body {
-        background-color: #FFB6C1;
-        color: black;
-        font-family: 'Lexend', sans-serif;
-    }
-
-
-    th, .titutabla {
         text-align: center;
     }
-
-    nav ol {
-        display: block;
+    .site-header .nav-link {
+        margin: 0.5em 0;
+    }
+    .character-name {
+        margin: 0.5em 0;
+    }
+    figure.character-image-main.float-right {
+        float: none; /* Disable float on smaller screens */
+        margin: 1.5em auto; /* Center the image */
+        max-width: 80%;
     }
 
-    nav li {
-        margin: 10px 0; 
+    .main-nav ul {
+        justify-content: space-around; /* Adjust spacing */
+        gap: 0.5em;
     }
 
-    nav a {
-        display: block;
-        margin: 10px 0; 
-    }
-    .containerskill {
-        display: block;
+     .main-nav a {
+        padding: 0.4em 0;
+        font-size: 0.9rem; /* Slightly smaller font */
     }
 
-    .containertabla {
-        width: 100%;
+    .skills-table th, .skills-table td {
+        padding: 8px 10px;
+        font-size: 0.9rem; /* Smaller text in table */
     }
 
-    .titutabla {
-        font-size: 1.5em;
+     .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1em;
     }
-
-    td figure {
-        width: 100%;
-        height: auto;
-    }
-
 }
 
-@keyframes slidein {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-@keyframes slideFromRight {
-    from {
-        transform: translateX(200%); 
-    }
-    to {
-        transform: translateX(0); 
-    }
-  }
-  
-  @keyframes slideFromTop {
-    from {
-        transform: translateY(-300%);
-    }
-    to {
-        transform: rotateY(0);
-    }
-  }
-  p, h1, li, ul {
-    animation: slideFromRight 2s ease-in-out forwards;
-}
-table, img, a, nav{
-    animation: slideFromTop 2s ease-in-out forwards;
+@media (max-width: 480px) {
+    h1.character-name { font-size: 2rem; }
+    h2.section-title { font-size: 1.6rem; }
+    .content-area { width: 100%; padding: 1em; border-radius: 0; box-shadow: none; }
+    .main-nav ul { gap: 0.3em; }
+    .main-nav a { font-size: 0.8rem; }
+    .gallery-container { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    .curiosities-list li { padding: 0.5em 0 0.5em 1.5em; }
+    .curiosities-list li::before { font-size: 1.1em; top: 0.5em; }
 }
