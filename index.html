@@ -1,87 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wiki fan-made de Jujutsu Kaisen con información sobre personajes, técnicas y la historia">
-    <title>Wiki Fan-Made de Jujutsu Kaisen por Sleepy</title>
-    <link id="theme" rel="stylesheet" type="text/css" href="./CSSIndex/Light.css"/>
-    <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Wiki fan-made de Jujutsu Kaisen. Información detallada sobre personajes, técnicas malditas e historia de Gege Akutami."
+    />
+    <title>Wiki Jujutsu Kaisen | Fan-Made por Sleepy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
+    />
+
+    <link id="theme" rel="stylesheet" href="./CSSIndex/Light.css" />
+    <link
+      rel="shortcut icon"
+      href="multimediajujutsu/Iconos/favicon.png"
+      type="image/png"
+    />
+  </head>
+  <body>
     <header class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">¡Bienvenido a mi wiki personal de Jujutsu Kaisen!</h1>
-            <p class="hero-subtitle">Haz clic en alguno de los personajes para saber más sobre ellos.</p>
-            </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Wiki Jujutsu Kaisen</h1>
+        <p class="hero-subtitle">
+          Explora el universo de los hechiceros y las maldiciones.
+        </p>
+      </div>
     </header>
 
-    <nav class="character-navigation">
-        <div class="container">
-            <h2 class="section-title">Personajes Principales</h2>
-            <div class="character-grid">
-                <a href="PersonajesJujutsu/Itadori.html" class="character-card">
-                    <div class="character-img" style="background-image: url('multimediajujutsu/Itadori.jpg'); background-color: #eee;" aria-label="Itadori Yūji"></div>
-                    <h3 class="character-name">Itadori Yūji</h3>
-                </a>
-                <a href="PersonajesJujutsu/Megumi.html" class="character-card">
-                     <div class="character-img" style="background-image: url('multimediajujutsu/Megumi.jpg'); background-color: #ddd;" aria-label="Megumi Fushiguro"></div>
-                    <h3 class="character-name">Megumi Fushiguro</h3>
-                </a>
-                <a href="PersonajesJujutsu/Nobara.html" class="character-card">
-                    <div class="character-img" style="background-image: url('multimediajujutsu/Nobara.jpg'); background-color: #ccc;" aria-label="Nobara Kugisaki"></div>
-                    <h3 class="character-name">Nobara Kugisaki</h3>
-                </a>
-                 <a href="PersonajesJujutsu/Gojo.html" class="character-card">
-                    <div class="character-img" style="background-image: url('multimediajujutsu/Gojo.jpg'); background-color: #bbb;" aria-label="Satoru Gojo"></div>
-                    <h3 class="character-name">Satoru Gojo</h3>
-                </a>
-
-            </div>
+    <main class="container">
+      <section class="character-navigation" aria-labelledby="chars-title">
+        <h2 id="chars-title" class="section-title">Personajes Principales</h2>
+        <div class="character-grid">
+          <a href="PersonajesJujutsu/Itadori.html" class="character-card">
+            <figure>
+              <img
+                src="multimediajujutsu/Itadori.jpg"
+                alt="Itadori Yūji"
+                loading="lazy"
+                class="character-img"
+              />
+              <figcaption class="character-name">Itadori Yūji</figcaption>
+            </figure>
+          </a>
+          <a href="PersonajesJujutsu/Megumi.html" class="character-card">
+            <figure>
+              <img
+                src="multimediajujutsu/Megumi.jpg"
+                alt="Megumi Fushiguro"
+                loading="lazy"
+                class="character-img"
+              />
+              <figcaption class="character-name">Megumi Fushiguro</figcaption>
+            </figure>
+          </a>
+          <a href="PersonajesJujutsu/Nobara.html" class="character-card">
+            <figure>
+              <img
+                src="multimediajujutsu/Nobara.jpg"
+                alt="Nobara Kugisaki"
+                loading="lazy"
+                class="character-img"
+              />
+              <figcaption class="character-name">Nobara Kugisaki</figcaption>
+            </figure>
+          </a>
+          <a href="PersonajesJujutsu/Gojo.html" class="character-card">
+            <figure>
+              <img
+                src="multimediajujutsu/Gojo.jpg"
+                alt="Satoru Gojo"
+                loading="lazy"
+                class="character-img"
+              />
+              <figcaption class="character-name">Satoru Gojo</figcaption>
+            </figure>
+          </a>
         </div>
-    </nav>
+      </section>
+      <section class="about-section">
+        <h2 class="section-title">Presentación del Proyecto</h2>
+        <div class="about-content-grid">
+          <article class="about-text">
+            <p>
+              Bienvenido a la wiki personal de
+              <strong>Pedro Barrante Vázquez</strong>.
+            </p>
+            <p>
+              Este espacio recopila datos sobre técnicas malditas y la
+              cronología del mundo de Jujutsu Kaisen.
+            </p>
+          </article>
 
-    <main class="container main-content">
-        <section class="about-section">
-            <h2 class="section-title">Presentación del proyecto</h2>
-            <div class="about-content-grid">
-                 <div class="about-text">
-                    <p>¡Hola! Mi nombre es Pedro Barrante Vázquez y esta es mi wiki personal de Jujutsu Kaisen.</p>
-                    <p>En esta página encontrarás información detallada sobre los personajes, técnicas malditas y la fascinante historia del mundo de Jujutsu Kaisen.</p>
-                 </div>
-                <aside class="info-box">
-                    <h3>Cosas que saber</h3>
-                    <ul>
-                        <li>Cada personaje tiene su propia página detallada.</li>
-                        <li>Contiene spoilers del manga/anime.</li>
-                        <li>Proyecto hecho con fines educativos.</li>
-                    </ul>
-                </aside>
-            </div>
-        </section>
+          <aside class="info-box" aria-label="Notas importantes">
+            <h3>A tener en cuenta</h3>
+            <ul>
+              <li>Páginas individuales por personaje.</li>
+              <li><strong>Alerta:</strong> Contiene spoilers del manga.</li>
+              <li>Proyecto educativo sin ánimo de lucro.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="disclaimer">
-                    <h4>Información Adicional</h4>
-                    <p>Esta página es un proyecto fan-made creado con fines educativos. Todos los derechos de Jujutsu Kaisen pertenecen a Gege Akutami, Shueisha y MAPPA.</p>
-                </div>
-                <div class="footer-actions">
-                     <a href="Sleepy/index.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Conoce al creador</a>
-                    <div class="footer-links">
-                        <a href="#">Términos de uso</a>
-                        <a href="#">Política de privacidad</a>
-                        <a href="#">Contacto</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+      <div class="container footer-content">
+        <section class="disclaimer">
+          <h4>Aviso Legal</h4>
+          <p>
+            Proyecto fan-made. Jujutsu Kaisen es propiedad de Gege Akutami,
+            Shueisha y MAPPA.
+          </p>
+        </section>
 
-    </body>
+        <nav class="footer-actions" aria-label="Enlaces secundarios">
+          <a href="Sleepy/index.html" class="btn btn-primary" rel="author"
+            >Conoce al creador</a
+          >
+          <div class="footer-links">
+            <a href="#">Privacidad</a>
+            <a href="#">Contacto</a>
+          </div>
+        </nav>
+      </div>
+    </footer>
+  </body>
 </html>

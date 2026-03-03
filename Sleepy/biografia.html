@@ -1,68 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon1.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/CSSBiogra/Light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biografia</title>
+    <title>Biografía | Pedro Barrante</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./CSS/CSSBiogra/Light.css" />
+    <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon1.png" />
   </head>
-  <body>
-    <header>
-      <h1>Biografía de Sleepy</h1>
-    </header>
-    <section>
-      <h2>Parte 1: Quién Soy</h2>
-      <p>
-        Mi nombre real es Pedro, pero todos me llaman Sleepy. Tengo 20 años me
-        encanta el anime,
-        en particular, mi serie favorita es Jujutsu Kaisen.
-      </p>
-      <p>
-        Cuando no estoy viendo anime o jugando a videojuegos, suelo programar
-        alguna
-        que otra pagina web, y es precisamente en
-        este contexto que estoy creando mi biografía como parte de mi proyecto
-        final de Lenguaje de Marcas. ¡Espero que disfrutes conociéndome!
-      </p>
-    </section>
-    <section>
-      <h2>Parte 2: Mis Vocaciones</h2>
-      <p>
-        Actualmente, estoy cursando un grado superior en Medac
-        relacionado con el desarollo de aplicaciones. Aunque aún no cuento con
-        demasiada experiencia
-        laboral, estoy enfocado en adquirir conocimientos sólidos en el mundo de
-        la programación y el diseño web.
-      </p>
-      <p>
-        Mi amor por HTML me ha llevado a explorar diferentes proyectos
-        personales como la creación de sitios web.
-      </p>
-    </section>
-    <section>
-      <h2>Parte 3: Conclusiones y Disfrute del Proyecto Final</h2>
-      <p>
-        En resumen, el anime, los videojuegos,
-        la programación y la creación
-        de páginas web es a lo que normalmente me dedico.
-      </p>
-      <p>
-        Estoy emocionado por mi proyecto final de Lenguaje de Marcas, donde
-        puedo combinar mis
-        intereses y crear esta autobiografía. Quiero agradecer a todos los que
-        me han apoyado en este proyecto y a ti, querido lector, por tomarte el
-        tiempo de conocerme a través de estas líneas.
-      </p>
-      <p>¡Gracias por ser parte de mi historia!</p>
-    </section>
-    <footer>
-      <p><a href="./index.html">Volver a la página de presentación</a></p>
-    </footer>
+  <body class="bio-page">
+    <main class="bio-container">
+      <header class="bio-header">
+        <a href="index.html" class="back-btn">← Volver al perfil</a>
+        <h1 class="bio-title">Mi Trayectoria</h1>
+        <p class="bio-subtitle">
+          De los sistemas al desarrollo: mi evolución profesional.
+        </p>
+      </header>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Perfil Personal</span>
+            <h2>Identidad Digital</h2>
+            <p>
+              Me llamo Pedro, aunque en la comunidad de desarrollo y gaming me
+              muevo bajo el alias de <strong>Sleepy</strong>. Soy un apasionado
+              del anime —con <em>Jujutsu Kaisen</em> como referente— y un
+              entusiasta de la tecnología que busca la excelencia en cada línea
+              de código.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Formación Académica</span>
+            <h2>Especialista en Sistemas y Desarrollo</h2>
+            <p>
+              Mi formación técnica es híbrida y completa. Comencé mi camino
+              titulándome como <strong>Técnico en SMR</strong> (Sistemas
+              Microinformáticos y Redes), lo que me permitió dominar la
+              infraestructura y el hardware.
+            </p>
+            <p>
+              Recientemente, he alcanzado un nuevo hito graduándome en
+              <strong>MEDAC</strong> como
+              <strong
+                >Técnico Superior en Desarrollo de Aplicaciones Multiplataforma
+                (DAM)</strong
+              >, consolidando mis capacidades para crear software de alto nivel.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-tag">Objetivos</span>
+            <h2>Hacia el mundo profesional</h2>
+            <p>
+              Con la titulación superior en mano, mi enfoque actual es aplicar
+              mis conocimientos en proyectos reales. Combino el rigor técnico de
+              los sistemas con la creatividad del desarrollo moderno para
+              ofrecer soluciones digitales eficientes, escalables y visualmente
+              atractivas.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <footer class="bio-footer">
+        <p>Pedro Barrante Vázquez • Técnico Superior en DAM</p>
+        <div class="footer-line"></div>
+      </footer>
+    </main>
   </body>
 </html>

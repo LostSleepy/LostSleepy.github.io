@@ -1,61 +1,115 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f2f2f2;
-    padding: 20px;
-    font-family: 'Lexend', sans-serif;
+:root {
+  --primary: #1900ff;
+  --bg: #f8f9fa;
+  --text: #2d3047;
+  --white: #ffffff;
 }
 
-h1 {
-    color: #333;
+body.redes-page {
+  font-family: "Lexend", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
 }
 
-.redes-sociales {
-    justify-content: center;
-}
-
-.icono-red-social {
-    font-size: 30px;
-    margin: 10px;
-}
-
-.icono-red-social a {
-    color: #333;
-}
-body {
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-a{
-  padding: 12px;
-  display: inline-block;
-  transition-property: all;
-  transition-duration: 0.5s;
-  transition-timing-function: linear;
-}
-a:hover {
-  background: #ffffff;
-  color: rgb(255, 0, 0);
-  padding: 17px;
-  border: 1px solid darkred;
-}
-p {
-  width: 0;
-  animation: writeIn 3s linear forwards; 
-}
-
-@keyframes writeIn {
+@keyframes fadeIn {
   to {
-    width: 100%;
+    opacity: 1;
   }
+}
+
+.redes-container {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* User Badge */
+.user-badge {
+  background: var(--primary);
+  color: white;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(25, 0, 255, 0.2);
+}
+
+.redes-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+.redes-header p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Lista de Enlaces */
+.redes-list {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.red-link {
+  background: var(--white);
+  text-decoration: none;
+  padding: 18px 25px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.red-name {
+  font-weight: 700;
+  color: var(--text);
+}
+.red-user {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Efectos Hover por Red */
+.red-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.x-twitter:hover {
+  border-color: #000;
+}
+.instagram:hover {
+  border-color: #e4405f;
+}
+.tiktok:hover {
+  border-color: #00f2ea;
+}
+
+/* Botón Volver con tu ADN */
+.back-btn {
+  margin-top: 3rem;
+  display: inline-block;
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 0.9rem;
+  transition: all 0.4s;
+}
+
+.back-btn:hover {
+  color: var(--primary);
+  transform: translateX(-5px);
 }
