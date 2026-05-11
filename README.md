@@ -1,45 +1,42 @@
-# Project Overview
+# Jujutsu Kaisen Wiki & Professional Portfolio
 
-This project contains a fan-made wiki dedicated to the popular anime and manga series Jujutsu Kaisen. It provides information on various characters from the series. Additionally, the project includes a personal website section for the author.
+This project is a hybrid platform that combines a fan-made encyclopedia dedicated to the **Jujutsu Kaisen** universe with a cutting-edge personal portfolio designed for the modern development ecosystem.
 
-## Jujutsu Kaisen Fan Wiki
+## ⛩️ Jujutsu Kaisen Fan Wiki
 
-This is the main part of the project. It serves as a comprehensive resource for fans of Jujutsu Kaisen.
+A comprehensive knowledge base about Gege Akutami's universe, focused on user experience and visual fidelity to the series' aesthetics.
 
-- **Purpose:** To provide detailed information about the characters, their abilities, personalities, and backstories.
-- **Structure:** The wiki has a central landing page (`index.html`) which features a grid of main characters. Clicking on a character card navigates to a dedicated page for that character (e.g., `PersonajesJujutsu/Itadori.html`, `PersonajesJujutsu/Gojo.html`).
-- **Content:** Each character page includes sections on their biography, appearance, personality, skills, and interesting facts. The wiki is rich in multimedia content, including images and GIFs related to the characters.
-- **Main Characters Covered (Examples):**
-    - Itadori Yūji
-    - Megumi Fushiguro
-    - Nobara Kugisaki
-    - Satoru Gojo
-    - (And many others)
+- **Dynamic Content:** Detailed pages for "Special Grade" characters such as Satoru Gojo, Megumi Fushiguro (Sukuna version), and Nobara Kugisaki.
+- **Technical Structure:** Modular HTML file organization with seamless navigation between profiles, abilities, and multimedia galleries.
+- **Multimedia:** Integration of optimized assets that capture the dark and technical atmosphere of the anime.
 
-## Sleepy's Personal Page
+## ⚡ Sleepy's Personal Page (Portfolio)
 
-Linked from the footer of the Jujutsu Kaisen wiki, this section is a personal website for the project's author, Pedro Barrante Vázquez (Sleepy).
+Located in the `/Sleepy` directory, this section showcases the professional and personal profile of the author, **Pedro Barrante (Sleepy)**. It has been redesigned following current UI/UX trends.
 
-- **Purpose:** To share personal information about the author.
-- **Content:** This section includes:
-    - A brief biography.
-    - Information about personal interests and hobbies.
-    - Links to social media profiles.
-    - A contact form.
+- **Bento Grid Design:** A modern interface that organizes information into hierarchical visual blocks.
+- **Key Sections:**
+    - **Trajectory:** A timeline narrating the professional evolution from IT Systems Technician (SMR) to Multi-platform Application Development graduate (DAM).
+    - **Passions:** A look into "Old Guard" Fortnite status, Sevilla FC passion, and creative direction inspired by Travis Scott.
+    - **Social Hub:** A connectivity center including GitHub, LinkedIn, Twitch, and direct contact via WhatsApp.
+- **Contact Form:** Fully functional system integrated with **Formspree**, allowing lead generation without the need for a PHP backend.
 
-## Navigating the Project
+## 🛠️ Technologies & Tools
 
-- **Jujutsu Kaisen Wiki:** Open the `index.html` file in the root directory in your web browser.
-- **Sleepy's Personal Page:** This can be accessed by clicking the "Conoce al creador" link in the footer of the Jujutsu Kaisen wiki, or by directly opening the `Sleepy/index.html` file in your web browser.
+- **HTML5:** Semantic markup for SEO and accessibility.
+- **Tailwind CSS:** Utility-first framework for a responsive (Mobile-First) design, featuring Glassmorphism effects.
+- **JavaScript:** Logic for dynamic age calculation and UI state management.
+- **Formspree API:** Management of professional inquiries and static contact handling.
+- **Google Fonts:** Premium typography (*Shippori Mincho* and *DM Sans*) for a contrast between traditional and technological styles.
 
-## Technologies Used
+## 🚀 Navigation
 
-This project is primarily built using:
+1. **Main Wiki:** Run `index.html` in the root directory.
+2. **Personal Portfolio:** Access via the "Conoce al creador" link in the footer or by directly opening `Sleepy/index.html`.
 
-- **HTML:** For the structure and content of the web pages.
-- **CSS:** For styling the web pages and creating different themes (e.g., light mode).
-- **JavaScript:** (Potentially, for any dynamic behavior, though not explicitly detailed in the initial file review - will confirm if specific JS features are prominent later if needed. For now, focusing on the core HTML/CSS structure).
+## 📜 Disclaimer
 
-## Disclaimer
+This project was developed for educational and technical demonstration purposes. All rights to *Jujutsu Kaisen* belong to Gege Akutami, Shueisha, and MAPPA.
 
-Esta página es un proyecto fan-made creado con fines educativos. Todos los derechos de Jujutsu Kaisen pertenecen a Gege Akutami, Shueisha y MAPPA.
+---
+**Developed by Pedro Barrante Vázquez** *Senior Technician in Multi-platform Application Development (DAM) & Systems Specialist (SMR)*
