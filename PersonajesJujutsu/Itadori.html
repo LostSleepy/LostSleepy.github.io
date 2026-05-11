@@ -1,181 +1,422 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSSPersonajes/Itadori/styles.css"> <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Itadori Yūji - Jujutsu Kaisen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Itadori Yūji - Wiki fan-made de Jujutsu Kaisen. Apariencia, personalidad, habilidades y curiosidades." />
+  <title>Itadori Yūji | Wiki JJK</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse:  { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+            blood:  { DEFAULT:'#b91c1c', light:'#fca5a5' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            glowPulse: { '0%,100%':{ opacity:'0.5' }, '50%':{ opacity:'1' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent); height: 2px; }
+
+    /* Smooth scroll offset para nav fija */
+    [id] { scroll-margin-top: 5rem; }
+
+    /* Nav interna sticky */
+    .char-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+    /* Tabla responsive */
+    .skill-row:nth-child(even) { background: rgba(124,58,237,0.04); }
+
+    /* Float imagen al lado del texto en pantallas grandes */
+    @media (min-width: 768px) {
+      .float-img-right { float: right; margin: 0 0 1.5rem 2rem; clear: right; }
+      .float-img-left  { float: left;  margin: 0 2rem 1.5rem 0; clear: left; }
+    }
+    .clearfix::after { content:''; display:table; clear:both; }
+
+    /* Galería hover */
+    .gallery-img-wrap img { transition: transform 0.4s ease; }
+    .gallery-img-wrap:hover img { transform: scale(1.04); }
+
+    * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+  </style>
 </head>
-<body>
-    <header class="site-header">
-        <a href="../index.html" class="nav-link prev-link">Índice</a> <h1 class="character-name">Itadori Yūji</h1>
-        <a href="./Megumi.html" class="nav-link next-link">Megumi Fushiguro</a> </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#quienes">¿Quién es?</a></li>
-            <li><a href="#apariencia">Apariencia</a></li>
-            <li><a href="#perso">Personalidad</a></li>
-            <li><a href="#habi">Habilidades</a></li>
-            <li><a href="#imagenes">Imágenes</a></li>
-            <li><a href="#curiosidades">Curiosidades</a></li>
-        </ul>
-    </nav>
+<body class="bg-ink-950 text-ink-100 antialiased">
 
-    <main class="content-area">
-        <article class="content-section">
-            <h2 id="quienes" class="section-title">¿Quién es?</h2>
-            <p>Yuji Itadori (虎杖悠仁 Itadori Yūji) es el protagonista principal de la serie manga Jujutsu Kaisen, la cual concluyó en septiembre de 2024. Originalmente un estudiante de secundaria con una fuerza física sobrehumana, su vida cambió drásticamente al ingerir un dedo maldito para salvar a sus amigos, convirtiéndose en el recipiente del Rey de las Maldiciones, Ryomen Sukuna.</p>
-            <p>A lo largo de la serie, Yuji entrenó como hechicero en el Colegio Técnico de Magia Metropolitana de Tokio bajo la tutela de Satoru Gojo. Aunque dejó de ser el recipiente principal de Sukuna durante los arcos finales (cuando Sukuna se transfirió a Megumi Fushiguro), Yuji jugó un papel fundamental en la confrontación final contra Sukuna, logrando finalmente derrotarlo.</p>
-            <p>Tras la conclusión de la batalla y la derrota de las mayores amenazas, Yuji sobrevive y, junto a sus compañeros restantes como Megumi y Nobara, retoma su vida como hechicero, continuando con la misión de exorcizar maldiciones y buscando seguir el legado y los sueños de Gojo para mejorar la sociedad Jujutsu.</p>
-        </article>
+  <!-- ══════ HEADER PERSONAJE ══════ -->
+  <header class="relative overflow-hidden border-b border-white/5">
+    <!-- Fondo difuso -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0f0c1a] via-ink-950 to-ink-950"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-curse-dark/15 blur-[100px] animate-glow-pulse"></div>
 
-        <section class="content-section">
-            <h2 id="apariencia" class="section-title">Apariencia</h2>
-             <figure class="character-image-main">
-                 <img src="../multimediajujutsu/Itadori/ItadoriApariencia.gif" alt="Vestimenta de Itadori" width="550" height="300">
-                <figcaption>Uniforme de hechicero de Itadori</figcaption>
-            </figure>
-            <p>Itadori es un adolescente musculoso y alto (1.73m y en crecimiento). Su cabello es puntiagudo, de color rosa pálido en el anime y marrón claro en el manga. Tras ser recipiente de Sukuna, desarrolló unas segundas líneas bajo sus ojos. Después de la batalla contra Mahito y Choso en Shibuya, obtuvo dos cicatrices notables en la frente.</p>
-            <p>Su vestimenta más característica es su uniforme modificado del Colegio Técnico: una camisa oscura de manga larga (azul marino en el anime, negra en el manga) sobre una sudadera con capucha roja, pantalones oscuros a juego y zapatillas rojas.</p>
-             <p>En su tiempo libre, suele vestir ropa cómoda como sudaderas y pantalones oscuros.</p>
-        </section>
+    <!-- Barra de navegación entre personajes -->
+    <div class="relative z-10 flex items-center justify-between px-6 pt-5 pb-0 max-w-5xl mx-auto">
+      <a href="../index.html"
+         class="flex items-center gap-2 text-ink-200/70 hover:text-curse-light transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Índice
+      </a>
+      <span class="text-ink-200/30 text-xs font-display hidden sm:block">呪術廻戦</span>
+      <a href="Megumi.html"
+         class="flex items-center gap-2 text-ink-200/70 hover:text-curse-light transition-colors text-sm">
+        Megumi Fushiguro
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
 
-        <section class="content-section">
-            <h2 id="perso" class="section-title">Personalidad</h2>
-             <figure class="character-image-main float-right">
-                 <img src="../multimediajujutsu/Itadori/ItadoriPersonalidad.gif" alt="Itadori siendo amigable" class="imagen-itadori">
-                <figcaption>Yuji mostrando su carácter amigable</figcaption>
-            </figure>
-            <p>Yuji es fundamentalmente honesto, amigable y valora profundamente la vida, guiado por el último deseo de su abuelo de ayudar a los demás y asegurarles una "muerte digna". Esto lo lleva a actos de gran sacrificio personal, como ingerir el dedo de Sukuna.</p>
-            <p>A lo largo de la historia, Yuji experimenta un inmenso trauma y carga con una gran culpa, especialmente después de los eventos del Incidente de Shibuya y al presenciar las atrocidades cometidas por Sukuna mientras usaba su cuerpo. Esto lo vuelve más serio y deprimido por momentos.</p>
-            <p>A pesar del sufrimiento y las pérdidas, incluyendo la de su mentor Satoru Gojo, Yuji demuestra una resiliencia increíble. Mantiene su determinación para luchar, proteger a sus amigos y destruir las maldiciones que causan dolor, madurando significativamente y aceptando la dura realidad del mundo de la hechicería sin perder su núcleo compasivo. Al final, busca activamente mejorar el futuro de la sociedad Jujutsu.</p>
-        </section>
+    <!-- Hero del personaje -->
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-fade-up">
+      <p class="text-curse-light text-xs tracking-widest uppercase mb-3">Protagonista · Grado 1</p>
+      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-2">Itadori Yūji</h1>
+      <p class="text-2xl text-ink-200/60 font-display mb-6">虎杖悠仁</p>
+      <div class="accent-line w-28 mb-6"></div>
+      <p class="text-ink-200 max-w-xl leading-relaxed">
+        Protagonista principal de Jujutsu Kaisen. Estudiante de secundaria con fuerza sobrehumana
+        que se convirtió en el recipiente del Rey de las Maldiciones, Ryomen Sukuna.
+      </p>
+    </div>
+  </header>
 
-        <section class="content-section">
-            <h2 id="habi" class="section-title">Habilidades</h2>
-            <div class="skills-table-container">
-                <table class="skills-table">
-                    <thead>
-                        <tr>
-                            <th>Habilidad</th>
-                            <th>Descripción</th>
-                            <th>Notas Adicionales</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="skill-name">Fuerza y Agilidad Sobrehumanas</td>
-                            <td>Posee capacidades físicas innatas muy por encima de un humano normal, incluso antes de aprender a usar energía maldita.</td>
-                            <td>Base de su estilo de combate cuerpo a cuerpo.</td>
-                        </tr>
-                         <tr>
-                            <td class="skill-name">Maestría en Artes Marciales</td>
-                            <td>Combatiente cuerpo a cuerpo excepcional, capaz de enfrentarse a maldiciones y hechiceros experimentados.</td>
-                            <td>Complementa su fuerza física.</td>
-                        </tr>
-                         <tr>
-                            <td class="skill-name">Puño Divergente</td>
-                            <td>Técnica inicial donde su golpe físico es seguido por un segundo impacto de energía maldita debido a un ligero desfase.</td>
-                            <td>Menos relevante a medida que mejora su control.</td>
-                        </tr>
-                         <tr>
-                            <td class="skill-name">Destello Negro (Black Flash)</td>
-                            <td>Un golpe crítico que amplifica el poder del impacto (potencia de 2.5) al aplicar energía maldita en 0.000001 segundos. Yuji es extremadamente hábil usándolo.</td>
-                            <td>Logró lanzarlo consecutivamente (hasta 7 veces) en la lucha final, casi a voluntad.</td>
-                         </tr>
-                         <tr>
-                            <td class="skill-name">Percepción/Daño del Alma</td>
-                            <td>Capaz de percibir el contorno del alma y dañarla directamente con sus golpes.</td>
-                            <td>Crucial contra Mahito y para intentar separar el alma de Megumi de la de Sukuna.</td>
-                         </tr>
-                         <tr>
-                            <td class="skill-name">Manipulación de Sangre</td>
-                            <td>Adquirida tras ingerir los úteros malditos restantes (Death Paintings 4-9). Le permite controlar su sangre.</td>
-                            <td>Usada para ataques (ej. Piercing Blood, con ayuda) y curación/regeneración acelerada.</td>
-                         </tr>
-                          <tr>
-                            <td class="skill-name">Técnica Maldita Inversa (RCT)</td>
-                            <td>Aprendida durante el timeskip antes de la batalla final. Permite curar heridas usando energía positiva.</td>
-                            <td>Esencial para sobrevivir combates intensos.</td>
-                        </tr>
-                         <tr>
-                            <td class="skill-name">Dominio Simple</td>
-                            <td>Técnica defensiva que neutraliza técnicas malditas y ataques de dominio en un área pequeña.</td>
-                            <td>Aprendida durante el timeskip.</td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Técnica Maldita: Santuario (Shrine)</td>
-                            <td>Despertó la técnica maldita de Sukuna (cortar/desmantelar) grabada en su alma debido a haber sido su recipiente.</td>
-                            <td>Combina los cortes con su habilidad de dañar el alma, creando "desmantelamientos que dividen el alma". Clave en la derrota de Sukuna.</td>
-                        </tr>
-                         <tr>
-                            <td class="skill-name">Expansión de Dominio</td>
-                            <td>Manifestó brevemente una Expansión de Dominio al final de la lucha contra Sukuna.</td>
-                            <td>Sus mecánicas exactas no fueron completamente exploradas. Una fuente sugiere que se asemejaba a un ring de boxeo.</td>
-                        </tr>
-                        <tr>
-                           <td class="skill-name">Resistencia a Venenos/Maldiciones</td>
-                           <td>Debido a ser el recipiente de Sukuna, desarrolló una alta resistencia a venenos y maldiciones.</td>
-                           <td>Factor de supervivencia importante.</td>
-                       </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <!-- ══════ NAV INTERNA STICKY ══════ -->
+  <nav class="char-nav sticky top-0 z-40 border-b border-white/5 bg-ink-950/80">
+    <div class="max-w-5xl mx-auto px-6">
+      <ul class="flex gap-1 sm:gap-2 overflow-x-auto py-3 text-sm scrollbar-hide">
+        <li><a href="#quienes"     class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">¿Quién es?</a></li>
+        <li><a href="#apariencia"  class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Apariencia</a></li>
+        <li><a href="#perso"       class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Personalidad</a></li>
+        <li><a href="#habi"        class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Habilidades</a></li>
+        <li><a href="#imagenes"    class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Imágenes</a></li>
+        <li><a href="#curiosidades"class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Curiosidades</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <section class="content-section">
-            <h2 id="imagenes" class="section-title">Imágenes de Itadori</h2>
-            <div class="gallery-container">
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Itadori/ItadoriAnime.jpg" alt="Itadori Anime" class="gallery-image">
-                    <figcaption>Apariencia (Anime)</figcaption>
-                </figure>
-                 <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Itadori/Itadori.jpg" alt="Itadori Manga" class="gallery-image">
-                    <figcaption>Apariencia (Manga)</figcaption>
-                </figure>
-                 <figure class="gallery-item">
-                     <img src="../multimediajujutsu/Itadori/ItadoriPeleaManga.jpg" alt="Itadori Pelea Manga" class="gallery-image">
-                     <figcaption>Listo para pelear (Manga)</figcaption>
-                </figure>
-                 <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Itadori/ItadoriEnergíaMaldita.jpg" alt="Itadori Energía Maldita" class="gallery-image">
-                    <figcaption>Usando energía maldita</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Itadori/ItadoriBlackFlash.gif" alt="Itadori Destello Negro" class="gallery-image">
-                    <figcaption>Destello Negro vs Hanami</figcaption>
-                </figure>
-                 <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Itadori/ItadoriEnergiaMalditLib.gif" alt="Itadori Liberando Energía" class="gallery-image">
-                    <figcaption>Liberando energía maldita</figcaption>
-                 </figure>
-            </div>
-        </section>
+  <!-- ══════ CONTENIDO ══════ -->
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
-        <section class="content-section">
-            <h2 id="curiosidades" class="section-title">Curiosidades y Datos Finales</h2>
-            <ul class="curiosities-list">
-                 <li>El manga de Jujutsu Kaisen finalizó en septiembre de 2024 con el capítulo 271.</li>
-                <li>Mide 1.73m y se esperaba que siguiera creciendo.</li>
-                <li>Su cumpleaños es el 20 de marzo.</li>
-                <li>Adquirió la técnica de Manipulación de Sangre tras ingerir los úteros malditos 4-9.</li>
-                <li>Despertó la técnica maldita "Santuario" de Sukuna durante la batalla final.</li>
-                <li>Es excepcionalmente bueno ejecutando Destellos Negros.</li>
-                 <li>Las cicatrices en su frente son resultado de sus combates en Shibuya contra Choso y Mahito.</li>
-                 <li>Sobrevivió a los eventos finales del manga y continúa su vida como hechicero.</li>
-                <li>Su tipo de chica preferido es "alta con un gran trasero", mencionando a Jennifer Lawrence.</li>
-                <li>Si no hubiera sido hechicero, probablemente habría sido bombero.</li>
-                <li>Se confirmó que su madre estaba poseída por Kenjaku en el momento de su concepción/nacimiento.</li>
-            </ul>
-        </section>
-    </main>
+    <!-- ── ¿QUIÉN ES? ── -->
+    <section id="quienes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">¿Quién es?</h2>
+      </div>
+      <div class="space-y-4 text-ink-200 leading-relaxed">
+        <p>Yuji Itadori (虎杖悠仁 Itadori Yūji) es el protagonista principal de la serie manga Jujutsu Kaisen, la cual concluyó en septiembre de 2024. Originalmente un estudiante de secundaria con una fuerza física sobrehumana, su vida cambió drásticamente al ingerir un dedo maldito para salvar a sus amigos, convirtiéndose en el recipiente del Rey de las Maldiciones, Ryomen Sukuna.</p>
+        <p>A lo largo de la serie, Yuji entrenó como hechicero en el Colegio Técnico de Magia Metropolitana de Tokio bajo la tutela de Satoru Gojo. Aunque dejó de ser el recipiente principal de Sukuna durante los arcos finales, jugó un papel fundamental en la confrontación final, logrando derrotarlo definitivamente.</p>
+        <p>Tras la conclusión de la batalla, Yuji sobrevive y, junto a sus compañeros restantes, retoma su vida como hechicero, continuando con la misión de exorcizar maldiciones y seguir el legado de Gojo para mejorar la sociedad Jujutsu.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-        <p>Volver a la <a href="../index.html" class="nav-link">página principal</a></p> </footer>
+    <!-- ── APARIENCIA ── -->
+    <section id="apariencia">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Apariencia</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-left mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-64">
+            <img src="../multimediajujutsu/Itadori/ItadoriApariencia.gif"
+                 alt="Vestimenta de Itadori"
+                 class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Uniforme de hechicero</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Itadori es un adolescente musculoso y alto (1,73 m y en crecimiento). Su cabello es puntiagudo, de color rosa pálido en el anime y marrón claro en el manga. Tras ser recipiente de Sukuna, desarrolló unas segundas líneas bajo sus ojos.</p>
+          <p>Después de la batalla contra Mahito y Choso en Shibuya, obtuvo dos cicatrices notables en la frente. Su vestimenta más característica es su uniforme modificado del Colegio Técnico: camisa oscura de manga larga sobre una sudadera con capucha roja, pantalones oscuros y zapatillas rojas.</p>
+          <p>En su tiempo libre, suele vestir ropa cómoda como sudaderas y pantalones oscuros.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PERSONALIDAD ── -->
+    <section id="perso">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Personalidad</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-right mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-56">
+            <img src="../multimediajujutsu/Itadori/ItadoriPersonalidad.gif"
+                 alt="Yuji mostrando su carácter amigable"
+                 class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Carácter amigable de Yuji</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Yuji es fundamentalmente honesto, amigable y valora profundamente la vida, guiado por el último deseo de su abuelo de ayudar a los demás y asegurarles una "muerte digna". Esto lo lleva a actos de gran sacrificio personal, como ingerir el dedo de Sukuna.</p>
+          <p>A lo largo de la historia, Yuji experimenta un inmenso trauma y carga con una gran culpa, especialmente después del Incidente de Shibuya y al presenciar las atrocidades cometidas por Sukuna mientras usaba su cuerpo. Esto lo vuelve más serio y deprimido por momentos.</p>
+          <p>A pesar del sufrimiento, Yuji demuestra una resiliencia increíble. Mantiene su determinación para luchar y proteger a sus amigos, madurando significativamente sin perder su núcleo compasivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HABILIDADES ── -->
+    <section id="habi">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Habilidades</h2>
+      </div>
+
+      <!-- Cards de habilidades (sin imágenes en tabla) -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Fuerza y Agilidad Sobrehumanas</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Capacidades físicas innatas muy por encima de lo humano, incluso antes de aprender a usar energía maldita. Base de su estilo de combate cuerpo a cuerpo.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Maestría en Artes Marciales</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Combatiente cuerpo a cuerpo excepcional, capaz de enfrentarse a maldiciones y hechiceros experimentados. Complementa su fuerza física innata.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Puño Divergente</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Su golpe físico es seguido por un segundo impacto de energía maldita debido a un ligero desfase. Menos relevante a medida que mejora su control.</p>
+        </div>
+
+        <div class="rounded-2xl border border-curse/20 bg-curse-dark/10 p-5 space-y-2">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-curse-light px-2 py-0.5 rounded-full border border-curse/30">Técnica destacada</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Destello Negro <span class="text-ink-200/50 font-normal text-sm">(Black Flash)</span></h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Amplifica el impacto (potencia ×2,5) aplicando energía maldita en 0,000001 segundos. Yuji lo ejecutó consecutivamente hasta 8 veces en la batalla final.</p>
+          <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Itadori/ImagenesTabla/BlackFlash.jpg"
+                 alt="Destello Negro" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Percepción del Alma</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Capaz de percibir el contorno del alma y dañarla directamente. Crucial contra Mahito y para separar el alma de Megumi de la de Sukuna.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Manipulación de Sangre</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Adquirida tras ingerir los úteros malditos restantes (Pinturas de la muerte  4-9). Usada para ataques como Manipulacion de la sangre y curación/regeneración acelerada.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Técnica Maldita Inversa</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Aprendida durante el timeskip. Permite curar heridas usando energía positiva. Esencial para sobrevivir combates de alta intensidad.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Dominio Simple</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Técnica defensiva que neutraliza técnicas malditas y ataques de dominio en un área reducida. Aprendida durante el timeskip previo a la batalla final.</p>
+        </div>
+
+        <div class="rounded-2xl border border-curse/20 bg-curse-dark/10 p-5 space-y-2">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-curse-light px-2 py-0.5 rounded-full border border-curse/30">Técnica destacada</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Santuario <span class="text-ink-200/50 font-normal text-sm">(Shrine)</span></h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Despertó la técnica maldita de Sukuna grabada en su alma. Combina cortes con daño al alma, creando "desmantelamientos que dividen el alma". Clave en la derrota de Sukuna.</p>
+          <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Itadori/ImagenesTabla/PuñoDivirgente.jpg"
+                 alt="Técnica de Itadori" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Expansión de Dominio</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Manifestada brevemente al final de la lucha contra Sukuna. Sus mecánicas exactas no fueron completamente exploradas en el manga.</p>
+          <figure class="mt-2 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Itadori/ImagenesTabla/ItadoriDomain.png"
+                 alt="Contrato con Sukuna" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Resistencia a Venenos y Maldiciones</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Desarrollada por ser el recipiente de Sukuna. Factor de supervivencia importante a lo largo de toda la serie.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── GALERÍA ── -->
+    <section id="imagenes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Imágenes de Itadori</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/ItadoriAnime.jpg"
+               alt="Itadori en el anime" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Anime)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/Itadori.jpg"
+               alt="Itadori en el manga" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Manga)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/ItadoriPeleaManga.jpg"
+               alt="Itadori listo para pelear" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Listo para pelear (Manga)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/ItadoriEnergíaMaldita.jpg"
+               alt="Itadori usando energía maldita" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Usando energía maldita</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/ItadoriBlackFlash.gif"
+               alt="Destello Negro vs Hanami" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Destello Negro vs Hanami</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Itadori/ItadoriEnergiaMalditLib.gif"
+               alt="Liberando energía maldita" loading="lazy"
+               class="w-full aspect-[4/5] object-cover object-top" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Liberando energía maldita</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── CURIOSIDADES ── -->
+    <section id="curiosidades">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-curse rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Curiosidades</h2>
+      </div>
+
+      <!-- Tarjeta de datos rápidos -->
+      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Altura</p>
+          <p class="text-white text-2xl font-bold">1,73 m</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Cumpleaños</p>
+          <p class="text-white text-2xl font-bold">20 mar</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Fin del manga</p>
+          <p class="text-white text-2xl font-bold">Cap. 271</p>
+        </div>
+      </div>
+
+      <!-- Lista de curiosidades -->
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          El manga de Jujutsu Kaisen finalizó en septiembre de 2024 con el capítulo 271.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Adquirió la técnica de Manipulación de Sangre tras ingerir los úteros malditos 4-9.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Despertó la técnica maldita "Santuario" de Sukuna durante la batalla final.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Es excepcionalmente bueno ejecutando Destellos Negros: récord de 8 consecutivos.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Las cicatrices en su frente son resultado de sus combates en Shibuya contra Choso y Mahito.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Sobrevivió a los eventos finales del manga y continúa su vida como hechicero.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Su tipo de chica preferido es "alta con un gran trasero", mencionando a Jennifer Lawrence.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Si no hubiera sido hechicero, probablemente habría sido bombero.
+        </li>
+        <li class="flex items-start gap-3 text-ink-200">
+          <span class="text-curse-light mt-1 flex-shrink-0">▸</span>
+          Se confirmó que su madre estaba poseída por Kenjaku en el momento de su concepción.
+        </li>
+      </ul>
+
+      <!-- Nota de actualización con fecha dinámica -->
+      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4">
+        <p class="text-ink-200/40 text-xs" id="update-note">
+          Última actualización de esta página: <span id="fecha-actualizacion"></span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="border-t border-white/5 py-10 px-6 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+
+      <!-- Nav de personajes -->
+      <nav class="flex items-center gap-6 text-sm" aria-label="Navegación entre personajes">
+        <a href="../index.html" class="text-ink-200/60 hover:text-curse-light transition-colors">← Índice</a>
+        <span class="text-ink-200/20">|</span>
+        <a href="Megumi.html"  class="text-ink-200/60 hover:text-curse-light transition-colors">Megumi →</a>
+      </nav>
+
+      <p class="text-ink-200/30 text-xs">© <span id="year-footer"></span> LostSleepy · Fan-made · Sin ánimo de lucro</p>
+
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+
+    // Fecha de actualización legible
+    const fechaEl = document.getElementById('fecha-actualizacion');
+    if (fechaEl) {
+      const ahora = new Date();
+      const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+      fechaEl.textContent = ahora.toLocaleDateString('es-ES', opciones);
+    }
+  </script>
 
 </body>
 </html>

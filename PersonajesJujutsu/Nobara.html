@@ -1,225 +1,278 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSSPersonajes/Nobara/modern-styles.css"> <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Nobara Kugisaki - Jujutsu Kaisen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nobara Kugisaki - Wiki fan-made de Jujutsu Kaisen. Resonancia, historia y curiosidades." />
+  <title>Nobara Kugisaki | Wiki JJK</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse:  { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+            rose:   { DEFAULT:'#e11d48', light:'#fb7185', dark:'#881337' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            glowPulse: { '0%,100%':{ opacity:'0.4' }, '50%':{ opacity:'0.8' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #e11d48, #7c3aed, transparent); height: 2px; }
+    [id] { scroll-margin-top: 5rem; }
+    .char-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gallery-img-wrap img { transition: transform 0.4s ease; }
+    .gallery-img-wrap:hover img { transform: scale(1.04); }
+    @media (min-width: 768px) {
+      .float-img-right { float: right; margin: 0 0 1.5rem 2rem; clear: right; }
+      .float-img-left  { float: left;  margin: 0 2rem 1.5rem 0; clear: left; }
+    }
+    .clearfix::after { content:''; display:table; clear:both; }
+    * { scrollbar-width: thin; scrollbar-color: #e11d48 #1a1714; }
+  </style>
 </head>
-<body>
-    <header class="site-header">
-        <a href="./Megumi.html" class="nav-link prev-link">Megumi Fushiguro</a> <h1 class="character-name">Nobara Kugisaki</h1>
-        <a href="./Gojo.html" class="nav-link next-link">Satoru Gojo</a> </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#quienes">¿Quién es?</a></li>
-            <li><a href="#apariencia">Apariencia</a></li>
-            <li><a href="#perso">Personalidad</a></li>
-            <li><a href="#habi">Habilidades</a></li>
-            <li><a href="#imagenes">Imágenes</a></li>
-            <li><a href="#curiosidades">Curiosidades</a></li>
-        </ul>
-    </nav>
+<body class="bg-ink-950 text-ink-100 antialiased">
 
-    <main class="content-area">
-        <article class="content-section">
-            <h2 id="quienes" class="section-title">¿Quién es?</h2>
-            <p>Nobara Kugisaki (釘崎野薔薇 Kugisaki Nobara) es una de las protagonistas de la serie manga Jujutsu Kaisen. Es una estudiante de primer año del Colegio Técnico de Magia Metropolitana de Tokio, y compañera de Yuji Itadori y Megumi Fushiguro.</p>
-            <p>Solía vivir en el campo, en un pueblo ubicado a cuatro horas de la Estación de Morioka. Llega a Tokio con el fin de convertirse en una Chamán de Jujutsu y poder encontrar a su amiga de la infancia, Saori.</p>
-        </article>
+  <header class="relative overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#1a0a0f] via-ink-950 to-ink-950"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-rose-900/10 blur-[100px] animate-glow-pulse"></div>
 
-        <section class="content-section">
-            <h2 id="apariencia" class="section-title">Apariencia</h2>
-            <figure class="character-image-main">
-                <img src="../multimediajujutsu/Nobara/NobaraAnime.jpg" alt="Imagen de Nobara" width="300" height="370">
-                <figcaption>Imagen de Nobara</figcaption>
-            </figure>
-            <p>Nobara es una joven delgada y de estatura promedio, llegando a
-                medir 160 centímetros.</p>
-            <p>Lleva el uniforme estándar del Colegio Técnico de Magia
-                Metropolitana de Tokio, que consiste en una camisa de manga
-                larga y un cuello alto de color oscuro, pantalones y zapatos
-                marrón oscuros; ésta misma vestimenta, en el anime, es
-                representada en color azul marino. En el manga, tanto sus ojos
-                como su cabello son de color naranja, y se revela que su cabello
-                fue teñido cuando vivía en su pueblo; mientras que en el anime,
-                tanto sus ojos y su cabello son de un color marrón claro.</p>
-            <p>Su vestimenta característica consiste en su propia versión del
-                uniforme del Colegio Técnico de Magia Metropolitana de Tokio,
-                que consiste en una chaqueta negra de cuello bajo, con una falda
-                larga negra y medias del mismo color; en el anime, su vestimenta
-                es representada en color azul marino. También utiliza un
-                cinturón de color claro para sostener su martillo, clavos y su
-                muñeca de paja; en el anime, su cinturón es representado de
-                color marrón.</p>
-            <p>Mientras se encuentra entrenando utiliza una sudadera con capucha
-                de color claro con un patrón de flores oscuras alrededor de sus
-                hombros, pantalones negros y zapatos blancos. Su vestimenta
-                casual suele variar entre vestidos y sudaderas, pantalones
-                negros y zapatos blancos.</p>
-        </section>
+    <div class="relative z-10 flex items-center justify-between px-6 pt-5 pb-0 max-w-5xl mx-auto">
+      <a href="Megumi.html" class="flex items-center gap-2 text-ink-200/70 hover:text-rose-light transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Megumi Fushiguro
+      </a>
+      <span class="text-ink-200/30 text-xs font-display hidden sm:block">芻霊呪法</span>
+      <a href="Gojo.html" class="flex items-center gap-2 text-ink-200/70 hover:text-rose-light transition-colors text-sm">
+        Satoru Gojo
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
 
-        <section class="content-section">
-            <h2 id="perso" class="section-title">Personalidad</h2>
-            <figure class="character-image-main float-right">
-                <img src="../multimediajujutsu/Nobara/NobaraPers.gif" alt="Nobara animada" class="imagen-nobara" width="300" height="300">
-                <figcaption>Nobara animada</figcaption>
-            </figure>
-            <p>Nobara es una joven apasionada, extremadamente expresiva y
-                honesta sobre sus sentimientos. Desde el comienzo, muestra
-                interés en todo lo relacionado con el mundo del modelaje y las
-                compras, también muestra que logra enfadarse con facilidad si es
-                rechazada. Muestra su lado verdadero y agresivo en ciertas
-                situaciones, ya sea que provoquen vergüenza o sienta rechazo
-                hacía la otra persona. Durante su enfrentamiento con Momo
-                Nishimiya, ella expresa orgullo por su forma de ser y que
-                prefiere seguir su camino siempre que esté segura de sí misma.</p>
-            <p>Está dispuesta a dejar ir a las maldiciones cuando están tienen
-                en su poder a rehenes; sabe lo que es importante para ella, y no
-                trata solo de vivir una vida de lujo, está dispuesta a abandonar
-                todo sí eso ayuda en salvar a otros.</p>
-            <p>Nobara también posee un lado infantil y simpático, aunque rara
-                vez suele mostrarlo y cuando está al lado de Yuji Itadori.
-                También es capaz de trabajar en equipo, demostrándolo cuando
-                hace equipo con Itadori y más adelante con otros chamanes. Ella
-                también es lo suficientemente humilde como para ser capaz de
-                admitir que no está al nivel de otros chamanes como Kento
-                Nanami.</p>
-        </section>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-fade-up">
+      <p class="text-rose-light text-xs tracking-widest uppercase mb-3">Hechicera · Grado 3</p>
+      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-2">Nobara Kugisaki</h1>
+      <p class="text-2xl text-ink-200/60 font-display mb-6">釘崎野薔薇</p>
+      <div class="accent-line w-28 mb-6"></div>
+      <p class="text-ink-200 max-w-xl leading-relaxed">
+        Estudiante de primer año del Colegio de Magia de Tokio. Una joven de espíritu inquebrantable que utiliza martillo, clavos y muñecos vudú para ejecutar su técnica de Resonancia.
+      </p>
+    </div>
+  </header>
 
-        <section class="content-section">
-            <h2 id="habi" class="section-title">Habilidades</h2>
-            <div class="skills-table-container">
-                <table class="skills-table">
-                    <thead>
-                        <tr>
-                            <th>Habilidad</th>
-                            <th>Descripción</th>
-                            <th>Notas Adicionales</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="skill-name">Resonancia</td>
-                            <td>Haciendo uso de un Muñeco Vudú y alguna extremidad de la maldición, Nobara perfora un clavo con el fin de formar una vinculo entre ambos. Cualquier cosa que experimente el muñeco, la maldición también lo experimentará. El efecto de poder suele variar dependiendo de la diferencia de habilidad entre el Nobara y su oponente.</td>
-                            <td><img src="../multimediajujutsu/Nobara/ImagenesTabla/Resonancia.jpg" alt="Resonancia" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Horquilla</td>
-                            <td>Permite que a través de una orden de Nobara, cualquier clavo que se utilice como proyectil pueda detonarse en una explosión de energía maldita cerca de su objetivo. Debido a que es una técnica de corto alcance, el efecto de la explosión podría variar en su uso.</td>
-                            <td><img src="../multimediajujutsu/Nobara/ImagenesTabla/Horquilla.jpg" alt="Horquilla" class="skill-image"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <nav class="char-nav sticky top-0 z-40 border-b border-white/5 bg-ink-950/80">
+    <div class="max-w-5xl mx-auto px-6">
+      <ul class="flex gap-1 sm:gap-2 overflow-x-auto py-3 text-sm scrollbar-hide">
+        <li><a href="#quienes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">¿Quién es?</a></li>
+        <li><a href="#apariencia" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">Apariencia</a></li>
+        <li><a href="#perso" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">Personalidad</a></li>
+        <li><a href="#habi" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">Habilidades</a></li>
+        <li><a href="#imagenes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">Imágenes</a></li>
+        <li><a href="#curiosidades" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">Curiosidades</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <section class="content-section">
-            <h2 id="imagenes" class="section-title">Imágenes de Nobara</h2>
-            <div class="gallery-container">
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraAparienciaAnime.jpg" alt="Apariencia de Nobara (Anime)" class="gallery-image">
-                    <figcaption>Apariencia de Nobara (Anime)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraManga.jpg" alt="Apariencia de Nobara (Manga)" class="gallery-image">
-                    <figcaption>Apariencia de Nobara (Manga)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraCT.jpg" alt="Nobara usando su técnica maldita (Resonancia)" class="gallery-image">
-                    <figcaption>Nobara usando su técnica maldita (Resonancia)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraVudu.jpg" alt="Muñeco vudu que Nobara usa para su tecnica" class="gallery-image">
-                    <figcaption>Muñeco vudu que Nobara usa para su tecnica</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraItadori.jpg" alt="Nobara con Itadori" class="gallery-image">
-                    <figcaption>Nobara con Itadori</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Nobara/NobaraMegumi.jpg" alt="Nobara con Megumi" class="gallery-image">
-                    <figcaption>Nobara con Megumi</figcaption>
-                </figure>
-            </div>
-        </section>
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
-        <section class="content-section">
-            <h2 id="curiosidades" class="section-title">Curiosidades</h2>
-            <ul class="curiosities-list">
-                <li>Según información revelada en el Volumen 01 del manga:
-                    <ul>
-                        <li>Su cabello es teñido.</li>
-                        <li>Todo su tiempo libre lo usa para ir de compras.</li>
-                        <li>Come mucho, compra mucho y disfruta vivir en Tokio.</li>
-                        <li>En el Capítulo 04, Nobara pateó a Yuji Itadori, que
-                            pesa alrededor de 80 kilogramos.</li>
-                    </ul>
-                </li>
-                <li>Según el 1er audio drama, Nobara fue la segunda en
-                    inscribirse en el Colegio Técnico de Magia Metropolitana de
-                    Tokio, sin embargo fue la última de los de primer año en
-                    incorporarse.</li>
-                <li>Según información revelada en el Jujutsu Kaisen Official
-                    Fanbook:
-                    <ul>
-                        <li>Tiene 16 años.</li>
-                        <li>Su cumpleaños es el 7 de Agosto.</li>
-                        <li>Es una chamán de tercer grado.</li>
-                        <li>Nació en algún lugar de Tohoku.</li>
-                        <li>Su método de inscripción al Colegio de Tokio fue por
-                            recomendación de su abuela.</li>
-                        <li>Su técnica es la Técnica de Muñeco Vudú.</li>
-                        <li>Su pasatiempo es ir de compras.</li>
-                        <li>Su comida favorita es cualquier cosa popular y la
-                            sandía.</li>
-                        <li>Su comida menos favorita son los vegetales
-                            ligeramente encurtidos.</li>
-                        <li>La deshidratación le causa estrés.</li>
-                    </ul>
-                    <li>Información revelada de la entrevista con Gege Akutami:
-                        <ul>
-                            <li>En su pueblo natal, Nobara trabajaba
-                                relativamente como chamán, esto dado que su
-                                abuela también es una chamán, por lo que Nobara
-                                trabajaba para ella.</li>
-                            <li>Discutieron cuando Nobara quiso asistir al
-                                colegio jujutsu dado que su abuela quería
-                                criarla de una cierta manera, pero Nobara quería
-                                ir a Tokio.</li>
-                            <li>Su abuela también es una usuaria de la Técnica
-                                de Muñeco Vudú, de quien Nobara heredó esta
-                                técnica.</li>
-                            <li>Tiene noción de lo que es el destello oscuro.</li>
-                            <li>Pese a que es del campo, Nobara no posee acento
-                                dado que su madre no tiene y tampoco Fumi.</li>
-                            <li>El nombre de Nobara contiene los caracteres para
-                                "campo" (野, no?) y "rosa" (薔薇, bara) porque
-                                Akutami quería que su nombre se sintiera algo
-                                espinoso.</li>
-                            <li>Akutami dijo que lo mínimo que tiene en cuenta
-                                cuando dibuja a Nobara es que se parezca a una
-                                chica así los lectores no se confunden.</li>
-                            <li>Akutami pensó en su nombre y en su estilo de
-                                pelea al mismo tiempo.</li>
-                            <li>De los tres personajes principales, Akutami
-                                considera a Nobara el personajes que más fácil
-                                se le hace maniobrar.</li>
-                            <li>El tipo ideal de Nobara es Oda Nobunaga.</li>
-                            <li>Nobara no era muy popular en su pueblo natal.</li>
-                            <li>Sus marcas favoritas son Balenciaga y Onitsuka
-                                Tiger.</li>
-                        </ul>
-                    </li>
-            </ul>
-        </section>
-    </main>
+    <section id="quienes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">¿Quién es?</h2>
+      </div>
+      <div class="space-y-4 text-ink-200 leading-relaxed">
+        <p>Nobara Kugisaki es la hechicera que completa el trío de primer año junto a Itadori y Megumi. Originaria de un pequeño pueblo en Tohoku, decidió mudarse a Tokio para escapar de la mentalidad cerrada de su aldea y reencontrarse con su amiga Saori.</p>
+        <p>Durante el Incidente de Shibuya, Nobara sufrió una herida devastadora en el rostro causada por Mahito, lo que la mantuvo fuera de combate y en un estado incierto durante la mayor parte del manga. Sin embargo, realizó un regreso triunfal en el clímax de la batalla de Shinjuku, utilizando su técnica de Resonancia para debilitar a Sukuna desde la distancia, permitiendo que Itadori asestara el golpe final.</p>
+        <p>Al final de la obra, sobrevive y continúa su labor como hechicera, manteniendo su característica cicatriz en el ojo izquierdo como recordatorio de su valentía.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-        <p>Volver a la <a href="../index.html" class="nav-link">página principal</a></p> </footer>
+    <section id="apariencia">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Apariencia</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-left mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-64">
+            <img src="../multimediajujutsu/Nobara/NobaraAnime.jpg" alt="Imagen de Nobara" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Apariencia en el anime</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Nobara mide 160 cm y destaca por su cabello naranja (teñido) y ojos del mismo color en el manga, mientras que en el anime se representaron con tonos marrón claro. Su uniforme consiste en una chaqueta oscura de cuello bajo, falda negra y un cinturón de cuero donde guarda su martillo, clavos y muñeco de paja.</p>
+          <p>Tras su regreso en el capítulo 267, luce un parche en el ojo izquierdo debido a la explosión causada por Mahito, dándole una apariencia más veterana y endurecida en los capítulos finales de la serie.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="perso">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Personalidad</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-right mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-56">
+            <img src="../multimediajujutsu/Nobara/NobaraPers.gif" alt="Nobara animada" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Personalidad arrolladora</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Es una joven apasionada, honesta y extremadamente orgullosa de su identidad. Nobara rechaza los estereotipos impuestos a las hechiceras, afirmando que no tiene por qué elegir entre ser "guapa" o "fuerte". Es directa, a veces agresiva, pero posee un corazón profundamente leal hacia sus compañeros.</p>
+          <p>A pesar de su fachada dura y su amor por las compras y el lujo de la ciudad, está dispuesta a sacrificar su vida sin dudarlo para salvar a otros, demostrando una madurez emocional que a menudo sorprende a sus enemigos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="habi">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Habilidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2 lg:col-span-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-rose-light px-2 py-0.5 rounded-full border border-rose/30">Técnica Principal</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Resonancia</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Establece un vínculo entre un muñeco vudú y el enemigo usando partes de este último. El daño al muñeco se transfiere directamente al alma del objetivo.</p>
+          <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Nobara/ImagenesTabla/Resonancia.jpg" alt="Resonancia" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Horquilla (Kanzashi)</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Imbuye sus clavos con energía maldita para que exploten violentamente al impactar o tras una orden.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Destello Negro</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Nobara es capaz de ejecutar el Destello Negro, habiéndolo logrado durante su combate contra las Pinturas de la Muerte.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Técnica de Muñeco Vudú</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Heredada de su abuela, es una técnica versátil que permite atacar desde largas distancias con gran precisión.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Herramientas Malditas</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Utiliza un martillo de hierro y clavos imbuidos en energía para combate cercano y medio alcance.</p>
+        </div>
+
+        <div class="rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-rose-light px-2 py-0.5 rounded-full border border-rose/30">Hito Final</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Apoyo en Shinjuku</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Su uso del último dedo de Sukuna para aplicar Resonancia fue la clave definitiva para la victoria de Itadori.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="imagenes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Imágenes de Nobara</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Nobara/NobaraAparienciaAnime.jpg" alt="Anime" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Anime)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Nobara/NobaraManga.jpg" alt="Manga" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Manga)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Nobara/NobaraCT.jpg" alt="Resonancia" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Usando Resonancia</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Curiosidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Cumpleaños</p>
+          <p class="text-white text-2xl font-bold">7 Ago</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Edad</p>
+          <p class="text-white text-2xl font-bold">16 años</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Marca favorita</p>
+          <p class="text-white text-xl font-bold">Balenciaga</p>
+        </div>
+      </div>
+
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> Sus marcas favoritas son Balenciaga y Onitsuka Tiger.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> Akutami afirma que Nobara es el personaje más fácil de "manejar" del trío principal.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> Su tipo ideal de hombre es Oda Nobunaga.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> El nombre Nobara (野薔薇) significa "Rosa Silvestre", reflejando su naturaleza espinosa y bella.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> Le encanta la sandía y todo lo que sea tendencia en la gran ciudad.</li>
+      </ul>
+
+      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4">
+        <p class="text-ink-200/40 text-xs">
+          Última actualización de esta página: <span id="fecha-actualizacion"></span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 py-10 px-6 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="Megumi.html" class="text-ink-200/60 hover:text-rose-light transition-colors">← Megumi</a>
+        <span class="text-ink-200/20">|</span>
+        <a href="Gojo.html" class="text-ink-200/60 hover:text-rose-light transition-colors">Gojo →</a>
+      </nav>
+      <p class="text-ink-200/30 text-xs">© <span id="year-footer"></span> LostSleepy · Fan-made · Wiki JJK</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+    const ahora = new Date();
+    document.getElementById('fecha-actualizacion').textContent = ahora.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
 
 </body>
 </html>

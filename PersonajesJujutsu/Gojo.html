@@ -1,202 +1,293 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSSPersonajes/Gojo/modern-styles.css"> <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Satoru Gojo - Jujutsu Kaisen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Satoru Gojo - El hechicero más fuerte. Wiki fan-made de Jujutsu Kaisen. Ilimitado, Seis Ojos e historia completa." />
+  <title>Satoru Gojo | Wiki JJK</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse:  { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+            infinity: { DEFAULT:'#0ea5e9', light:'#7dd3fc', dark:'#0369a1' },
+            void: { DEFAULT:'#1e1b4b', light:'#312e81' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            glowPulse: { '0%,100%':{ opacity:'0.3' }, '50%':{ opacity:'0.7' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #0ea5e9, #7c3aed, transparent); height: 2px; }
+    [id] { scroll-margin-top: 5rem; }
+    .char-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gallery-img-wrap img { transition: transform 0.4s ease; }
+    .gallery-img-wrap:hover img { transform: scale(1.04); }
+    @media (min-width: 768px) {
+      .float-img-right { float: right; margin: 0 0 1.5rem 2rem; clear: right; }
+      .float-img-left  { float: left;  margin: 0 2rem 1.5rem 0; clear: left; }
+    }
+    .clearfix::after { content:''; display:table; clear:both; }
+    * { scrollbar-width: thin; scrollbar-color: #0ea5e9 #1a1714; }
+  </style>
 </head>
-<body>
-    <header class="site-header">
-        <a href="./Nobara.html" class="nav-link prev-link">Nobara Kugisaki</a> <h1 class="character-name">Satoru Gojo</h1>
-        <a href="./Nanami.html" class="nav-link next-link">Kento Nanami</a> </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#quienes">¿Quién es?</a></li>
-            <li><a href="#apariencia">Apariencia</a></li>
-            <li><a href="#perso">Personalidad</a></li>
-            <li><a href="#habi">Habilidades</a></li>
-            <li><a href="#imagenes">Imágenes</a></li>
-            <li><a href="#curiosidades">Curiosidades</a></li>
-        </ul>
-    </nav>
+<body class="bg-ink-950 text-ink-100 antialiased">
 
-    <main class="content-area">
-        <article class="content-section">
-            <h2 id="quienes" class="section-title">¿Quién es?</h2>
-            <p>Satoru Gojo (五条悟 Gojō Satoru) es uno de los personajes de la serie manga Tokyo Metropolitan Curse Technical School y uno de los protagonistas de la serie secuela, Jujutsu Kaisen. Conocido con el apodo de El Chamán Más Fuerte (最強の呪術師 Saikyō no Jujutsu-shi), es uno de los cuatro chamanes de Clase Especial, antiguo compañero de Suguru Geto y Shoko Ieiri, y actual profesor del Colegio Técnico de Magia Metropolitana de Tokio, encargado de los alumnos de primer año.</p>
-            <p>Como único miembro y cabeza del Clan Gojo, es descendiente del chamán y espíritu vengativo, Sugawara-no-Michizan, y heredero de la Técnica de Maldición Ilimitada y el poder de los seis ojos. Desde el día de su nacimiento, se produjo un balance de poder entre la humanidad y las maldiciones; la caída de su clan y por ende, su muerte, significaría perder dicho balance, provocando una guerra a gran escala que sería difícil de ganar para la humanidad.</p>
-        </article>
+  <header class="relative overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0a1a2f] via-ink-950 to-ink-950"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[120px] animate-glow-pulse"></div>
 
-        <section class="content-section">
-            <h2 id="apariencia" class="section-title">Apariencia</h2>
-             <figure class="character-image-main">
-                 <img src="../multimediajujutsu/Gojo/AparienciaGojo.jpg" alt="Apariencia de Satoru Gojo" width="450" height="270">
-                <figcaption>Venda de Gojo</figcaption>
-            </figure>
-            <p>Satoru es un hombre delgado y bastante alto, llegando a medir 190
-                centímetros. Su cabello es de color blanco y suele llevarlo peinado hacía arriba con lo mechones puntiagudos cuando se encuentra ejerciendo como maestro o chamán; en sus tiempos libres, suele tener todo su cabello desarreglado y gran parte de éste tiende a caer su cara, tapando gran parte de su frente y ojos. Sus ojos son de un peculiar color azul claro y en sus iris, tiende a manifestarse una imagen similar al cielo. Es considerado atractivo por muchas mujeres.</p>
-            <p>A menudo usa una tela de color oscuro para cubrir sus ojos; mientras que, en la serie precuela Tokyo Metropolitan Curse Technical School, los ojos de Gojo están vendados con vendas blancas. Durante sus días de juventud, solía usar lentes de sol en lugar de vendas o telas.</p>
-            <p>Su vestimenta característica consiste en un abrigo negro de cuello alto, pantalones negros largos y zapatos negros; ésta misma vestimenta, en el anime, es representada en color azul marino. Al optar por vestirse de manera más informal, Gojo usa unos lentes oscuros y redondos en lugar de una venda en los ojos y vestimenta bastante casual, generalmente un camisas oscuras de mangas largas y pantalones holgados.</p>
-            <p>Cuando no está realizando misiones, viste pantalones negros holgados, una remera negra de mangas largas también holgada de cuello amplio y calzado oscuro.</p>
-            <p>Cuando era niño solía utilizar una vestimenta tradicional japonesa que consistía en un kimono y su haori tenía un patrón con formas similares a las libélulas. En otras ocasiones, utilizaba ropa casual como sudaderas de color claro y pantalones oscuros.</p>
-        </section>
+    <div class="relative z-10 flex items-center justify-between px-6 pt-5 pb-0 max-w-5xl mx-auto">
+      <a href="Nobara.html" class="flex items-center gap-2 text-ink-200/70 hover:text-infinity-light transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Nobara Kugisaki
+      </a>
+      <span class="text-ink-200/30 text-xs font-display hidden sm:block">無下限呪術</span>
+      <a href="..\index.html" class="flex items-center gap-2 text-ink-200/70 hover:text-infinity-light transition-colors text-sm">
+        Índice
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+      </a>
+    </div>
 
-        <section class="content-section">
-            <h2 id="perso" class="section-title">Personalidad</h2>
-             <figure class="character-image-main float-right">
-                 <img src="../multimediajujutsu/Gojo/PersonalidadGojo.gif" alt="Satoru Gojo personalidad" class="imagen-gojo">
-                <figcaption>La personalidad de Gojo suele ser infantil</figcaption>
-            </figure>
-            <p>Satoru es un individuo complejo, ya que generalmente, como
-                maestro puede ser una figura de autoridad asignada para enseñar a los novatos sobre el peligroso mundo del jujutsu, pero puede ser casual, amigable y juguetón con personas como sus estudiantes y colegas, pero es indiferente y cruel con personas como los ejecutivos de los Chamanes; incluso tiene un sueño de crear a los mejores chamanes para combatir contra estos. Tiene mucha confianza en sus habilidades y reputación como un poderoso chamán. Descartando casualmente las amenazas personales de Sukuna, podría derrotar al Rey de las Maldiciones fácilmente.</p>
-            <p>Durante sus días de juventud, era una persona bastante arrogante y constantemente cuestionaba abiertamente por qué necesitaba ayudar a la humanidad. Sin embargo, tras la muerte de Riko Amanai y la desaparición de Misato Kuroi, junto con la traición de su antiguo mejor amigo Suguru Geto, hicieron que madurara enormemente.</p>
-            <p>A pesar de su actitud relajada e infantil, Satoru tiene momentos donde se vuelve serio e implacable, llegando a ser bastante despiadado al enfrentarse en combate a Maldiciones y a usuarios malditos. En su pelea contra Hanami, le rompió sus astas y lo inmovilizó para luego asesinarlo. Según Suguru Geto, Satoru solo utiliza todo su poder cuando no hay nadie cerca de él, aunque esto lo hace únicamente porque considera que son un estorbo. Tampoco tiene problemas en acabar con vidas humanas inocentes si con eso puede exorcizar a las Maldiciones. En Shibuya, a Satoru no le tembló el pulso y asesinó a mil humanos modificados. A diferencia de Kento Nanami, Satoru puede ser muy frío e indiferente con la muerte de gente inocente, aún así, él se preocupa mucho por la vida de sus estudiantes y de sus compañeros chamanes, sintiéndose culpable cuando Itadori casi muere por Sukuna.</p>
-            <p>Sin embargo, a pesar de su altivez y fuerza, Satoru es más humano de lo que parece. Después de derrotar a Toji, Satoru recuperó el cadáver de Riko con una mirada afligida, mostrando que aunque su reciente victoria engreída nubló temporalmente sus sentimientos, todavía sentía algo de dolor por su muerte. Trató de matar a los miembros de Star Religious que se reían de la muerte de Riko, aunque fue detenido por Suguru Geto, en quien confiaba como una brújula moral en ese momento, antes de tomar cualquier medida. Además, Satoru más tarde quedó visiblemente horrorizado y entró en pánico después de enterarse de que Suguru, su único mejor amigo, se había convertido en un brujo. Satoru intentó razonar con su amigo, pero finalmente se dio cuenta y aceptó que había perdido a la única persona que realmente veía como un igual. Después de tener que acabar con Suguru antes de que surgiera más calamidad, fue el trauma de Satoru por perder a su mejor amigo lo que causó su caída final en Shibuya. También estaba angustiado cuando Yuji aparentemente murió.</p>
-            <p>Satoru no teme en desafiar las normas e ir en contra de las órdenes de los altos mandos y suele actuar a sus espaldas, como cuando decide no informar que Yuji Itadori estaba vivo cuando todos pensaron que había muerto, lo que frecuentemente provoca la ira de personas como el director Gakuganji del Colegio Técnico de Magia Metropolitana de Kioto.</p>
-        </section>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-fade-up">
+      <p class="text-infinity-light text-xs tracking-widest uppercase mb-3">El Hechicero Más Fuerte · Clan Gojo</p>
+      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-2">Satoru Gojo</h1>
+      <p class="text-2xl text-ink-200/60 font-display mb-6">五条悟</p>
+      <div class="accent-line w-28 mb-6"></div>
+      <p class="text-ink-200 max-w-xl leading-relaxed">
+        Maestro en el Colegio Técnico de Magia de Tokio y poseedor de los Seis Ojos. Su mera existencia alteró el equilibrio del mundo, obligando a las maldiciones a volverse más fuertes para intentar igualarlo.
+      </p>
+    </div>
+  </header>
 
-        <section class="content-section">
-            <h2 id="habi" class="section-title">Habilidades</h2>
-            <div class="skills-table-container">
-                <table class="skills-table">
-                    <thead>
-                        <tr>
-                            <th>Habilidad</th>
-                            <th>Descripción</th>
-                            <th>Notas Adicionales</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="skill-name">Infinito</td>
-                            <td>Es la forma neutral del Ilimitado. Suele crear una ilusión de que su objetivo se detiene en lugar de avanzar, sin embargo, cumple la función principal de ralentizar las cosas o a las personas. Cuando algo intenta golpear a Gojo, nunca llega a acertar y, en su lugar, golpea al infinito que separa a ambos.</td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoInfinito.jpg" alt="Infinito" class="skill-image" width="300"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Rotación Avante: Azul</td>
-                            <td>Es la versión reforzada del neutral ilimitado, en el que se amplifican los números ilimitados y los negativos, dando lugar a la creación de situaciones imposibles. A través de la creación de dichas situaciones imposibles, Gojo crea un escenario en donde el mundo mismo se ve obligado a intentar corregirse a sí mismo y llenar el espacio negativo, provocando que las cosas se junten en el lugar de situaciones imposibles y terminen generando atracción mutua.
-                                <ul>
-                                    <li>Rotación Avante Máxima: Resplandor Azul
-                                    <ul>
-                                        <li>Al hacer uso de la energía maldita combinado con el poder de atracción del espacio, Gojo hace que un solo punto atraiga todo lo que le rodea. También es capaz de mover el punto a su alrededor para atraer todo lo que le rodea a ese punto.</li>
-                                    </ul>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoAzul.jpg" alt="Rotación Avante: Azul" class="skill-image" width="300"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Rotación Inversa: Resplandor Rojo</td>
-                            <td>Es la versión opuesta a Rotación Avante: Azul. Al usar la técnica de Inversión para invertir las propiedades de Rotación Avante, Gojo activa la divergencia de su Infinito, y a su vez, hace que una técnica que atrae se convierta en una técnica que repele violentamente. Gojo tiene permitido interactuar con un vacío creando un gran vacío explosivo que repele.Al ser una habilidad que funciona con energía positiva y se forma como una técnica de maldición inversa. La habilidad tiene dos veces la capacidad de destrucción de Rotación Avante.</td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoRojo.jpg" alt="Rotación Inversa: Resplandor Rojo" class="skill-image" width="300"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Imaginaria: Púrpura</td>
-                            <td>Permite que mediante el moldeo de energía maldita combinada con energía positiva se genere un choque entre ambas energía, distorsionando el espacio. Cuando Gojo chasquea sus dedos, un ataque con un poder devastador es lanzado. Esta técnica surge de la combinación de Rotación Avante y Rotación Inversa. Si Gojo no mide el nivel de su fuerza, cualquier persona u objeto puede verse envuelto en dicho ataque.</td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoPurpura.jpg" alt="Imaginaria: Púrpura" class="skill-image" width="300"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Expansión Territorial: Vacío Inconmensurable</td>
-                            <td>Da lugar a la formación de un espacio ilimitado que le permite a su usuario transmitirle información ilimitada a todo aquel que quede atrapado en su territorio. Complementado a la Técnica de Maldición Ilimitada, permite dejar inmóvil a su oponente, sin darle oportunidad de hacer uso de la información que recibe y queda limitado a morir lentamente.</td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoDominio.jpg" alt="Expansión Territorial: Vacío Inconmensurable" class="skill-image" width="300"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Seis Ojos</td>
-                            <td>No se tiene demasiada información con respecto a la habilidad de los Seis Ojos. Se tiene constancia de que desempeñan un papel en el uso preciso de la Técnica de Maldición Ilimitada y es capaz de ver más allá de lo que las personas normales suelen ver.</td>
-                            <td><img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoSeisOjos.jpg" alt="Seis Ojos" class="skill-image" width="300"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <nav class="char-nav sticky top-0 z-40 border-b border-white/5 bg-ink-950/80">
+    <div class="max-w-5xl mx-auto px-6">
+      <ul class="flex gap-1 sm:gap-2 overflow-x-auto py-3 text-sm scrollbar-hide">
+        <li><a href="#quienes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">¿Quién es?</a></li>
+        <li><a href="#apariencia" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">Apariencia</a></li>
+        <li><a href="#perso" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">Personalidad</a></li>
+        <li><a href="#habi" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">Habilidades</a></li>
+        <li><a href="#imagenes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">Imágenes</a></li>
+        <li><a href="#curiosidades" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-infinity-light hover:bg-infinity/10 transition-all whitespace-nowrap">Curiosidades</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <section class="content-section">
-            <h2 id="imagenes" class="section-title">Imágenes de Satoru Gojo</h2>
-            <div class="gallery-container">
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoDeNormal.jpg" alt="Apariencia normal de Gojo (Anime)" class="gallery-image">
-                    <figcaption>Apariencia normal de Gojo (Anime)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoSinVendas.jpg" alt="Gojo sin vendas" class="gallery-image">
-                    <figcaption>Gojo sin vendas</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoyGeto.jpg" alt="Gojo con su mejor amigo Geto" class="gallery-image">
-                    <figcaption>Gojo con su mejor amigo Geto</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoNino.jpg" alt="Gojo de niño (Manga)" class="gallery-image">
-                    <figcaption>Gojo de niño (Manga)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoLoco.jpg" alt="Gojo euforico despues de perder su pelea con Toji" class="gallery-image">
-                    <figcaption>Gojo euforico despues de perder su pelea con Toji</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Gojo/GojoHonrado.jpg" alt="Gojo en su icónico panel de manga" class="gallery-image">
-                    <figcaption>Gojo en su icónico panel de manga</figcaption>
-                </figure>
-            </div>
-        </section>
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
-        <section class="content-section">
-            <h2 id="curiosidades" class="section-title">Curiosidades</h2>
-            <ul class="curiosities-list">
-                <li>Según información revelada en el Volumen 01 del manga:
-                    <ul>
-                        <li>Tiene 28 años.</li>
-                        <li>Es bastante alto (probablemente más de 1.90 centímetros).</li>
-                        <li>Su rostro se reveló regularmente durante la serie precuela, Tokyo Metropolitan Curse Technical School.</li>
-                        <li>El actual director del Colegio Técnico de Magia Metropolitana de Tokio, el Director Masamichi Yaga, fue su profesor cuando era estudiante.</li>
-                        <li>Comenzó a comer dulces para estimular su cerebro, desde entonces se volvió muy goloso.</li>
-                        <li>Puede hacer cualquier cosa que intente, por ello, trata de no involucrarse demasiado en nada. Según él, todo esto es por el bien de la próxima generación.</li>
-                    </ul>
-                </li>
-                <li>Según Akutami, Gojo es bueno en los quehaceres del hogar</li>
-                <li>Según información revelada en el Jujutsu Kaisen Official Fanbook:
-                    <ul>
-                        <li>Tiene 28 años de edad.</li>
-                        <li>Su cumpleaños es el 7 de Diciembre.</li>
-                        <li>Es un chamán de Grado Especial.</li>
-                        <li>Su método de inscripción al Colegio de Tokio fue por su linaje de sangre.</li>
-                        <li>Su técnica es la Técnica de Maldición Ilimitada.</li>
-                        <li>No tiene ningún pasatiempo ni habilidad especial ya que puede hacer de todo.</li>
-                        <li>Su comida favorita son las cosas dulces.</li>
-                        <li>Su comida menos favorita es el alcohol.</li>
-                        <li>Su causa de estrés son las acciones de los peces gordos.</li>
-                        <li>Información revelada de la entrevista con Gege Akutami:
-                            <ul>
-                                <li>Akutami dijo que cuando creó a Gojo, quería crear un personaje fuerte que fuera fácilmente distinguido.</li>
-                                <li>La primera impresión de Gojo al ver a Suguru fue "un fleco".</li>
-                                <li>A mitad del camino Akutami intenta dibujarlo atractivo.</li>
-                                <li>Gojo sigue pensando que cuidar al débil es cansador.</li>
-                                <li>Después de que Gojo recuperase el cuerpo de Riko Amanai, y frente a la Asociación de Vasijas del Tiempo le preguntó a Suguru "¿Quieres que los mate? El yo de ahora probablemente no sienta nada si lo hace", lo hizo ya que estaba usando el juicio moral de Suguru como una estimación para lo que es bueno y lo que es malvado, como si fuera su propio principio.</li>
-                                <li>Después de que Suguru se convirtiera en un usuario maldito parece haber madurado más.</li>
-                                <li>Probablemente la familia Gojo esté viva y en buen estado.</li>
-                                <li>Akutami dijo que Gojo probablemente sería bueno en ciencias, pero como él no tenía buenas calificaciones, probablemente Gojo tampoco las tiene.</li>
-                                <li>Gojo podría enseñar otras materias que no estén relacionadas con el jujutsu, pero probablemente no tiene licencia para enseñar.</li>
-                                <li>Gojo no duerme mucho.</li>
-                                <li>Akutami no puede imaginar a Gojo siendo fiel a una mujer en particular.</li>
-                                <li>Después de que Toji le hizo saber de la existencia de Megumi, Gojo fue a verlo porque estaba buscando reclutar a una persona talentosa.</li>
-                                <li>Gojo ayudó a Yuta y Yuji porque ambos eran fuertes, así que no le presta atención a ningún otro detalle externo.</li>
-                                <li>Gojo suele llamar a sus estudiantes por su nombre, pero eso no tiene ningún significado especial, no suele pensar mucho en las cosas.</li>
-                                <li>Akutami reveló que había escuchado que Gojo tiene poderes similares a los de Kakashi Hatake, personaje recurrente en el manga de Naruto y Naruto Shippuden, sin embargo ha dicho que Gojo no está realmente al mismo nivel que Kakashi. Además, para el diseño de personaje de Gojo, más que inspirarse en Kakashi, lo hizo en un supervisor que llevaba vendajes en los ojos durante la segunda etapa de los exámenes Chuunin, Tonbo Tobitake. Akutami recuerda que ese personaje dejó una gran impresión en él, tal que cuando conoció a Masashi Kishimoto, le preguntó acerca de aquel personaje pero este le respondió "¿Había un chico así..?".</li>
-                                <li>Le gusta el curry muy dulce con toneladas de manzanas y miel.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-    </main>
+    <section id="quienes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">¿Quién es?</h2>
+      </div>
+      <div class="space-y-4 text-ink-200 leading-relaxed">
+        <p>Satoru Gojo es el hechicero de grado especial más poderoso del mundo moderno. Es el primer miembro del Clan Gojo en nacer con los Seis Ojos y la Técnica del Ilimitado simultáneamente en cientos de años. Actúa como mentor de la nueva generación, buscando reformar el corrupto sistema de la hechicería a través de la educación.</p>
+        <p>Su historia es una de soledad absoluta debido a su poder incomparable. Tras ser sellado en la Prisión Confinadora durante el Incidente de Shibuya, regresó para enfrentar a Sukuna en una batalla que decidió el destino de la humanidad. Aunque cayó en combate en Shinjuku, su sacrificio y sus enseñanzas fueron la base necesaria para que sus alumnos lograran la victoria final.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-        <p>Volver a la <a href="../index.html" class="nav-link">página principal</a></p> </footer>
+    <section id="apariencia">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Apariencia</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-left mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-64">
+            <img src="../multimediajujutsu/Gojo/AparienciaGojo.jpg" alt="Gojo con vendas" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Apariencia clásica</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Gojo es un hombre imponente de 190 cm de altura. Tiene el cabello blanco como la nieve y unos ojos azules cristalinos extremadamente profundos, conocidos como los Seis Ojos, que normalmente mantiene cubiertos para evitar la fatiga sensorial.</p>
+          <p>Durante su etapa como maestro, solía usar una venda negra o gafas de sol oscuras. En su juventud, utilizaba vendas blancas. En la batalla final de Shinjuku, vistió un conjunto de combate ajustado de color oscuro, similar al que usaba su antiguo amigo Toji Fushiguro, simbolizando su disposición total para el combate a muerte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="perso">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Personalidad</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-right mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-56">
+            <img src="../multimediajujutsu/Gojo/PersonalidadGojo.gif" alt="Gojo riendo" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Actitud despreocupada</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>A simple vista, Gojo parece ser una persona alegre, despreocupada y a veces infantil, especialmente con sus colegas y alumnos. Sin embargo, esta actitud es a menudo una máscara para su inmensa confianza y su desprecio por las jerarquías tradicionales de la hechicería.</p>
+          <p>Es un hombre profundamente solitario que entiende que nadie puede alcanzar su nivel de comprensión del mundo. A pesar de su arrogancia técnica, posee un gran sentido del deber y un amor genuino por sus estudiantes, a quienes considera el futuro que él no podrá ver.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="habi">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Habilidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-infinity/20 bg-infinity/5 p-5 space-y-2">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-infinity-light px-2 py-0.5 rounded-full border border-infinity/30">Don Innato</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Los Seis Ojos</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Le permiten ver la energía maldita con un detalle atómico y reducir el consumo de energía de sus técnicas a casi cero.</p>
+                      <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoSeisOjos.jpg" alt="Gojo Seis Ojos" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Técnica del Infinito</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Manipula el espacio a nivel cuántico. Su aplicación pasiva, el Infinito, impide que cualquier ataque lo toque físicamente.</p>
+            <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoInfinito.jpg" alt="Gojo Azul" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-blue-500/20 bg-blue-900/10 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Brillo Azul (Cero)</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Crea un vacío magnético que atrae y aplasta todo lo que se encuentra en su camino.</p>
+                      <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoAzul.jpg" alt="Gojo Azul" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-red-500/20 bg-red-900/10 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Resplandor Rojo</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Aplicación inversa que genera una poderosa fuerza de repulsión divergente que lanza todo por los aires.</p>
+                      <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoRojo.jpg" alt="Gojo Rojo" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-curse/20 bg-curse-dark/10 p-5 col-span-1 sm:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-curse-light px-2 py-0.5 rounded-full border border-curse/30">Técnica Secreta</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Imaginario: Púrpura</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Colisión de Azul y Rojo que crea una masa imaginaria que borra instantáneamente todo lo que toca.</p>
+          <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoPurpura.jpg" alt="Gojo Púrpura" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Vacio Infinito</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Expansión de Dominio que atrapa al oponente en un flujo infinito de información, paralizando su cerebro por completo.</p>
+            <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Gojo/ImagenesTabla/GojoDominio.jpg" alt="Gojo Dominio" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="imagenes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Imágenes de Gojo</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Gojo/GojoDeNormal.jpg" alt="Gojo Anime" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Diseño (Anime)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Gojo/GojoHonrado.jpg" alt="Gojo Manga" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Diseño (Manga)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Gojo/GojoSinVendas.jpg" alt="Seis Ojos" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Poder de los Seis Ojos</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-infinity rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Curiosidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Cumpleaños</p>
+          <p class="text-white text-2xl font-bold">7 Dic</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Altura</p>
+          <p class="text-white text-2xl font-bold">190 cm</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Debilidad</p>
+          <p class="text-white text-xl font-bold">Dulces</p>
+        </div>
+      </div>
+
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-infinity-light mt-1 flex-shrink-0">▸</span> Empezó a comer dulces para estimular su cerebro, pero terminó desarrollando un gusto genuino por ellos.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-infinity-light mt-1 flex-shrink-0">▸</span> Es un gran fanático de Digimon en su juventud.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-infinity-light mt-1 flex-shrink-0">▸</span> No tiene pasatiempos porque puede hacer casi cualquier cosa que se proponga de inmediato.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-infinity-light mt-1 flex-shrink-0">▸</span> Su diseño se inspiró parcialmente en un supervisor de los exámenes Chunin de Naruto llamado Tonbo Tobitake.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-infinity-light mt-1 flex-shrink-0">▸</span> Al final del manga, se confirma que su legado vive a través de la nueva estructura de la sociedad de hechicería.</li>
+      </ul>
+
+      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4">
+        <p class="text-ink-200/40 text-xs">
+          Última actualización de esta página: <span id="fecha-actualizacion"></span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 py-10 px-6 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="Nobara.html" class="text-ink-200/60 hover:text-infinity-light transition-colors">← Nobara</a>
+        <span class="text-ink-200/20">|</span>
+        <a href="..\index.html" class="text-ink-200/60 hover:text-infinity-light transition-colors">Índice</a>
+      </nav>
+      <p class="text-ink-200/30 text-xs">© <span id="year-footer"></span> LostSleepy · Fan-made · Wiki JJK</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+    const ahora = new Date();
+    document.getElementById('fecha-actualizacion').textContent = ahora.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
 
 </body>
 </html>

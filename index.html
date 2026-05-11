@@ -1,139 +1,331 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Wiki fan-made de Jujutsu Kaisen. Información detallada sobre personajes, técnicas malditas e historia de Gege Akutami."
-    />
+    <meta name="description" content="Wiki fan-made de Jujutsu Kaisen. Información detallada sobre personajes, técnicas malditas e historia de Gege Akutami." />
     <title>Wiki Jujutsu Kaisen | Fan-Made por Sleepy</title>
 
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Shippori Mincho"', 'serif'],
+              body: ['"DM Sans"', 'sans-serif'],
+            },
+            colors: {
+              ink: {
+                50:  '#f0eee9',
+                100: '#d4cfc6',
+                200: '#a89f91',
+                900: '#1a1714',
+                950: '#0d0c0a',
+              },
+              curse: {
+                DEFAULT: '#7c3aed',
+                light:   '#a78bfa',
+                dark:    '#4c1d95',
+              },
+              blood: {
+                DEFAULT: '#b91c1c',
+                light:   '#fca5a5',
+              },
+            },
+            animation: {
+              'fade-up': 'fadeUp 0.7s ease both',
+              'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeUp: {
+                '0%':   { opacity: '0', transform: 'translateY(24px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              glowPulse: {
+                '0%, 100%': { opacity: '0.6' },
+                '50%':      { opacity: '1' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
 
-    <link id="theme" rel="stylesheet" href="./CSSIndex/Light.css" />
-    <link
-      rel="shortcut icon"
-      href="multimediajujutsu/Iconos/favicon.png"
-      type="image/png"
-    />
+    <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+    <style>
+      body { font-family: 'DM Sans', sans-serif; }
+      h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+
+      /* Textura de ruido sutil sobre el hero */
+      .hero-noise::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Marca de agua kanji decorativa */
+      .kanji-watermark {
+        font-family: 'Shippori Mincho', serif;
+        font-size: 28rem;
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(124, 58, 237, 0.08);
+        user-select: none;
+        pointer-events: none;
+      }
+
+      /* Línea de acento con degradado */
+      .accent-line {
+        background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent);
+        height: 2px;
+      }
+
+      /* Card de personaje: overlay en hover */
+      .char-card .char-overlay {
+        background: linear-gradient(to top, rgba(76,29,149,0.85) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .char-card:hover .char-overlay { opacity: 1; }
+      .char-card:hover img { transform: scale(1.06); }
+      .char-card img { transition: transform 0.45s ease; }
+
+      /* Sello decorativo (círculo con kanji) */
+      .seal {
+        width: 56px; height: 56px;
+        border: 2px solid rgba(124,58,237,0.4);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Shippori Mincho', serif;
+        font-size: 1.4rem;
+        color: rgba(124,58,237,0.7);
+        flex-shrink: 0;
+      }
+
+      /* Animación escalonada para las cards */
+      .char-card:nth-child(1) { animation-delay: 0.05s; }
+      .char-card:nth-child(2) { animation-delay: 0.15s; }
+      .char-card:nth-child(3) { animation-delay: 0.25s; }
+      .char-card:nth-child(4) { animation-delay: 0.35s; }
+
+      /* Scroll suave en Firefox */
+      * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+    </style>
   </head>
-  <body>
-    <header class="hero-section">
-      <div class="hero-content">
-        <h1 class="hero-title">Wiki Jujutsu Kaisen</h1>
-        <p class="hero-subtitle">
-          Explora el universo de los hechiceros y las maldiciones.
+
+  <body class="bg-ink-950 text-ink-100 antialiased">
+
+    <!-- ══════════════ HERO ══════════════ -->
+    <header class="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden hero-noise">
+
+      <!-- Fondo: degradado radial oscuro con toque morado -->
+      <div class="absolute inset-0 bg-gradient-to-b from-ink-950 via-[#0f0c1a] to-ink-950"></div>
+      <!-- Círculo de energía maldita difuso -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-curse-dark/20 blur-[120px] animate-glow-pulse"></div>
+      <!-- Kanji de fondo -->
+      <div class="kanji-watermark absolute select-none opacity-60">呪</div>
+
+      <!-- Contenido -->
+      <div class="relative z-10 text-center px-6 animate-fade-up">
+        <!-- Sello superior -->
+        <p class="text-curse-light text-xs tracking-[0.35em] uppercase mb-6 font-medium">Fan Wiki · Spoilers</p>
+
+        <h1 class="text-5xl sm:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-lg">
+          呪術廻戦
+        </h1>
+        <p class="text-2xl sm:text-3xl text-ink-200 font-light mb-2">Jujutsu Kaisen</p>
+        <div class="accent-line w-32 mx-auto my-6"></div>
+        <p class="text-ink-200 text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+          Explora el universo de los hechiceros, las maldiciones y las técnicas más oscuras.
         </p>
+
+        <!-- CTA scroll -->
+        <a href="#personajes"
+           class="mt-10 inline-flex items-center gap-2 px-8 py-3 border border-curse/50 text-curse-light rounded-full text-sm tracking-widest uppercase hover:bg-curse/20 transition-all duration-300">
+          Explorar
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
       </div>
+
+      <!-- Línea inferior decorativa -->
+      <div class="absolute bottom-0 left-0 right-0 accent-line"></div>
     </header>
 
-    <main class="container">
-      <section class="character-navigation" aria-labelledby="chars-title">
-        <h2 id="chars-title" class="section-title">Personajes Principales</h2>
-        <div class="character-grid">
-          <a href="PersonajesJujutsu/Itadori.html" class="character-card">
-            <figure>
-              <img
-                src="multimediajujutsu/Itadori.jpg"
-                alt="Itadori Yūji"
-                loading="lazy"
-                class="character-img"
-              />
-              <figcaption class="character-name">Itadori Yūji</figcaption>
-            </figure>
-          </a>
-          <a href="PersonajesJujutsu/Megumi.html" class="character-card">
-            <figure>
-              <img
-                src="multimediajujutsu/Megumi.jpg"
-                alt="Megumi Fushiguro"
-                loading="lazy"
-                class="character-img"
-              />
-              <figcaption class="character-name">Megumi Fushiguro</figcaption>
-            </figure>
-          </a>
-          <a href="PersonajesJujutsu/Nobara.html" class="character-card">
-            <figure>
-              <img
-                src="multimediajujutsu/Nobara.jpg"
-                alt="Nobara Kugisaki"
-                loading="lazy"
-                class="character-img"
-              />
-              <figcaption class="character-name">Nobara Kugisaki</figcaption>
-            </figure>
-          </a>
-          <a href="PersonajesJujutsu/Gojo.html" class="character-card">
-            <figure>
-              <img
-                src="multimediajujutsu/Gojo.jpg"
-                alt="Satoru Gojo"
-                loading="lazy"
-                class="character-img"
-              />
-              <figcaption class="character-name">Satoru Gojo</figcaption>
-            </figure>
-          </a>
+
+    <!-- ══════════════ PERSONAJES ══════════════ -->
+    <main>
+      <section id="personajes" class="relative py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+
+          <!-- Cabecera sección -->
+          <div class="flex items-center gap-5 mb-14">
+            <div class="seal">人</div>
+            <div>
+              <p class="text-curse-light text-xs tracking-widest uppercase">Personajes</p>
+              <h2 class="text-3xl font-bold text-white">Principales</h2>
+            </div>
+          </div>
+
+          <!-- Grid de personajes -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+
+            <!-- Itadori -->
+            <a href="PersonajesJujutsu/Itadori.html"
+               class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900">
+              <div class="aspect-[3/4] overflow-hidden">
+                <img src="multimediajujutsu/Itadori.jpg" alt="Itadori Yūji" loading="lazy"
+                     class="w-full h-full object-cover object-top" />
+              </div>
+              <div class="char-overlay absolute inset-0 rounded-2xl"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                <p class="text-white font-semibold text-sm leading-tight drop-shadow">Itadori Yūji</p>
+                <p class="text-curse-light text-xs mt-0.5 drop-shadow">虎杖悠仁</p>
+              </div>
+            </a>
+
+            <!-- Megumi -->
+            <a href="PersonajesJujutsu/Megumi.html"
+               class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900">
+              <div class="aspect-[3/4] overflow-hidden">
+                <img src="multimediajujutsu/Megumi.jpg" alt="Megumi Fushiguro" loading="lazy"
+                     class="w-full h-full object-cover object-top" />
+              </div>
+              <div class="char-overlay absolute inset-0 rounded-2xl"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                <p class="text-white font-semibold text-sm leading-tight drop-shadow">Megumi Fushiguro</p>
+                <p class="text-curse-light text-xs mt-0.5 drop-shadow">伏黒恵</p>
+              </div>
+            </a>
+
+            <!-- Nobara -->
+            <a href="PersonajesJujutsu/Nobara.html"
+               class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900">
+              <div class="aspect-[3/4] overflow-hidden">
+                <img src="multimediajujutsu/Nobara.jpg" alt="Nobara Kugisaki" loading="lazy"
+                     class="w-full h-full object-cover object-top" />
+              </div>
+              <div class="char-overlay absolute inset-0 rounded-2xl"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                <p class="text-white font-semibold text-sm leading-tight drop-shadow">Nobara Kugisaki</p>
+                <p class="text-curse-light text-xs mt-0.5 drop-shadow">釘崎野薔薇</p>
+              </div>
+            </a>
+
+            <!-- Gojo -->
+            <a href="PersonajesJujutsu/Gojo.html"
+               class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900">
+              <div class="aspect-[3/4] overflow-hidden">
+                <img src="multimediajujutsu/Gojo.jpg" alt="Satoru Gojo" loading="lazy"
+                     class="w-full h-full object-cover object-top" />
+              </div>
+              <div class="char-overlay absolute inset-0 rounded-2xl"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+                <p class="text-white font-semibold text-sm leading-tight drop-shadow">Satoru Gojo</p>
+                <p class="text-curse-light text-xs mt-0.5 drop-shadow">五条悟</p>
+              </div>
+            </a>
+
+          </div>
         </div>
       </section>
-      <section class="about-section">
-        <h2 class="section-title">Presentación del Proyecto</h2>
-        <div class="about-content-grid">
-          <article class="about-text">
-            <p>
-              Bienvenido a la wiki personal de
-              <strong>Pedro Barrante Vázquez</strong>.
+
+
+      <!-- ══════════════ PRESENTACIÓN ══════════════ -->
+      <section class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+
+          <!-- Texto -->
+          <article>
+            <div class="flex items-center gap-4 mb-8">
+              <div class="seal">書</div>
+              <div>
+                <p class="text-curse-light text-xs tracking-widest uppercase">Sobre el proyecto</p>
+                <h2 class="text-3xl font-bold text-white">Presentación</h2>
+              </div>
+            </div>
+            <p class="text-ink-200 leading-relaxed mb-4">
+              Bienvenido a la wiki personal de <strong class="text-white">Pedro Barrante Vázquez</strong>.
             </p>
-            <p>
-              Este espacio recopila datos sobre técnicas malditas y la
-              cronología del mundo de Jujutsu Kaisen.
+            <p class="text-ink-200 leading-relaxed">
+              Este espacio recopila datos sobre técnicas malditas y la cronología del mundo de Jujutsu Kaisen, obra de Gege Akutami.
             </p>
           </article>
 
-          <aside class="info-box" aria-label="Notas importantes">
-            <h3>A tener en cuenta</h3>
-            <ul>
-              <li>Páginas individuales por personaje.</li>
-              <li><strong>Alerta:</strong> Contiene spoilers del manga.</li>
-              <li>Proyecto educativo sin ánimo de lucro.</li>
+          <!-- Aviso -->
+          <aside class="rounded-2xl border border-curse/30 bg-curse-dark/10 p-8">
+            <div class="flex items-center gap-3 mb-5">
+              <svg class="w-5 h-5 text-curse-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              </svg>
+              <h3 class="text-white font-semibold">A tener en cuenta</h3>
+            </div>
+            <ul class="space-y-3 text-ink-200 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-curse-light mt-1">▸</span>
+                Páginas individuales por personaje.
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blood-light mt-1">▸</span>
+                <span><strong class="text-blood-light">Alerta:</strong> contiene spoilers del manga.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-curse-light mt-1">▸</span>
+                Proyecto educativo sin ánimo de lucro.
+              </li>
             </ul>
           </aside>
+
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <section class="disclaimer">
-          <h4>Aviso Legal</h4>
-          <p>
-            Proyecto fan-made. Jujutsu Kaisen es propiedad de Gege Akutami,
-            Shueisha y MAPPA.
-          </p>
-        </section>
 
-        <nav class="footer-actions" aria-label="Enlaces secundarios">
-          <a href="Sleepy/index.html" class="btn btn-primary" rel="author"
-            >Conoce al creador</a
-          >
-          <div class="footer-links">
-            <a href="#">Privacidad</a>
-            <a href="#">Contacto</a>
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="border-t border-white/5 py-14 px-6">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+
+        <!-- Disclaimer -->
+        <div class="max-w-sm">
+          <p class="text-xs text-ink-200 uppercase tracking-widest mb-2">Aviso Legal</p>
+          <p class="text-ink-200 text-sm leading-relaxed">
+            Proyecto fan-made. Jujutsu Kaisen es propiedad de Gege Akutami, Shueisha y MAPPA.
+          </p>
+        </div>
+
+        <!-- Acciones -->
+        <nav class="flex flex-col sm:flex-row items-start sm:items-center gap-4" aria-label="Enlaces secundarios">
+          <a href="Sleepy/index.html"
+             class="px-6 py-2.5 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark transition-colors">
+            Conoce al creador
+          </a>
+          <div class="flex gap-5 text-sm text-ink-200">
+            <a href="privacidad.html" class="hover:text-curse-light transition-colors">Privacidad</a>
+            <a href="contacto.html"  class="hover:text-curse-light transition-colors">Contacto</a>
           </div>
         </nav>
+
+      </div>
+
+      <!-- Firma final -->
+      <div class="max-w-5xl mx-auto mt-10 pt-6 border-t border-white/5 flex items-center justify-between">
+        <p class="text-ink-200/50 text-xs">© <script>document.write(new Date().getFullYear());</script> LostSleepy · Wiki fan-made</p>
+        <p class="text-ink-200/30 text-xs font-display">呪術廻戦</p>
       </div>
     </footer>
+
   </body>
 </html>

@@ -1,318 +1,273 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSSPersonajes/Megumi/modern-styles.css"> <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Megumi Fushiguro - Jujutsu Kaisen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Megumi Fushiguro - Wiki fan-made de Jujutsu Kaisen. Técnica de Sombras, historia y curiosidades." />
+  <title>Megumi Fushiguro | Wiki JJK</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse:  { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+            shadow: { DEFAULT:'#1e293b', dark:'#0f172a' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            glowPulse: { '0%,100%':{ opacity:'0.5' }, '50%':{ opacity:'1' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #1e293b, #7c3aed, transparent); height: 2px; }
+    [id] { scroll-margin-top: 5rem; }
+    .char-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .gallery-img-wrap img { transition: transform 0.4s ease; }
+    .gallery-img-wrap:hover img { transform: scale(1.04); }
+    @media (min-width: 768px) {
+      .float-img-right { float: right; margin: 0 0 1.5rem 2rem; clear: right; }
+      .float-img-left  { float: left;  margin: 0 2rem 1.5rem 0; clear: left; }
+    }
+    .clearfix::after { content:''; display:table; clear:both; }
+    * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+  </style>
 </head>
-<body>
-    <header class="site-header">
-        <a href="./Itadori.html" class="nav-link prev-link">Itadori Yūji</a> <h1 class="character-name">Megumi Fushiguro</h1>
-        <a href="./Nobara.html" class="nav-link next-link">Nobara Kugisaki</a> </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#quienes">¿Quién es?</a></li>
-            <li><a href="#apariencia">Apariencia</a></li>
-            <li><a href="#perso">Personalidad</a></li>
-            <li><a href="#habi">Habilidades</a></li>
-            <li><a href="#imagenes">Imágenes</a></li>
-            <li><a href="#curiosidades">Curiosidades</a></li>
-        </ul>
-    </nav>
+<body class="bg-ink-950 text-ink-100 antialiased">
 
-    <main class="content-area">
-        <article class="content-section">
-            <h2 id="quienes" class="section-title">¿Quién es?</h2>
-            <p>Megumi Fushiguro (伏黒恵 Fushiguro Megumi) es uno de los protagonistas de la serie manga Jujutsu Kaisen. Es un estudiante de primer año del Colegio Técnico de Magia Metropolitana de Tokio, y compañero de Yuji Itadori y Nobara Kugisaki.</p>
-            <p>Su padre es Toji Fushiguro, antiguo miembro del Clan Zenin y hermanastro de Tsumiki Fushiguro. Como miembro de sangre de uno de los tres grandes clanes, nació con el talento innato de hacer uso de la Técnica de Sombras de Diez Tipos, además, dado a un acuerdo concluido entre su padre y Naobito Zenin, si Megumi se ve privado de la custodia de Satoru Gojo, Megumi pasaría a ser la próxima cabeza del Clan Zenin.</p>
-        </article>
+  <header class="relative overflow-hidden border-b border-white/5">
+    <div class="absolute inset-0 bg-gradient-to-br from-[#0a0f1a] via-ink-950 to-ink-950"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-blue-900/10 blur-[100px] animate-glow-pulse"></div>
 
-        <section class="content-section">
-            <h2 id="apariencia" class="section-title">Apariencia</h2>
-             <figure class="character-image-main">
-                 <img src="../multimediajujutsu/Megumi/MegumiApariencia.jpg" alt="Vestimenta de Megumi" width="250" height="270">
-                <figcaption>Vestimenta de Megumi</figcaption>
-            </figure>
-            <p>Megumi es un joven alto, llegando a medir 1,75 metros. Su cabello
-                es oscuro, y suele llevarlo arreglado y puntiagudo cuando se
-                encuentra en clases o en una misión; lleva su cabello
-                desarreglado, cuando descansa. Gege Akutami describió su cabello
-                como errático. Sus ojos, en el manga son representados de color
-                verde claro, mientras que en el anime, son de color azul oscuro.</p>
-            <p>Lleva el uniforme estándar del Colegio Técnico de Magia
-                Metropolitana de Tokio, que consiste en una camisa de manga
-                larga y un cuello alto de color oscuro, pantalones y zapatos
-                marrón oscuros; ésta misma vestimenta, en el anime, es
-                representada en color azul marino.</p>
-            <p>Durante su visita a la Escuela Secundaria Municipal Sugisawa,
-                vistió una camisa blanca, pantalones de vestir negros con
-                zapatos de color claro.</p>
-            <p>Cuando no está realizando misiones, viste pantalones negros
-                holgados, una remera negra de mangas largas también holgada de
-                cuello amplio y calzado oscuro.</p>
-            <p>Durante su búsqueda por Kinji Hakari, se lo vio utilizando, una
-                campera de oscura con cuello alto.</p>
-        </section>
+    <div class="relative z-10 flex items-center justify-between px-6 pt-5 pb-0 max-w-5xl mx-auto">
+      <a href="Itadori.html" class="flex items-center gap-2 text-ink-200/70 hover:text-curse-light transition-colors text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Itadori Yūji
+      </a>
+      <span class="text-ink-200/30 text-xs font-display hidden sm:block">十種影法術</span>
+      <a href="Nobara.html" class="flex items-center gap-2 text-ink-200/70 hover:text-curse-light transition-colors text-sm">
+        Nobara Kugisaki
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
 
-        <section class="content-section">
-            <h2 id="perso" class="section-title">Personalidad</h2>
-             <figure class="character-image-main float-right">
-                 <img src="../multimediajujutsu/Megumi/PersonalidadMegumi.gif" alt="Personalidad de Megumi" class="imagen-megumi">
-                <figcaption>Personalidad de Megumi</figcaption>
-            </figure>
-            <p>Megumi suele ser un joven bastante tranquilo, serio y reservado.
-                Nobara Kugisaki se queja de que Megumi nunca dice nada de sí
-                mismo, y de que debería comenzar a decirles más cosas sobre él.
-                A pesar de no mostrar demasiado interés en lo que suelen hacer
-                sus compañeros, siempre se encuentra alrededor de estos y suele
-                acompañarlos a distintos lugares, y no parece mostrar rechazo a
-                la idea de salir de paseo con ellos. Constantemente, se deja
-                llevar por las ideas y bromas de Nobara e Itadori.</p>
-            <p>Incluso cuando era niño, Megumi era muy severo, serio y
-                reflexivo, hasta el punto en que Satoru cuestionó si realmente
-                estaba en primer grado en el momento en que se conocieron.
-                Cuando Satoru explicó por primera vez la situación con el clan
-                Zenin, Megumi reveló que no se preocupaba por su padre y asumió
-                que él y la madre de Tsumiki habían terminado de cuidarlos. Pudo
-                entender que había sido vendido al clan Zenin, pero solo accedió
-                a ir si Tsumiki también estaría feliz.</p>
-            <p>Megumi siempre ha estado molesto por la actitud de Satoru desde
-                que se conocieron. No le importaba la idea de convertirse en
-                hechicero y se cansó más con el tiempo. Cuando Megumi llegó a la
-                escuela secundaria, su actitud impersonal se había establecido
-                por completo. Pensó que convertirse en un hechicero jujutsu no
-                tendría sentido ya que no se veía a sí mismo como alguien que
-                salva a los demás. Megumi no estaba interesada en hacer amigos,
-                pero creía que la base de la interacción . Tsumiki quería que
-                dejara de meterse en peleas, pero Megumi no escuchó y la
-                descartó.</p>
-            <p>Aunque aparenta ser estoico y calculador, Megumi desea ayudar a
-                las personas que considera buenas o amables. Cree que el mundo
-                es injusto y que un chamán es una herramienta para garantizar
-                que las personas amables tengan una oportunidad de vivir. Afirma
-                que eso es un deseo egoísta e irracional, y por ello no se ve
-                como un héroe por hacer esto. Otro lado de su personalidad es
-                que es bastante insensible cuando habla de la muerte de
-                criminales y asesinos, ya que cree que no deberían ser salvados.</p>
-            <p>En sus días como estudiante de secundaria, la personalidad de
-                Megumi era diferente a la del presente. Mostraba odio a las
-                personas bonachonas porque creía que perdonar a los malos era
-                una ridiculez y al mismo tiempo odiaba a la gente mala por no
-                tener ni una pizca de empatía hacia quienes abusaban
-                constantemente. Era conocido por pelearse con los "matones" de
-                su escuela y de su área ya que pensaba que era su castigo. Sin
-                embargo, cuando Tsumiki quedó postrada por una maldición cambió
-                de personalidad y dice que quiere disculparse con su hermana,
-                considerándose un idiota en esa época.</p>
-        </section>
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-fade-up">
+      <p class="text-curse-light text-xs tracking-widest uppercase mb-3">Líder del Clan Zenin · Grado 2</p>
+      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-2">Megumi Fushiguro</h1>
+      <p class="text-2xl text-ink-200/60 font-display mb-6">伏黒恵</p>
+      <div class="accent-line w-28 mb-6"></div>
+      <p class="text-ink-200 max-w-xl leading-relaxed">
+        Estudiante de primer año en el Colegio Técnico de Magia de Tokio. Poseedor del talento innato del Clan Zenin y recipiente temporal del Rey de las Maldiciones.
+      </p>
+    </div>
+  </header>
 
-        <section class="content-section">
-            <h2 id="habi" class="section-title">Habilidades</h2>
-            <div class="skills-table-container">
-                <table class="skills-table">
-                    <thead>
-                        <tr>
-                            <th>Habilidad</th>
-                            <th>Descripción</th>
-                            <th>Notas Adicionales</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="skill-name">Lobos de Jade</td>
-                            <td>Permite la invocación de dos lobos gemelos, uno es blanco mientras que el otro es negro, y ambos tienen tres puntos en la frente de colores opuestos. Su función principal es perseguir y devorar maldiciones. También son útiles para rastrear olores, pueden advertir de las maldiciones entrantes o llevarlo a objetivos específicos.
-                                <ul>
-                                    <li>Lobos de Jade: Totalidad:</li>
-                                    <li>Cuando Lobo de Jade: Blanco fue destruido por Sukuna, sus habilidades y poder de maldición fueron heredados por Lobo de Jade: Negro; esto permitió la creación de una versión mejorada del shikigami denominada Lobos de Jade: Totalidad. Adopta una forma bípeda, parecido a un hombre lobo con grandes garras. Es lo suficientemente rápido y poderoso como para luchar contra un espíritu maldito de grado especial. Sus dientes y garras pueden incluso perforar su carne y herirlos.</li>
-                                </ul>
-                            </td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/LobosShiki.jpg" alt="Lobos de Jade" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Quimera</td>
-                            <td>Un shikigami con forma de búho que puede volar. Sus usos en combate son bastante variados: es lo suficientemente fuerte como para transportar a un humano, sus habilidades ofensivas son principalmente ataques en picada desde el cielo, también sirve como apoyo, volando alrededor de su presa y atacando cuando se encuentre vulnerable.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/NueShiki.jpg" alt="Quimera" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Monstruo Serpiente</td>
-                            <td>Una serpiente shikigami de tamaño gigante con una extensa longitud que puede usarse como ataque sorpresa, puesto que también es capaz de ser invocada desde el suelo y puede atar al oponente. Este shikigami ya no puede ser utilizado porque fue destruido por Sukuna.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/SnakeShiki.jpg" alt="Monstruo Serpiente" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Sapo</td>
-                            <td>Permite la invocación de un sapo en gran tamaño, capaz de usar su la extensa longitud de su lengua para atrapar a los oponentes y mantenerlos presionados, incluso sí se encuentran a varios metros de distancia. También, es capaz de refugiar aliados en su barriga.
-                                <ul>
-                                    <li>Abismo Desconocido Sin Fondo</li>
-                                    <li>Este shikigami nace de la combinación de otros dos Shikigami: Sapo y Quimera. Dicha fusión provoca que los sapos ganen alas, obteniendo la habilidad de volar y poder desplazarse con mayor rango a través del área que rodee a Megumi. Posee habilidades similares a las de Sapo.</li>
-                                </ul>
-                            </td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/SapoShiki.jpg" alt="Sapo" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Elefante Máximo</td>
-                            <td>Un elefante shikigami que es capaz de liberar una gran cantidad de agua de su trompa. La presión del agua es suficiente para inundar un lugar y provocar destrucción a su alrededor. Megumi solo puede usar su forma base ya que consume mucha energía maldita. Su tamaño también permite aplastar oponentes.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/EleShiki.jpg" alt="Elefante Máximo" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Estampida de Conejos</td>
-                            <td>Se invocan una gran cantidad de conejo shikigami de tamaño normal que sirven como cortina para distraer al enemigo. La distracción puede servir para varios motivos. También son capaces de atacar en manada.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/ConejoShiki.jpg" alt="Estampida de Conejos" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">General Divino de las Ochos Hojas Diferentes del Sila: Demonio Mahoraga</td>
-                            <td>Posee una gran fuerza, capaz de destruir cosas a su alrededor sin problemas. Por cada ataque que recibe, Mahoraga se encarga de hacer girar su rueda de ocho hojas para procesar la información recibida, lo que le permitirá volverse fuerte e 'inmune' al ataque ya recibido; su técnica le permite adaptarse a cualquier fenómeno al que se vea expuesto. Es el único shikigami que Megumi no puede utilizar a voluntad.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/MahoShiki.jpg" alt="Demonio Mahoraga" class="skill-image"></td>
-                        </tr>
-                        <tr>
-                            <td class="skill-name">Expansion Territorial: Jardín Azabache de las Quimeras</td>
-                            <td>El área creada posee una gran cantidad de sombras fluidas. Desde la sombra, Megumi es capaz de invocar múltiples shikigami e incluso crear un doble de sí mismo. También es capaz de esconderse dentro de la sombra de un enemigo y atacar desde su punto ciego, en su batalla en la colonia de Tokyo #1 contra Reggie Star se demostro una debilidad la cual consiste en que el cuerpo de Megumi soportara el peso de todos los objetos que caigan adentro de la sombra que se extiende en el suelo de su Territorio como si los estuviera cargando.</td>
-                            <td><img src="../multimediajujutsu/Megumi/ImagenesTabla/ExpaDomi.jpg" alt="Jardín Azabache de las Quimeras" class="skill-image"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+  <nav class="char-nav sticky top-0 z-40 border-b border-white/5 bg-ink-950/80">
+    <div class="max-w-5xl mx-auto px-6">
+      <ul class="flex gap-1 sm:gap-2 overflow-x-auto py-3 text-sm scrollbar-hide">
+        <li><a href="#quienes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">¿Quién es?</a></li>
+        <li><a href="#apariencia" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Apariencia</a></li>
+        <li><a href="#perso" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Personalidad</a></li>
+        <li><a href="#habi" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Habilidades</a></li>
+        <li><a href="#imagenes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Imágenes</a></li>
+        <li><a href="#curiosidades" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-curse-light hover:bg-curse/10 transition-all whitespace-nowrap">Curiosidades</a></li>
+      </ul>
+    </div>
+  </nav>
 
-        <section class="content-section">
-            <h2 id="imagenes" class="section-title">Imágenes de Megumi</h2>
-            <div class="gallery-container">
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiAparienciaAnime.jpg" alt="Apariencia de Megumi (Anime)" class="gallery-image">
-                    <figcaption>Apariencia de Megumi (Anime)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiManga.jpg" alt="Apariencia de Megumi (Manga)" class="gallery-image">
-                    <figcaption>Apariencia de Megumi (Manga)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiExpansionDominio.jpg" alt="Megumi preparando su dominio (Manga)" class="gallery-image">
-                    <figcaption>Megumi preparando su dominio (Manga)</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiPerros.gif" alt="Megumi invocando a sus perros shikigamis" class="gallery-image">
-                    <figcaption>Megumi invocando a sus perros shikigamis</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiElefante.gif" alt="Megumi invoca a otro de sus shikigamis" class="gallery-image">
-                    <figcaption>Megumi invoca a otro de sus shikigamis</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="../multimediajujutsu/Megumi/MegumiGojo.gif" alt="Megumi con Gojo" class="gallery-image">
-                    <figcaption>Megumi con Gojo</figcaption>
-                </figure>
-            </div>
-        </section>
+  <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
-        <section class="content-section">
-            <h2 id="curiosidades" class="section-title">Curiosidades</h2>
-            <ul class="curiosities-list">
-                <li>Según información revelada en el Volumen 01 del manga:
-                    <ul>
-                        <li>Mide 1.75 metros, siendo un poco más alto que Yuji
-                            Itadori, aunque éste último sigue creciendo.</li>
-                        <li>Le gusta leer libros de no-ficción.</li>
-                        <li>Conoce a Satoru Gojo desde antes de ingresar al
-                            Colegio de Jujutsu.</li>
-                        <li>Le gusta la comida que combine con el jengibre.</li>
-                        <li>No le gustan los pimientos rojos.</li>
-                        <li>Sólo utiliza ropa que considere cómoda.</li>
-                    </ul>
-                </li>
-                <li>Akutami dijo que Megumi tiene el hábito de tocarse el hombro
-                    izquierdo.</li>
-                <li>Según información revelada en el Jujutsu Kaisen Official
-                    Fanbook:
-                    <ul>
-                        <li>Tiene 15 años.</li>
-                        <li>Su cumpleaños es el 22 de Diciembre.</li>
-                        <li>Es un chamán de segundo grado.</li>
-                        <li>Nació en Saitama.</li>
-                        <li>Su modo de inscripción al Colegio de Tokio fue por
-                            su linaje de sangre.</li>
-                        <li>Su técnica es la Técnica de Sombras de Diez Tipos.</li>
-                        <li>Su pasatiempo es leer.</li>
-                        <li>Su comida favorita es cualquier comida que vaya bien
-                            con jengibre.</li>
-                        <li>Su comida menos favorita es el pimentón y toda
-                            guarnición dulce.</li>
-                        <li>Su causa de estrés son los humanos (casi todos).</li>
-                        <li>No tiene un tipo favorito (todo lo que necesita es
-                            alguien que tenga una humanidad inquebrantable).</li>
-                    </ul>
-                    <li>Información revelada de la entrevista con Gege Akutami:
-                        <ul>
-                            <li>Cuando alguno de sus shikigami es destruido,
-                                Megumi suele sobrellevar la pérdida a su manera,
-                                él es de las personas que parecen estar más
-                                melancólicas cuando muere un animal que cuando
-                                muere un extraño.</li>
-                            <li>Megumi suele interesarse en las relaciones
-                                amorosas ajenas, no porque le interesa, sino
-                                porque le gusta verificar sus sospechas y saber
-                                que siempre tuvo toda la razón.</li>
-                            <li>Akutami dijo que Megumi rechazaría la confesión
-                                de amor de una chica como "Lo sieeeeeeento!!".</li>
-                            <li>Megumi mira la TV y lee el periódico pero no
-                                cree ni en la mitad de lo que ambos dicen.</li>
-                            <li>La primera misión de Megumi fue asignada por
-                                Gojo, según este era una misión adecuada a las
-                                habilidades de Megumi en ese entonces, pero al
-                                parecer solo se estaba burlando de Megumi.</li>
-                            <li>Gojo y Maki fueron quienes le enseñaron a Megumi
-                                a usar herramientas malditas y a luchar cuerpo a
-                                cuerpo.</li>
-                            <li>Durante sus estudios en Escuela Secundaria
-                                Oriental de Urami, el mayor escandalo
-                                problemático que tuvo Megumi fue colgar a unos
-                                delincuentes de una pancarta, estos no fueron
-                                heridos en el proceso.</li>
-                            <li>Probablemente Megumi haya tenido amigos que
-                                murieron que no fueron sus compañeros de clase,
-                                esto es dado a que lleva una larga carrera como
-                                chamán.</li>
-                            <li>Cuando su padre y la madre de Tsumiki se fueron,
-                                Tsumiki se encargó de los quehaceres del hogar y
-                                Megumi la ayudaba, Gojo intervino antes de que
-                                el poco dinero dejado por la madre de Tsukimi se
-                                agotara, justo en ese momento comenzaron a
-                                llegar las facturas de los servicios públicos.</li>
-                            <li>En el Capítulo 56, cuando ve a una ex-compañera
-                                de clase, recordó su nombre de inmediato, pero
-                                esto no significa que Megumi interactuara mucho
-                                con sus ex-compañeros de clase, sino que
-                                simplemente tiene muy buena memoria.</li>
-                            <li>Megumi se volvió una persona muy perspicaz dado
-                                a que tiene una visión muy negativa del mundo, y
-                                no le tiene mucha fe o confianza a las personas.</li>
-                            <li>Megumi no respeta a Toge ya que es propenso a
-                                unirse a las payasadas de Panda y Gojo.</li>
-                            <li>Megumi probablemente nunca tuvo la experiencia
-                                de reír tanto hasta el punto de llorar.</li>
-                            <li>Antes de ingresar al Colegio Técnico de Magia
-                                Metropolitana de Tokio, Megumi nunca fue llamado
-                                para alguna misión, toda su experiencia previa
-                                la adquirió dado que Gojo, quien es su tutor, lo
-                                llevaba a menudo a sus misiones.</li>
-                            <li>Conoció por primera vez a Mai y a Maki cuando
-                                fue con Gojo a la casa del Clan Zenin para
-                                lidiar con ellos.</li>
-                            <li>No hay ninguna razón especial por la que no le
-                                gusten los pimientos, simplemente no le gusta
-                                los platos dulces.</li>
-                            <li>El alma de Megumi fue sellada en su propio
-                                cuerpo por Sukuna Ryomen con el método de baño.</li>
-                        </ul>
-                    </li>
-            </ul>
-        </section>
-    </main>
+    <section id="quienes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">¿Quién es?</h2>
+      </div>
+      <div class="space-y-4 text-ink-200 leading-relaxed">
+        <p>Megumi Fushiguro es uno de los protagonistas centrales de Jujutsu Kaisen. Como hijo de Toji Fushiguro, nació con la Técnica de Sombras de Diez Tipos, la habilidad más prestigiosa del Clan Zenin. Pese a su linaje, fue criado bajo la tutela de Satoru Gojo tras un acuerdo que evitó que fuera vendido al clan.</p>
+        <p>A lo largo de la historia, Megumi evoluciona de ser un hechicero que se autolimita a uno capaz de desplegar un Dominio incompleto. Su papel se vuelve trágico al ser poseído por Sukuna, quien lo utilizó como su nuevo recipiente para obtener el control de Mahoraga. Finalmente, sobrevive a la batalla de Shinjuku y retoma su vida junto a Itadori y Nobara.</p>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-        <p>Volver a la <a href="../index.html" class="nav-link">página principal</a></p> </footer>
+    <section id="apariencia">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Apariencia</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-left mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-64">
+            <img src="../multimediajujutsu/Megumi/MegumiApariencia.jpg" alt="Vestimenta de Megumi" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Apariencia en el manga</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Megumi mide 1,75 m y posee un característico cabello oscuro y puntiagudo que Akutami describe como "errático". Un detalle notable es que sus ojos son verde claro en el manga, pero se representaron azules en la adaptación al anime.</p>
+          <p>Su uniforme del Colegio Técnico es oscuro con cuello alto y zapatos marrón oscuro. En su tiempo libre, prefiere ropa holgada y cómoda. Tras los eventos con Sukuna, su cuerpo muestra el desgaste físico de haber albergado al Rey de las Maldiciones durante la confrontación final.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="perso">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Personalidad</h2>
+      </div>
+      <div class="clearfix">
+        <figure class="float-img-right mb-4">
+          <div class="rounded-2xl overflow-hidden border border-white/10 w-56">
+            <img src="../multimediajujutsu/Megumi/PersonalidadMegumi.gif" alt="Personalidad de Megumi" class="w-full object-cover" />
+          </div>
+          <figcaption class="text-ink-200/50 text-xs text-center mt-2">Carácter reservado</figcaption>
+        </figure>
+        <div class="space-y-4 text-ink-200 leading-relaxed">
+          <p>Es un joven estoico, serio y profundamente reflexivo. A diferencia de Itadori, Megumi no se ve a sí mismo como un héroe; su objetivo es salvar a las personas que él considera "buenas" por una cuestión de deseo egoísta e irracional.</p>
+          <p>Su pasado como "delincuente" en la secundaria —donde solía pelear con matones— se transformó en una actitud protectora hacia su hermanastra Tsumiki. Aunque parece distante, valora profundamente a sus compañeros, permitiéndose incluso seguir las bromas de Itadori y Nobara.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="habi">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Habilidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Técnica de Sombras de Diez Tipos</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Permite invocar hasta diez shikigamis diferentes usando las sombras como intermediario.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Lobos de Jade (Totalidad)</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Tras la destrucción del lobo blanco, el lobo negro heredó su poder, creando una versión bípeda de grado especial.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Quimera (Nue)</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Shikigami volador que lanza ataques eléctricos y sirve para transporte.</p>
+        </div>
+
+        <div class="rounded-2xl border border-curse/20 bg-curse-dark/10 p-5 col-span-1 sm:col-span-2 lg:col-span-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs text-curse-light px-2 py-0.5 rounded-full border border-curse/30">Shikigami Definitivo</span>
+          </div>
+          <h3 class="text-white font-semibold text-base">Mahoraga</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Capaz de adaptarse a cualquier fenómeno. Ningún usuario de la técnica lo había domado antes que Sukuna.</p>
+          <figure class="mt-3 rounded-xl overflow-hidden">
+            <img src="../multimediajujutsu/Megumi/ImagenesTabla/MahoShiki.jpg" alt="Mahoraga" class="w-full object-cover max-h-40" />
+          </figure>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Expansión de Dominio</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Jardín Azabache de las Quimeras. Inunda el área con sombras, permitiendo invocaciones infinitas y clones.</p>
+        </div>
+
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+          <h3 class="text-white font-semibold text-base">Combate Físico</h3>
+          <p class="text-ink-200 text-sm leading-relaxed">Entrenado por Maki y Gojo en artes marciales y el uso de herramientas malditas como nunchakus.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="imagenes">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Imágenes de Megumi</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Megumi/MegumiAparienciaAnime.jpg" alt="Megumi Anime" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Anime)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Megumi/MegumiManga.jpg" alt="Megumi Manga" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Manga)</figcaption>
+        </figure>
+        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+          <img src="../multimediajujutsu/Megumi/MegumiExpansionDominio.jpg" alt="Dominio" class="w-full aspect-[4/5] object-cover" />
+          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Expansión de Dominio</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="curiosidades">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="w-1 h-8 bg-blue-600 rounded-full flex-shrink-0"></span>
+        <h2 class="text-3xl font-bold text-white">Curiosidades</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Cumpleaños</p>
+          <p class="text-white text-2xl font-bold">22 Dic</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Edad</p>
+          <p class="text-white text-2xl font-bold">15 años</p>
+        </div>
+        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+          <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Lugar de nacimiento</p>
+          <p class="text-white text-2xl font-bold">Prefectura de Saitama</p>
+        </div>
+      </div>
+
+      <ul class="space-y-3">
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-curse-light mt-1 flex-shrink-0">▸</span> Le gusta leer libros de no-ficción y su comida favorita es la que lleva jengibre.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-curse-light mt-1 flex-shrink-0">▸</span> No respeta a Toge Inumaki porque siempre se une a las bromas de Gojo y Panda.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-curse-light mt-1 flex-shrink-0">▸</span> Tiene una memoria excelente; recordó el nombre de una excompañera de inmediato en el Cap. 56.</li>
+        <li class="flex items-start gap-3 text-ink-200"><span class="text-curse-light mt-1 flex-shrink-0">▸</span> Su mayor estrés son "los humanos (casi todos)".</li>
+      </ul>
+
+      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4">
+        <p class="text-ink-200/40 text-xs">
+          Última actualización de esta página: <span id="fecha-actualizacion"></span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 py-10 px-6 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="Itadori.html" class="text-ink-200/60 hover:text-curse-light transition-colors">← Itadori</a>
+        <span class="text-ink-200/20">|</span>
+        <a href="Nobara.html" class="text-ink-200/60 hover:text-curse-light transition-colors">Nobara →</a>
+      </nav>
+      <p class="text-ink-200/30 text-xs">© <span id="year-footer"></span> LostSleepy · Fan-made · Wiki JJK</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+    const ahora = new Date();
+    document.getElementById('fecha-actualizacion').textContent = ahora.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
 
 </body>
 </html>
