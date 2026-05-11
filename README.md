@@ -17,7 +17,7 @@ Located in the `/Sleepy` directory, this section showcases the professional and 
 - **Bento Grid Design:** A modern interface that organizes information into hierarchical visual blocks.
 - **Key Sections:**
     - **Trajectory:** A timeline narrating the professional evolution from IT Systems Technician (SMR) to Multi-platform Application Development graduate (DAM).
-    - **Passions:** A look into "Old Guard" Fortnite status, Sevilla FC passion, and creative direction inspired by Travis Scott.
+    - **Passions:** A look into friends, Sevilla FC passion, and creative direction inspired by Travis Scott.
     - **Social Hub:** A connectivity center including GitHub, LinkedIn, Twitch, and direct contact via WhatsApp.
 - **Contact Form:** Fully functional system integrated with **Formspree**, allowing lead generation without the need for a PHP backend.
 
