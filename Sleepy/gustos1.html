@@ -1,53 +1,271 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mis Pasiones | Pedro Barrante</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/CSSGustos/Light.css">
-    <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon1.png">
-</head>
-<body class="gustos-page">
 
-    <div class="bento-container">
-        <header class="bento-item hero">
-            <h1>Mis Pasiones</h1>
-            <p>Un vistazo a lo que me inspira, desde la cultura visual hasta la arquitectura de sistemas.</p>
-        </header>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Shippori Mincho"', "serif"],
+              body: ['"DM Sans"', "sans-serif"],
+            },
+            colors: {
+              ink: {
+                50: "#f0eee9",
+                100: "#d4cfc6",
+                200: "#a89f91",
+                900: "#1a1714",
+                950: "#0d0c0a",
+              },
+              accent: { DEFAULT: "#0ea5e9", light: "#7dd3fc", dark: "#0369a1" },
+              sevilla: "#b91c1c",
+            },
+          },
+        },
+      };
+    </script>
 
-        <section class="bento-item artist">
-            <div class="tag">Música</div>
-            <h2>Travis Scott</h2>
-            <p>Inspiración pura desde los 15 años. Su evolución creativa en <em>Astroworld</em> y <em>Utopía</em> es el motor que me impulsa a superar mis propios límites.</p>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Shippori+Mincho:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon1.png" />
+
+    <style>
+      body {
+        font-family: "DM Sans", sans-serif;
+        background-color: #0d0c0a;
+      }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Una columna por defecto (móvil) */
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .bento-grid {
+          grid-template-columns: repeat(
+            4,
+            1fr
+          ); /* Cuatro columnas en escritorio */
+          grid-template-rows: repeat(3, auto);
+        }
+      }
+      .bento-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2rem;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .bento-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+      }
+      .tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em; /* Cambiado de 'tracking' a 'letter-spacing' */
+        color: #0ea5e9;
+        margin-bottom: 1rem;
+        display: block;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body class="text-ink-100 p-6 md:p-12">
+    <div class="max-w-6xl mx-auto">
+      <header class="mb-12 flex justify-between items-end">
+        <div>
+          <a
+            href="index.html"
+            class="text-accent-light text-sm hover:underline mb-4 inline-block"
+            >← Volver al inicio</a
+          >
+          <h1 class="text-5xl font-bold text-white font-display">
+            Mis Pasiones
+          </h1>
+        </div>
+        <p class="text-ink-200/50 text-sm hidden md:block italic">
+          Made by Sleepy
+        </p>
+      </header>
+
+      <div class="bento-grid space-y-6 md:space-y-0">
+        <section class="bento-item md:col-span-2 md:row-span-1 group">
+          <div
+            class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity"
+          >
+            <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"
+              />
+            </svg>
+          </div>
+          <span class="tag">Música</span>
+          <h2 class="text-3xl font-bold text-white mb-4">Travis Scott</h2>
+          <p class="text-ink-200 leading-relaxed">
+            Inspiración pura desde que tenia 15 años. No es solo música; es la
+            estética de <em>Astroworld</em> y la atmósfera de
+            <em>Utopía</em> (Álbunes de Travis Scott) lo que me impulsa a buscar
+            siempre la vanguardia en lo que diseño.
+          </p>
         </section>
 
-        <section class="bento-item anime">
-            <div class="tag">Anime</div>
-            <h2>Jujutsu Kaisen</h2>
-            <p>Me apasiona el género Shonen. Colecciono el manga de JJK y admiro la profundidad de personajes como Gojo y Sukuna.</p>
+        <section class="bento-item md:col-span-1 group">
+          <span class="tag">Hardware</span>
+          <h2 class="text-2xl font-bold text-white mb-2">Me flipa el PC</h2>
+          <p class="text-ink-200 text-sm">
+            Como técnico me gusta el montaje, la optimización y benchmarks.
+            Tambien me encanta informarme de las nuevas tecnologías y programas.
+          </p>
         </section>
 
-        <section class="bento-item hardware">
-            <div class="tag">Hardware</div>
-            <h2>PC Enthusiast</h2>
-            <p>Como técnico SMR, me flipa el mundo del hardware. Desde el montaje de equipos de alto rendimiento hasta la optimización de sistemas. Mi setup es mi santuario.</p>
+        <section class="bento-item md:col-span-1 group">
+          <span class="tag">Gaming</span>
+          <h2 class="text-2xl font-bold text-white mb-2">
+            Gamer a tiempo completo
+          </h2>
+          <p class="text-ink-200 text-sm">
+            Juego a varias cosas, entre ellas Fortnite, Csgo, distintos juegos
+            de steam y sobre todo Resident Evil.
+          </p>
         </section>
 
-        <section class="bento-item personal">
-            <div class="tag">Personal</div>
-            <ul>
-                <li><strong>Color:</strong> <span class="color-red">Rojo</span></li>
-                <li><strong>Equipo:</strong> Sevilla FC 🔴⚪</li>
-                <li><strong>Social:</strong> Amistades IRL & Virtuales.</li>
-            </ul>
+        <section
+          class="bento-item md:col-span-1 md:row-span-2 border-l-4 border-l-purple-500"
+        >
+          <span class="tag" style="color: #a78bfa">Anime & Manga</span>
+          <h2 class="text-2xl font-bold text-white mb-4">Jujutsu Kaisen</h2>
+          <p class="text-ink-200 text-sm leading-relaxed mb-4">
+            Fan absoluto del Shonen. Coleccionista de su manga y ahora creador
+            de su propia Wiki.
+          </p>
+          <div
+            class="mt-4 p-3 bg-purple-500/5 rounded-xl border border-purple-500/10"
+          >
+            <p class="text-[10px] text-purple-300 uppercase tracking-tighter">
+              Personaje Favorito
+            </p>
+            <p class="text-xs text-white">Itadori</p>
+          </div>
+          <div
+            class="mt-4 p-3 bg-blue-500/5 rounded-xl border border-blue-500/10"
+          >
+            <p class="text-[10px] text-blue-300 uppercase tracking-tighter">
+              NOTA
+            </p>
+            <p class="text-xs text-white">
+              Veo muchisimos mas animes pero JJK es mi favorito 😁
+            </p>
+          </div>
         </section>
 
-        <footer class="bento-item footer-back">
-            <a href="./index.html" class="nav-button">← Volver al inicio</a>
-        </footer>
+        <section
+          class="bento-item md:col-span-2 relative group overflow-hidden"
+        >
+          <div
+            class="absolute -bottom-4 -right-4 text-sevilla/5 transform rotate-12 group-hover:scale-110 transition-transform duration-700"
+          >
+            <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
+            </svg>
+          </div>
+
+          <span class="tag">Personal & Lifestyle</span>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-10">
+            <div class="space-y-6">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-sevilla">⚽</span>
+                  <h3 class="text-white font-bold text-sm">Sevilla FC</h3>
+                </div>
+                <p class="text-ink-200 text-xs leading-relaxed">
+                  Casta y coraje. Más que un club, es la identidad de mi ciudad
+                  y mi familia.
+                </p>
+              </div>
+
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-accent">🚗</span>
+                  <h3 class="text-white font-bold text-sm">
+                    Carnet de Conducir
+                  </h3>
+                </div>
+                <div class="w-full bg-white/5 rounded-full h-1.5 mb-2">
+                  <div
+                    class="bg-accent h-1.5 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+                <p
+                  class="text-[10px] text-ink-200/50 uppercase tracking-tighter"
+                >
+                  Estado: En fase de test diarios
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-purple-400">🤝</span>
+                  <h3 class="text-white font-bold text-sm">Círculo Cercano</h3>
+                </div>
+                <p class="text-ink-200 text-xs leading-relaxed">
+                  Lealtad ante todo. Un grupo cerrado donde la palabra vale más
+                  que cualquier contrato.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 pt-4 border-t border-white/5 flex justify-between items-center"
+          >
+            <p class="text-[10px] text-ink-200/40 font-mono tracking-widest">
+              📍 SEVILLA, SPAIN
+            </p>
+            <p
+              class="text-[10px] text-sevilla font-bold uppercase tracking-widest animate-pulse">
+              Never Surrender
+            </p>
+          </div>
+        </section>
+
+        <section class="bento-item md:col-span-1 group">
+          <span class="tag">Creative</span>
+          <h2 class="text-xl font-bold text-white mb-2">Estilo</h2>
+          <p class="text-ink-200 text-xs italic">
+            Siempre buscando la estética en lo que hago. No es solo que
+            funcione, es que transmita algo y se vea impecable.
+          </p>
+        </section>
+      </div>
+
+      <footer class="mt-16 text-center">
+        <p class="text-ink-200/20 text-[10px] uppercase tracking-[0.3em]">
+          Pedro Barrante · <span id="year"></span> · Dev Mini-Portfolio
+        </p>
+      </footer>
     </div>
-</body>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>

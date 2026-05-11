@@ -1,79 +1,139 @@
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pedro Barrante | Desarrollador DAM</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./CSS/CSSIndex/Light.css" />
-  </head>
-  <body class="profile-page">
-    <main class="profile-container">
-      <section class="profile-card">
-        <header class="profile-header">
-          <div class="avatar-circle">PB</div>
-          <h1 class="profile-name">Pedro Barrante Vázquez</h1>
-          <p class="profile-tagline">
-            Técnico Superior en DAM & Técnico en SMR
-          </p>
-        </header>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedro Barrante | Desarrollador DAM</title>
 
-        <div class="profile-body">
-          <p class="profile-description">
-            Tengo <span id="edad"></span> años y me apasiona construir
-            soluciones digitales. Explora mi biografía, mis gustos y redes
-            sociales a través de los enlaces inferiores.
-            <br />
-            <small>© <span id="year"></span> Pedro Barrante</small>
-          </p>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            accent: { DEFAULT:'#0ea5e9', light:'#7dd3fc', dark:'#0369a1' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(30px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            glowPulse: { '0%,100%':{ opacity:'0.3' }, '50%':{ opacity:'0.6' } },
+          },
+        },
+      },
+    }
+  </script>
 
-          <nav class="profile-nav">
-            <a href="biografia.html" class="nav-link">
-              <span>📖</span> Biografía
-            </a>
-            <a href="gustos1.html" class="nav-link"> <span>⭐</span> Gustos </a>
-            <a href="redessociales.html" class="nav-link">
-              <span>📱</span> Redes
-            </a>
-          </nav>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1 { font-family: 'Shippori Mincho', serif; }
+    .glass-card { 
+      background: rgba(26, 23, 20, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .profile-gradient {
+      background: radial-gradient(circle at center, #0ea5e915 0%, transparent 70%);
+    }
+  </style>
+</head>
 
-          <a href="formulariocontacto.html" class="cta-button">
+<body class="bg-ink-950 text-ink-100 antialiased min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+  
+  <div class="absolute inset-0 profile-gradient"></div>
+  <div class="absolute -top-24 -left-24 w-96 h-96 bg-accent/10 blur-[120px] animate-glow-pulse"></div>
+  <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-900/10 blur-[120px] animate-glow-pulse"></div>
+
+  <main class="relative z-10 w-full max-w-2xl animate-fade-up">
+    
+    <div class="mb-8">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-ink-200/50 hover:text-accent transition-colors text-sm group">
+        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Volver a la Wiki Jujutsu Kaisen
+      </a>
+    </div>
+
+    <section class="glass-card rounded-[2rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 right-0 p-4 opacity-10">
+        <svg class="w-24 h-24 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.1 14.1H3.9L12 5.45z"/></svg>
+      </div>
+
+      <header class="flex flex-col items-center text-center mb-10">
+        <div class="w-24 h-24 bg-gradient-to-br from-accent to-purple-600 rounded-3xl flex items-center justify-center text-3xl font-bold text-white shadow-lg mb-6 transform -rotate-3">
+          PB
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Pedro Barrante</h1>
+        <p class="text-accent-light font-medium tracking-wide uppercase text-xs">Desarrollador DAM & Técnico SMR</p>
+      </header>
+
+      <div class="space-y-8">
+        <p class="text-ink-200 text-center leading-relaxed max-w-md mx-auto">
+          Tengo <span id="edad" class="text-white font-bold"></span> años y me apasiona construir soluciones digitales elegantes. Explora mi trayectoria y proyectos a través de mis secciones personales.
+        </p>
+
+        <nav class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="biografia.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
+            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📖</span>
+            <span class="text-sm font-medium text-ink-100">Biografía</span>
+          </a>
+          <a href="gustos1.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
+            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">⭐</span>
+            <span class="text-sm font-medium text-ink-100">Gustos</span>
+          </a>
+          <a href="redessociales.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
+            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📱</span>
+            <span class="text-sm font-medium text-ink-100">Redes</span>
+          </a>
+        </nav>
+
+        <div class="pt-6 border-t border-white/5">
+          <a href="formulariocontacto.html" class="flex items-center justify-center gap-3 w-full py-4 bg-white text-ink-950 font-bold rounded-2xl hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             Contactar conmigo
           </a>
         </div>
-      </section>
+      </div>
 
-      <footer class="profile-footer">
-        <a href="../index.html" class="back-link">
-          ← Volver a la Wiki Jujutsu Kaisen
-        </a>
+      <footer class="mt-12 text-center">
+        <p class="text-ink-200/20 text-[10px] uppercase tracking-[0.2em]">
+          © <span id="current-year"></span> Pedro Barrante · Dev Mini-Portfolio
+        </p>
       </footer>
-    </main>
-    <script>
-      function calcularEdad(fechaNacimiento) {
-        const hoy = new Date();
-        const cumple = new Date(fechaNacimiento);
-        let edad = hoy.getFullYear() - cumple.getFullYear();
-        const mes = hoy.getMonth() - cumple.getMonth();
+    </section>
+  </main>
 
-        // Si aún no hemos llegado al mes de cumple, o estamos en el mes pero no al día
-        if (mes < 0 || (mes === 0 && hoy.getDate() < cumple.getDate())) {
-          edad--;
-        }
-        return edad;
+  <script>
+    // Lógica de cálculo de edad mantenida de tu versión original
+    function calcularEdad(fechaNacimiento) {
+      const hoy = new Date();
+      const cumple = new Date(fechaNacimiento);
+      let edad = hoy.getFullYear() - cumple.getFullYear();
+      const mes = hoy.getMonth() - cumple.getMonth();
+
+      if (mes < 0 || (mes === 0 && hoy.getDate() < cumple.getDate())) {
+        edad--;
       }
+      return edad;
+    }
 
-      // Configura tu fecha: Año, Mes (0-11, Septiembre es 8), Día
-      const miEdad = calcularEdad("2003-09-04");
-
-      // Insertar en el HTML
-      document.getElementById("edad").textContent = miEdad;
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+    // Configuración de tu fecha: Año, Mes (0-11), Día
+    // He puesto 2000 como ejemplo, cámbialo por tu año real si es distinto
+    document.getElementById("edad").textContent = calcularEdad("2003-09-04"); 
+    
+    // Año dinámico footer
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>

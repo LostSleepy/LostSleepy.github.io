@@ -1,86 +1,131 @@
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biografía | Pedro Barrante</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./CSS/CSSBiogra/Light.css" />
-    <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon1.png" />
-  </head>
-  <body class="bio-page">
-    <main class="bio-container">
-      <header class="bio-header">
-        <a href="index.html" class="back-btn">← Volver al perfil</a>
-        <h1 class="bio-title">Mi Trayectoria</h1>
-        <p class="bio-subtitle">
-          De los sistemas al desarrollo: mi evolución profesional.
-        </p>
-      </header>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trayectoria | Pedro Barrante</title>
 
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-tag">Perfil Personal</span>
-            <h2>Identidad Digital</h2>
-            <p>
-              Me llamo Pedro, aunque en la comunidad de desarrollo y gaming me
-              muevo bajo el alias de <strong>Sleepy</strong>. Soy un apasionado
-              del anime —con <em>Jujutsu Kaisen</em> como referente— y un
-              entusiasta de la tecnología que busca la excelencia en cada línea
-              de código.
-            </p>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            accent: { DEFAULT:'#0ea5e9', light:'#7dd3fc', dark:'#0369a1' },
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease out',
+            'slide-in': 'slideIn 0.6s ease out',
+          },
+          keyframes: {
+            fadeIn: { '0%':{ opacity:'0' }, '100%':{ opacity:'1' } },
+            slideIn: { '0%':{ opacity:'0', transform:'translateX(-20px)' }, '100%':{ opacity:'1', transform:'translateX(0)' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2 { font-family: 'Shippori Mincho', serif; }
+    .timeline-line {
+      background: linear-gradient(to bottom, transparent, #0ea5e9, #7c3aed, transparent);
+    }
+    .glass-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+
+<body class="bg-ink-950 text-ink-100 antialiased min-h-screen py-12 px-6">
+
+  <main class="max-w-3xl mx-auto">
+    
+    <header class="mb-16 animate-fade-in">
+      <a href="index.html" class="inline-flex items-center gap-2 text-accent-light hover:text-white transition-colors mb-8 group">
+        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7"/></svg>
+        Regresar al perfil
+      </a>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Mi Trayectoria</h1>
+      <p class="text-ink-200 text-lg max-w-xl">
+        De los sistemas al desarrollo: una evolución constante basada en la curiosidad técnica y la resolución de problemas.
+      </p>
+    </header>
+
+    <div class="relative pl-8 animate-slide-in">
+      <div class="absolute left-0 top-0 bottom-0 w-px timeline-line"></div>
+
+      <article class="relative mb-16 group">
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-accent shadow-[0_0_10px_#0ea5e9]"></div>
+        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5">
+          <span class="text-accent-light text-xs font-bold uppercase tracking-widest mb-2 block">Cimientos Técnicos</span>
+          <h2 class="text-2xl text-white mb-3">Técnico en SMR</h2>
+          <p class="text-ink-200 leading-relaxed">
+            Inicié mi camino dominando la base de todo: los sistemas y las redes. Esta etapa me permitió entender el "hierro", la infraestructura y el despliegue técnico necesario para que cualquier software pueda respirar.
+          </p>
+        </div>
+      </article>
+
+      <article class="relative mb-16 group">
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-purple-500 shadow-[0_0_10px_#7c3aed]"></div>
+        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5">
+          <span class="text-purple-400 text-xs font-bold uppercase tracking-widest mb-2 block">Especialización Superior</span>
+          <h2 class="text-2xl text-white mb-3">Grado Superior en DAM</h2>
+          <p class="text-ink-200 leading-relaxed">
+            Tras consolidar los sistemas, di el salto al desarrollo de aplicaciones multiplataforma. En MEDAC perfeccioné la lógica de programación y la creación de soluciones escalables, enfocándome en la eficiencia del código y la experiencia de usuario.
+          </p>
+        </div>
+      </article>
+
+      <article class="relative mb-16 group">
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-white shadow-[0_0_15px_white]"></div>
+        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5 border-l-4 border-l-accent">
+          <span class="text-white text-xs font-bold uppercase tracking-widest mb-2 block">Presente & Enfoque</span>
+          <h2 class="text-2xl text-white mb-3">Desarrollador y Tecnico informático</h2>
+          <p class="text-ink-200 leading-relaxed mb-4">
+            Actualmente resido en Sevilla, donde compagino mi formación técnica con proyectos personales de automatización. Me considero un profesional híbrido: entiendo la infraestructura gracias a SMR y la creación de producto gracias a DAM.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-accent-light text-xs">Entusiasta tecnologico</span>
+            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-xs">Hardware & Software</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-ink-200 text-xs">Refinando mi inglés</span>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <article class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-tag">Formación Académica</span>
-            <h2>Especialista en Sistemas y Desarrollo</h2>
-            <p>
-              Mi formación técnica es híbrida y completa. Comencé mi camino
-              titulándome como <strong>Técnico en SMR</strong> (Sistemas
-              Microinformáticos y Redes), lo que me permitió dominar la
-              infraestructura y el hardware.
-            </p>
-            <p>
-              Recientemente, he alcanzado un nuevo hito graduándome en
-              <strong>MEDAC</strong> como
-              <strong
-                >Técnico Superior en Desarrollo de Aplicaciones Multiplataforma
-                (DAM)</strong
-              >, consolidando mis capacidades para crear software de alto nivel.
-            </p>
-          </div>
-        </article>
+      <article class="relative group">
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-dashed border-ink-200"></div>
+        <div class="p-6">
+          <h2 class="text-xl text-ink-200 mb-2">Próximo capítulo...</h2>
+          <p class="text-ink-200/50 italic text-sm">
+            Buscando aplicar esta visión técnica en entornos profesionales.
+          </p>
+        </div>
+      </article>
+    </div>
 
-        <article class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-tag">Objetivos</span>
-            <h2>Hacia el mundo profesional</h2>
-            <p>
-              Con la titulación superior en mano, mi enfoque actual es aplicar
-              mis conocimientos en proyectos reales. Combino el rigor técnico de
-              los sistemas con la creatividad del desarrollo moderno para
-              ofrecer soluciones digitales eficientes, escalables y visualmente
-              atractivas.
-            </p>
-          </div>
-        </article>
-      </div>
+    <footer class="mt-20 pt-8 border-t border-white/5 text-center">
+      <p class="text-ink-200/30 text-xs uppercase tracking-widest">
+        Pedro Barrante Vázquez · <span id="year"></span>
+      </p>
+    </footer>
 
-      <footer class="bio-footer">
-        <p>Pedro Barrante Vázquez • Técnico Superior en DAM</p>
-        <div class="footer-line"></div>
-      </footer>
-    </main>
-  </body>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
