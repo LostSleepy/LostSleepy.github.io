@@ -1,211 +1,177 @@
 <!doctype html>
 <html lang="es" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Política de privacidad de la wiki fan-made de Jujutsu Kaisen por Sleepy."
-    />
-    <title>Privacidad | Wiki JJK</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Política de privacidad de la wiki fan-made de Jujutsu Kaisen por Sleepy." />
+  <title>Privacidad | Wiki JJK</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ['"Shippori Mincho"', "serif"],
-              body: ['"DM Sans"', "sans-serif"],
-            },
-            colors: {
-              ink: {
-                50: "#f0eee9",
-                100: "#d4cfc6",
-                200: "#a89f91",
-                900: "#1a1714",
-                950: "#0d0c0a",
-              },
-              curse: { DEFAULT: "#7c3aed", light: "#a78bfa", dark: "#4c1d95" },
-            },
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse: { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease both',
+            'slide-up': 'slideUp 0.8s ease both',
+          },
+          keyframes: {
+            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
           },
         },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Shippori+Mincho:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="multimediajujutsu/Iconos/favicon.png"
-      type="image/png"
-    />
-    <style>
-      body {
-        font-family: "DM Sans", sans-serif;
-      }
-      h1,
-      h2 {
-        font-family: "Shippori Mincho", serif;
-      }
-      .accent-line {
-        background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent);
-        height: 2px;
-      }
-    </style>
-  </head>
+      },
+    }
+  </script>
 
-  <body class="bg-ink-950 text-ink-100 antialiased min-h-screen">
-    <!-- Nav mínima -->
-    <nav class="border-b border-white/5 px-6 py-4">
-      <div class="max-w-3xl mx-auto flex items-center justify-between">
-        <a
-          href="./index.html"
-          class="flex items-center gap-2 text-ink-200 hover:text-curse-light transition-colors text-sm"
-        >
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Volver a la wiki
-        </a>
-        <span class="text-ink-200/40 text-xs font-display">呪術廻戦</span>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent); height: 2px; }
+    .glass-nav {
+      background: rgba(13, 12, 10, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .glass-card {
+      background: rgba(26, 23, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #7c3aed;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+
+<body class="bg-ink-950 text-ink-100 antialiased min-h-screen">
+
+  <!-- ══════ NAVEGACIÓN UNIFICADA ══════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors">
+        <span class="text-lg font-display font-bold">呪</span>
+        <span class="text-sm font-medium hidden sm:inline">Wiki JJK</span>
+      </a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="index.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Inicio</a>
+        <a href="index.html#personajes" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Personajes</a>
+        <a href="contacto.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Contacto</a>
+        <a href="privacidad.html" class="nav-link text-curse-light">Privacidad</a>
+        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/30 transition-all">Creador</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <main class="max-w-3xl mx-auto px-6 py-20">
-      <!-- Cabecera -->
-      <header class="mb-14">
-        <p class="text-curse-light text-xs tracking-widest uppercase mb-4">
-          Aviso legal
+  <main class="max-w-3xl mx-auto px-6 pt-28 pb-20 animate-slide-up">
+    <header class="mb-14">
+      <p class="text-curse-light text-xs tracking-widest uppercase mb-4">Aviso legal</p>
+      <h1 class="text-4xl font-bold text-white mb-4">Política de Privacidad</h1>
+      <div class="accent-line w-24 mb-6"></div>
+      <p class="text-ink-200 text-sm">
+        Última actualización: <span id="current-date"></span>
+      </p>
+    </header>
+
+    <div class="space-y-12 text-ink-200 leading-relaxed">
+      <section class="glass-card rounded-2xl p-8 animate-fade-up">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
+          Naturaleza del proyecto
+        </h2>
+        <p>
+          Esta wiki es un proyecto personal, educativo y sin ánimo de lucro creado por Pedro Barrante Vázquez. No está afiliado de ninguna forma a Gege Akutami, Shueisha, MAPPA ni ninguna entidad oficial relacionada con Jujutsu Kaisen.
         </p>
-        <h1 class="text-4xl font-bold text-white mb-4">
-          Política de Privacidad
-        </h1>
-        <div class="accent-line w-24 mb-6"></div>
-        <p class="text-ink-200 text-sm">
-          Última actualización: <span id="current-date">mayo de 2025</span>
+      </section>
+
+      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.1s;">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
+          Datos que recogemos
+        </h2>
+        <p class="mb-4">
+          Esta web <strong class="text-white">no recoge ningún dato personal</strong> de forma activa. No hay formularios de registro, cuentas de usuario ni sistemas de seguimiento propios.
         </p>
+        <p>
+          Al estar alojada en <strong class="text-white">GitHub Pages</strong>, el servidor de GitHub puede registrar información técnica básica (dirección IP, navegador, páginas visitadas) según su propia
+          <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-curse-light hover:underline">política de privacidad</a>.
+        </p>
+      </section>
 
-        <script>
-          const element = document.getElementById("current-date");
-          const options = { month: "long", year: "numeric" };
-          const now = new Date();
+      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.2s;">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
+          Cookies
+        </h2>
+        <p>
+          Este sitio <strong class="text-white">no utiliza cookies</strong> propias de ningún tipo. No hay analíticas, publicidad ni rastreo de comportamiento.
+        </p>
+      </section>
 
-          // Formatea la fecha en español: "mayo de 2026"
-          let dateString = new Intl.DateTimeFormat("es-ES", options).format(
-            now,
-          );
+      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.3s;">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
+          Contenido de terceros
+        </h2>
+        <p>
+          Las imágenes y contenidos relacionados con Jujutsu Kaisen pertenecen a sus respectivos propietarios. Se usan exclusivamente con fines fan-made, educativos y sin ningún tipo de beneficio económico.
+        </p>
+      </section>
 
-          element.textContent = dateString;
-        </script>
-      </header>
+      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.4s;">
+        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
+          Contacto
+        </h2>
+        <p>
+          Si tienes alguna consulta sobre este aviso, puedes ponerte en contacto a través de la
+          <a href="contacto.html" class="text-curse-light hover:underline">página de contacto</a>.
+        </p>
+      </section>
+    </div>
+  </main>
 
-      <!-- Contenido -->
-      <div class="space-y-12 text-ink-200 leading-relaxed">
-        <section>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-            <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-            Naturaleza del proyecto
-          </h2>
-          <p>
-            Esta wiki es un proyecto personal, educativo y sin ánimo de lucro
-            creado por Pedro Barrante Vázquez. No está afiliado de ninguna forma
-            a Gege Akutami, Shueisha, MAPPA ni ninguna entidad oficial
-            relacionada con Jujutsu Kaisen.
-          </p>
-        </section>
+  <footer class="border-t border-white/5 py-8 px-6 mt-10">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <p class="text-ink-200/40 text-xs">© <span id="year-footer"></span> LostSleepy · Wiki fan-made</p>
+      <a href="index.html" class="text-ink-200/40 hover:text-curse-light text-xs transition-colors">Inicio</a>
+    </div>
+  </footer>
 
-        <section>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-            <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-            Datos que recogemos
-          </h2>
-          <p class="mb-4">
-            Esta web
-            <strong class="text-white">no recoge ningún dato personal</strong>
-            de forma activa. No hay formularios de registro, cuentas de usuario
-            ni sistemas de seguimiento propios.
-          </p>
-          <p>
-            Al estar alojada en
-            <strong class="text-white">GitHub Pages</strong>, el servidor de
-            GitHub puede registrar información técnica básica (dirección IP,
-            navegador, páginas visitadas) según su propia
-            <a
-              href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-curse-light hover:underline"
-            >
-              política de privacidad </a
-            >.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-            <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-            Cookies
-          </h2>
-          <p>
-            Este sitio
-            <strong class="text-white">no utiliza cookies</strong> propias de
-            ningún tipo. No hay analíticas, publicidad ni rastreo de
-            comportamiento.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-            <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-            Contenido de terceros
-          </h2>
-          <p>
-            Las imágenes y contenidos relacionados con Jujutsu Kaisen pertenecen
-            a sus respectivos propietarios. Se usan exclusivamente con fines
-            fan-made, educativos y sin ningún tipo de beneficio económico.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-            <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-            Contacto
-          </h2>
-          <p>
-            Si tienes alguna consulta sobre este aviso, puedes ponerte en
-            contacto a través de la
-            <a href="contacto.html" class="text-curse-light hover:underline"
-              >página de contacto</a
-            >.
-          </p>
-        </section>
-      </div>
-    </main>
-
-    <!-- Footer mínimo -->
-    <footer class="border-t border-white/5 py-8 px-6 mt-10">
-      <div class="max-w-3xl mx-auto flex items-center justify-between">
-        <p class="text-ink-200/40 text-xs">© <script>document.write(new Date().getFullYear());</script> LostSleepy · Wiki fan-made</p>
-        <a
-          href="index.html"
-          class="text-ink-200/40 hover:text-curse-light text-xs transition-colors"
-          >Inicio</a
-        >
-      </div>
-    </footer>
-  </body>
+  <script>
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+    const dateEl = document.getElementById("current-date");
+    if (dateEl) {
+      const options = { month: "long", year: "numeric" };
+      dateEl.textContent = new Intl.DateTimeFormat("es-ES", options).format(new Date());
+    }
+  </script>
+</body>
 </html>

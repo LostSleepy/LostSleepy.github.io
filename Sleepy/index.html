@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pedro Barrante - Desarrollador DAM & Técnico SMR. Portfolio personal." />
   <title>Pedro Barrante | Desarrollador DAM</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,19 +13,28 @@
         extend: {
           fontFamily: {
             display: ['"Shippori Mincho"', 'serif'],
-            body:    ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
-            accent: { DEFAULT:'#0ea5e9', light:'#7dd3fc', dark:'#0369a1' },
+            jujutsu: {
+              purple: { 300: '#a78bfa', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#1e1b4b', 950: '#0f0d2e' },
+              dark: '#0a0a1a',
+              card: 'rgba(255,255,255,0.05)',
+              border: 'rgba(255,255,255,0.08)',
+            },
           },
           animation: {
             'fade-up': 'fadeUp 0.8s ease both',
+            'slide-up': 'slideUp 0.8s ease both',
             'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
           },
           keyframes: {
-            fadeUp:    { '0%':{ opacity:'0', transform:'translateY(30px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            fadeUp: { '0%':{ opacity:'0', transform:'translateY(30px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
             glowPulse: { '0%,100%':{ opacity:'0.3' }, '50%':{ opacity:'0.6' } },
+            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
           },
         },
       },
@@ -33,106 +43,174 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; overflow-x: hidden; }
     h1 { font-family: 'Shippori Mincho', serif; }
-    .glass-card { 
-      background: rgba(26, 23, 20, 0.6);
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-3 { width: 250px; height: 250px; background: rgba(59,130,246,0.08); top: 50%; left: 50%; animation: float 7s ease-in-out infinite 2s; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.04);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2rem;
     }
     .profile-gradient {
-      background: radial-gradient(circle at center, #0ea5e915 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, transparent 70%);
     }
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #a78bfa; }
+    .nav-glass {
+      background: rgba(10,10,26,0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(99,102,241,0.15);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a1a; }
+    ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
   </style>
 </head>
+<body>
 
-<body class="bg-ink-950 text-ink-100 antialiased min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
-  
-  <div class="absolute inset-0 profile-gradient"></div>
-  <div class="absolute -top-24 -left-24 w-96 h-96 bg-accent/10 blur-[120px] animate-glow-pulse"></div>
-  <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-900/10 blur-[120px] animate-glow-pulse"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-  <main class="relative z-10 w-full max-w-2xl animate-fade-up">
-    
-    <div class="mb-8">
-      <a href="../index.html" class="inline-flex items-center gap-2 text-ink-200/50 hover:text-accent transition-colors text-sm group">
-        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        Volver a la Wiki Jujutsu Kaisen
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-16">
+      <a href="../index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">S</span>
+        <span class="text-white font-display text-lg hidden sm:inline">Sleepy</span>
       </a>
+      <div class="flex items-center gap-1 md:gap-4">
+        <a href="index.html" class="nav-link text-sm text-purple-300 px-2 md:px-3 py-2 border-b-2 border-purple-500">Perfil</a>
+        <a href="biografia.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Biografía</a>
+        <a href="gustos1.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Gustos</a>
+        <a href="redessociales.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Redes</a>
+        <a href="formulariocontacto.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Contacto</a>
+      </div>
     </div>
+  </nav>
 
-    <section class="glass-card rounded-[2rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
-      <div class="absolute top-0 right-0 p-4 opacity-10">
-        <svg class="w-24 h-24 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.1 14.1H3.9L12 5.45z"/></svg>
+  <main class="relative z-10 pt-24 pb-16 px-4 md:px-8 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-2xl animate-slide-up">
+
+      <div class="mb-8">
+        <a href="../index.html" class="inline-flex items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors text-sm group">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Volver a la Wiki Jujutsu Kaisen
+        </a>
       </div>
 
-      <header class="flex flex-col items-center text-center mb-10">
-        <div class="w-24 h-24 bg-gradient-to-br from-accent to-purple-600 rounded-3xl flex items-center justify-center text-3xl font-bold text-white shadow-lg mb-6 transform -rotate-3">
-          PB
+      <section class="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-5">
+          <svg class="w-24 h-24 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.1 14.1H3.9L12 5.45z"/></svg>
         </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Pedro Barrante</h1>
-        <p class="text-accent-light font-medium tracking-wide uppercase text-xs">Desarrollador DAM & Técnico SMR</p>
-      </header>
 
-      <div class="space-y-8">
-        <p class="text-ink-200 text-center leading-relaxed max-w-md mx-auto">
-          Tengo <span id="edad" class="text-white font-bold"></span> años y me apasiona construir soluciones digitales elegantes. Explora mi trayectoria y proyectos a través de mis secciones personales.
-        </p>
+        <header class="flex flex-col items-center text-center mb-10">
+          <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-3xl flex items-center justify-center text-3xl font-bold text-white shadow-lg mb-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+            PB
+          </div>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Pedro Barrante</h1>
+          <p class="text-purple-300 font-medium tracking-wide uppercase text-xs">Desarrollador DAM & Técnico SMR</p>
+          <p class="text-gray-500 text-xs mt-3">🎂 4 de septiembre de 2003</p>
+        </header>
 
-        <nav class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <a href="biografia.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
-            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📖</span>
-            <span class="text-sm font-medium text-ink-100">Biografía</span>
-          </a>
-          <a href="gustos1.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
-            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">⭐</span>
-            <span class="text-sm font-medium text-ink-100">Gustos</span>
-          </a>
-          <a href="redessociales.html" class="flex flex-col items-center p-4 rounded-2xl bg-white/5 hover:bg-accent/10 border border-white/5 hover:border-accent/30 transition-all group">
-            <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📱</span>
-            <span class="text-sm font-medium text-ink-100">Redes</span>
-          </a>
-        </nav>
+        <div class="space-y-8">
+          <p class="text-gray-400 text-center leading-relaxed max-w-md mx-auto">
+            Tengo <span id="edad" class="text-purple-300 font-bold text-xl"></span> años y me apasiona construir soluciones digitales elegantes. Explora mi trayectoria y proyectos a través de mis secciones personales.
+          </p>
 
-        <div class="pt-6 border-t border-white/5">
-          <a href="formulariocontacto.html" class="flex items-center justify-center gap-3 w-full py-4 bg-white text-ink-950 font-bold rounded-2xl hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            Contactar conmigo
-          </a>
+          <nav class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="biografia.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
+              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📖</span>
+              <span class="text-sm font-medium text-gray-200">Biografía</span>
+            </a>
+            <a href="gustos1.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
+              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">⭐</span>
+              <span class="text-sm font-medium text-gray-200">Gustos</span>
+            </a>
+            <a href="redessociales.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
+              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📱</span>
+              <span class="text-sm font-medium text-gray-200">Redes</span>
+            </a>
+          </nav>
+
+          <div class="pt-6 border-t border-white/5">
+            <a href="formulariocontacto.html" class="flex items-center justify-center gap-3 w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-2xl hover:from-purple-500 hover:to-indigo-500 transition-all shadow-xl active:scale-95 group">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              Contactar conmigo
+            </a>
+          </div>
         </div>
-      </div>
 
-      <footer class="mt-12 text-center">
-        <p class="text-ink-200/20 text-[10px] uppercase tracking-[0.2em]">
-          © <span id="current-year"></span> Pedro Barrante · Dev Mini-Portfolio
-        </p>
-      </footer>
-    </section>
+        <footer class="mt-12 text-center">
+          <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">© <span id="current-year"></span> Pedro Barrante · Dev Mini-Portfolio</p>
+        </footer>
+      </section>
+    </div>
   </main>
 
   <script>
-    // Lógica de cálculo de edad mantenida de tu versión original
     function calcularEdad(fechaNacimiento) {
       const hoy = new Date();
       const cumple = new Date(fechaNacimiento);
       let edad = hoy.getFullYear() - cumple.getFullYear();
       const mes = hoy.getMonth() - cumple.getMonth();
-
       if (mes < 0 || (mes === 0 && hoy.getDate() < cumple.getDate())) {
         edad--;
       }
       return edad;
     }
-
-    // Configuración de tu fecha: Año, Mes (0-11), Día
-    // He puesto 2000 como ejemplo, cámbialo por tu año real si es distinto
-    document.getElementById("edad").textContent = calcularEdad("2003-09-04"); 
-    
-    // Año dinámico footer
+    document.getElementById("edad").textContent = calcularEdad("2003-09-04");
     document.getElementById("current-year").textContent = new Date().getFullYear();
   </script>
 </body>

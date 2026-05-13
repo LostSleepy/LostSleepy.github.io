@@ -21,12 +21,16 @@
             rose:   { DEFAULT:'#e11d48', light:'#fb7185', dark:'#881337' },
           },
           animation: {
-            'fade-up': 'fadeUp 0.6s ease both',
+            'fade-up': 'fadeUp 0.7s ease both',
+            'slide-up': 'slideUp 0.8s ease both',
             'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
           },
           keyframes: {
             fadeUp:    { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            slideUp:   { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
             glowPulse: { '0%,100%':{ opacity:'0.4' }, '50%':{ opacity:'0.8' } },
+            float:     { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
           },
         },
       },
@@ -35,17 +39,59 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="shortcut icon" href="../multimediajujutsu/Iconos/favicon.png" type="image/png" />
 
   <style>
     body { font-family: 'DM Sans', sans-serif; }
     h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
     .accent-line { background: linear-gradient(90deg, #e11d48, #7c3aed, transparent); height: 2px; }
-    [id] { scroll-margin-top: 5rem; }
-    .char-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .gallery-img-wrap img { transition: transform 0.4s ease; }
-    .gallery-img-wrap:hover img { transform: scale(1.04); }
+    [id] { scroll-margin-top: 5.5rem; }
+    .glass-nav {
+      background: rgba(13, 12, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .char-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(13, 12, 10, 0.7);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #e11d48;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .glass-card {
+      background: rgba(26, 23, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .skill-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(225, 29, 72, 0.3);
+    }
+    .gallery-img-wrap { overflow: hidden; border-radius: 1rem; }
+    .gallery-img-wrap img { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .gallery-img-wrap:hover img { transform: scale(1.06); }
+    .gallery-img-wrap figcaption {
+      background: linear-gradient(to top, rgba(13,12,10,0.8), transparent);
+    }
     @media (min-width: 768px) {
       .float-img-right { float: right; margin: 0 0 1.5rem 2rem; clear: right; }
       .float-img-left  { float: left;  margin: 0 2rem 1.5rem 0; clear: left; }
@@ -57,9 +103,26 @@
 
 <body class="bg-ink-950 text-ink-100 antialiased">
 
-  <header class="relative overflow-hidden border-b border-white/5">
+  <!-- ══════ NAVEGACIÓN UNIFICADA ══════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-white hover:text-rose-light transition-colors">
+        <span class="text-lg font-display font-bold">呪</span>
+        <span class="text-sm font-medium hidden sm:inline">Wiki JJK</span>
+      </a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="../index.html" class="nav-link text-ink-200 hover:text-rose-light transition-colors">Inicio</a>
+        <a href="../index.html#personajes" class="nav-link text-ink-200 hover:text-rose-light transition-colors">Personajes</a>
+        <a href="../contacto.html" class="nav-link text-ink-200 hover:text-rose-light transition-colors">Contacto</a>
+        <a href="Gojo.html" class="nav-link text-ink-200 hover:text-rose-light transition-colors">Gojo →</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative overflow-hidden border-b border-white/5 pt-14">
     <div class="absolute inset-0 bg-gradient-to-br from-[#1a0a0f] via-ink-950 to-ink-950"></div>
     <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-rose-900/10 blur-[100px] animate-glow-pulse"></div>
+    <div class="absolute bottom-20 left-10 w-40 h-40 rounded-full bg-rose/10 blur-[60px] animate-float"></div>
 
     <div class="relative z-10 flex items-center justify-between px-6 pt-5 pb-0 max-w-5xl mx-auto">
       <a href="Megumi.html" class="flex items-center gap-2 text-ink-200/70 hover:text-rose-light transition-colors text-sm">
@@ -73,7 +136,7 @@
       </a>
     </div>
 
-    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-fade-up">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 py-14 animate-slide-up">
       <p class="text-rose-light text-xs tracking-widest uppercase mb-3">Hechicera · Grado 3</p>
       <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-2">Nobara Kugisaki</h1>
       <p class="text-2xl text-ink-200/60 font-display mb-6">釘崎野薔薇</p>
@@ -84,7 +147,7 @@
     </div>
   </header>
 
-  <nav class="char-nav sticky top-0 z-40 border-b border-white/5 bg-ink-950/80">
+  <nav class="char-nav sticky top-14 z-40 border-b border-white/5">
     <div class="max-w-5xl mx-auto px-6">
       <ul class="flex gap-1 sm:gap-2 overflow-x-auto py-3 text-sm scrollbar-hide">
         <li><a href="#quienes" class="px-3 py-1.5 rounded-full text-ink-200/70 hover:text-rose-light hover:bg-rose/10 transition-all whitespace-nowrap">¿Quién es?</a></li>
@@ -99,7 +162,7 @@
 
   <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
 
-    <section id="quienes">
+    <section id="quienes" class="animate-fade-up">
       <div class="flex items-center gap-4 mb-8">
         <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
         <h2 class="text-3xl font-bold text-white">¿Quién es?</h2>
@@ -111,14 +174,14 @@
       </div>
     </section>
 
-    <section id="apariencia">
+    <section id="apariencia" class="animate-fade-up" style="animation-delay: 0.1s;">
       <div class="flex items-center gap-4 mb-8">
         <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
         <h2 class="text-3xl font-bold text-white">Apariencia</h2>
       </div>
-      <div class="clearfix">
+      <div class="clearfix glass-card rounded-2xl p-6">
         <figure class="float-img-left mb-4">
-          <div class="rounded-2xl overflow-hidden border border-white/10 w-64">
+          <div class="rounded-xl overflow-hidden border border-white/10 w-64 shadow-lg">
             <img src="../multimediajujutsu/Nobara/NobaraAnime.jpg" alt="Imagen de Nobara" class="w-full object-cover" />
           </div>
           <figcaption class="text-ink-200/50 text-xs text-center mt-2">Apariencia en el anime</figcaption>
@@ -130,14 +193,14 @@
       </div>
     </section>
 
-    <section id="perso">
+    <section id="perso" class="animate-fade-up" style="animation-delay: 0.2s;">
       <div class="flex items-center gap-4 mb-8">
         <span class="w-1 h-8 bg-rose rounded-full flex-shrink-0"></span>
         <h2 class="text-3xl font-bold text-white">Personalidad</h2>
       </div>
-      <div class="clearfix">
+      <div class="clearfix glass-card rounded-2xl p-6">
         <figure class="float-img-right mb-4">
-          <div class="rounded-2xl overflow-hidden border border-white/10 w-56">
+          <div class="rounded-xl overflow-hidden border border-white/10 w-56 shadow-lg">
             <img src="../multimediajujutsu/Nobara/NobaraPers.gif" alt="Nobara animada" class="w-full object-cover" />
           </div>
           <figcaption class="text-ink-200/50 text-xs text-center mt-2">Personalidad arrolladora</figcaption>
@@ -156,7 +219,7 @@
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2 lg:col-span-1">
+        <div class="skill-card rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2 lg:col-span-1 glass-card">
           <div class="flex items-center gap-2 mb-1">
             <span class="text-xs text-rose-light px-2 py-0.5 rounded-full border border-rose/30">Técnica Principal</span>
           </div>
@@ -167,27 +230,27 @@
           </figure>
         </div>
 
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+        <div class="skill-card rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2 glass-card">
           <h3 class="text-white font-semibold text-base">Horquilla (Kanzashi)</h3>
           <p class="text-ink-200 text-sm leading-relaxed">Imbuye sus clavos con energía maldita para que exploten violentamente al impactar o tras una orden.</p>
         </div>
 
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+        <div class="skill-card rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2 glass-card">
           <h3 class="text-white font-semibold text-base">Destello Negro</h3>
           <p class="text-ink-200 text-sm leading-relaxed">Nobara es capaz de ejecutar el Destello Negro, habiéndolo logrado durante su combate contra las Pinturas de la Muerte.</p>
         </div>
 
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+        <div class="skill-card rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2 glass-card">
           <h3 class="text-white font-semibold text-base">Técnica de Muñeco Vudú</h3>
           <p class="text-ink-200 text-sm leading-relaxed">Heredada de su abuela, es una técnica versátil que permite atacar desde largas distancias con gran precisión.</p>
         </div>
 
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2">
+        <div class="skill-card rounded-2xl border border-white/8 bg-ink-900/60 p-5 space-y-2 glass-card">
           <h3 class="text-white font-semibold text-base">Herramientas Malditas</h3>
           <p class="text-ink-200 text-sm leading-relaxed">Utiliza un martillo de hierro y clavos imbuidos en energía para combate cercano y medio alcance.</p>
         </div>
 
-        <div class="rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2">
+        <div class="skill-card rounded-2xl border border-rose/20 bg-rose-dark/10 p-5 space-y-2 glass-card">
           <div class="flex items-center gap-2 mb-1">
             <span class="text-xs text-rose-light px-2 py-0.5 rounded-full border border-rose/30">Hito Final</span>
           </div>
@@ -204,17 +267,17 @@
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+        <figure class="gallery-img-wrap relative border border-white/8 bg-ink-900 shadow-lg">
           <img src="../multimediajujutsu/Nobara/NobaraAparienciaAnime.jpg" alt="Anime" class="w-full aspect-[4/5] object-cover" />
-          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Anime)</figcaption>
+          <figcaption class="absolute bottom-0 left-0 right-0 text-ink-200/80 text-xs text-center py-2 px-3">Apariencia (Anime)</figcaption>
         </figure>
-        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+        <figure class="gallery-img-wrap relative border border-white/8 bg-ink-900 shadow-lg">
           <img src="../multimediajujutsu/Nobara/NobaraManga.jpg" alt="Manga" class="w-full aspect-[4/5] object-cover" />
-          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Apariencia (Manga)</figcaption>
+          <figcaption class="absolute bottom-0 left-0 right-0 text-ink-200/80 text-xs text-center py-2 px-3">Apariencia (Manga)</figcaption>
         </figure>
-        <figure class="gallery-img-wrap rounded-2xl overflow-hidden border border-white/8 bg-ink-900">
+        <figure class="gallery-img-wrap relative border border-white/8 bg-ink-900 shadow-lg">
           <img src="../multimediajujutsu/Nobara/NobaraCT.jpg" alt="Resonancia" class="w-full aspect-[4/5] object-cover" />
-          <figcaption class="text-ink-200/50 text-xs text-center py-2 px-3">Usando Resonancia</figcaption>
+          <figcaption class="absolute bottom-0 left-0 right-0 text-ink-200/80 text-xs text-center py-2 px-3">Usando Resonancia</figcaption>
         </figure>
       </div>
     </section>
@@ -226,15 +289,15 @@
       </div>
 
       <div class="grid sm:grid-cols-3 gap-4 mb-10">
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+        <div class="glass-card rounded-2xl p-5 text-center">
           <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Cumpleaños</p>
           <p class="text-white text-2xl font-bold">7 Ago</p>
         </div>
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+        <div class="glass-card rounded-2xl p-5 text-center">
           <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Edad</p>
           <p class="text-white text-2xl font-bold">16 años</p>
         </div>
-        <div class="rounded-2xl border border-white/8 bg-ink-900/60 p-5 text-center">
+        <div class="glass-card rounded-2xl p-5 text-center">
           <p class="text-ink-200/50 text-xs uppercase tracking-widest mb-1">Marca favorita</p>
           <p class="text-white text-xl font-bold">Balenciaga</p>
         </div>
@@ -248,10 +311,8 @@
         <li class="flex items-start gap-3 text-ink-200"><span class="text-rose-light mt-1 flex-shrink-0">▸</span> Le encanta la sandía y todo lo que sea tendencia en la gran ciudad.</li>
       </ul>
 
-      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4">
-        <p class="text-ink-200/40 text-xs">
-          Última actualización de esta página: <span id="fecha-actualizacion"></span>
-        </p>
+      <div class="mt-10 rounded-xl border border-white/5 bg-ink-900/40 px-5 py-4 glass-card">
+        <p class="text-ink-200/40 text-xs">Última actualización de esta página: <span id="fecha-actualizacion"></span></p>
       </div>
     </section>
 

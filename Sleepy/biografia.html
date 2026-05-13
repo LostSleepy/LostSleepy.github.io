@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trayectoria profesional de Pedro Barrante - de SMR a DAM." />
   <title>Trayectoria | Pedro Barrante</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,19 +13,28 @@
         extend: {
           fontFamily: {
             display: ['"Shippori Mincho"', 'serif'],
-            body:    ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
-            accent: { DEFAULT:'#0ea5e9', light:'#7dd3fc', dark:'#0369a1' },
+            jujutsu: {
+              purple: { 300: '#a78bfa', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#1e1b4b', 950: '#0f0d2e' },
+              dark: '#0a0a1a',
+              card: 'rgba(255,255,255,0.05)',
+              border: 'rgba(255,255,255,0.08)',
+            },
           },
           animation: {
-            'fade-in': 'fadeIn 0.8s ease out',
-            'slide-in': 'slideIn 0.6s ease out',
+            'fade-up': 'fadeUp 0.7s ease both',
+            'slide-up': 'slideUp 0.8s ease both',
+            'fade-in': 'fadeIn 0.8s ease both',
+            'float': 'float 6s ease-in-out infinite',
           },
           keyframes: {
+            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
             fadeIn: { '0%':{ opacity:'0' }, '100%':{ opacity:'1' } },
-            slideIn: { '0%':{ opacity:'0', transform:'translateX(-20px)' }, '100%':{ opacity:'1', transform:'translateX(0)' } },
+            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
           },
         },
       },
@@ -33,95 +43,178 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; overflow-x: hidden; }
     h1, h2 { font-family: 'Shippori Mincho', serif; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+
     .timeline-line {
-      background: linear-gradient(to bottom, transparent, #0ea5e9, #7c3aed, transparent);
+      background: linear-gradient(to bottom, transparent, #6366f1, #a78bfa, transparent);
     }
     .glass-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .glass-item:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-3px);
+    }
+
+    .nav-glass {
+      background: rgba(10,10,26,0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(99,102,241,0.15);
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #a78bfa; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a1a; }
+    ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
   </style>
 </head>
+<body>
 
-<body class="bg-ink-950 text-ink-100 antialiased min-h-screen py-12 px-6">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-  <main class="max-w-3xl mx-auto">
-    
-    <header class="mb-16 animate-fade-in">
-      <a href="index.html" class="inline-flex items-center gap-2 text-accent-light hover:text-white transition-colors mb-8 group">
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">S</span>
+        <span class="text-white font-display text-lg hidden sm:inline">Sleepy</span>
+      </a>
+      <div class="flex items-center gap-1 md:gap-4">
+        <a href="index.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Perfil</a>
+        <a href="biografia.html" class="nav-link text-sm text-purple-300 px-2 md:px-3 py-2 border-b-2 border-purple-500">Biografía</a>
+        <a href="gustos1.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Gustos</a>
+        <a href="redessociales.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Redes</a>
+        <a href="formulariocontacto.html" class="nav-link text-sm text-gray-400 hover:text-purple-300 px-2 md:px-3 py-2 transition-colors">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-3xl mx-auto pt-24 pb-16 px-4 md:px-8">
+    <header class="mb-16 animate-fade-up">
+      <a href="index.html" class="inline-flex items-center gap-2 text-purple-400 hover:text-white transition-colors mb-8 group">
         <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7"/></svg>
         Regresar al perfil
       </a>
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Mi Trayectoria</h1>
-      <p class="text-ink-200 text-lg max-w-xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-purple-300 mb-4 border border-purple-500/20" style="background:rgba(99,102,241,0.08)">
+        <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+        Trayectoria
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 gradient-text">Mi Trayectoria</h1>
+      <p class="text-gray-400 text-lg max-w-xl">
         De los sistemas al desarrollo: una evolución constante basada en la curiosidad técnica y la resolución de problemas.
       </p>
     </header>
 
-    <div class="relative pl-8 animate-slide-in">
+    <div class="relative pl-8 animate-fade-up">
       <div class="absolute left-0 top-0 bottom-0 w-px timeline-line"></div>
 
       <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-accent shadow-[0_0_10px_#0ea5e9]"></div>
-        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5">
-          <span class="text-accent-light text-xs font-bold uppercase tracking-widest mb-2 block">Cimientos Técnicos</span>
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-purple-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+        <div class="glass-item p-6 md:p-8">
+          <span class="text-purple-400 text-xs font-bold uppercase tracking-widest mb-2 block">Cimientos Técnicos</span>
           <h2 class="text-2xl text-white mb-3">Técnico en SMR</h2>
-          <p class="text-ink-200 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Inicié mi camino dominando la base de todo: los sistemas y las redes. Esta etapa me permitió entender el "hierro", la infraestructura y el despliegue técnico necesario para que cualquier software pueda respirar.
           </p>
         </div>
       </article>
 
       <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-purple-500 shadow-[0_0_10px_#7c3aed]"></div>
-        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5">
-          <span class="text-purple-400 text-xs font-bold uppercase tracking-widest mb-2 block">Especialización Superior</span>
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-indigo-500 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></div>
+        <div class="glass-item p-6 md:p-8">
+          <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2 block">Especialización Superior</span>
           <h2 class="text-2xl text-white mb-3">Grado Superior en DAM</h2>
-          <p class="text-ink-200 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Tras consolidar los sistemas, di el salto al desarrollo de aplicaciones multiplataforma. En MEDAC perfeccioné la lógica de programación y la creación de soluciones escalables, enfocándome en la eficiencia del código y la experiencia de usuario.
           </p>
         </div>
       </article>
 
       <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-white shadow-[0_0_15px_white]"></div>
-        <div class="glass-item rounded-2xl p-6 transition-all group-hover:bg-white/5 border-l-4 border-l-accent">
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(167,139,250,0.5)]"></div>
+        <div class="glass-item p-6 md:p-8 border-l-4 border-l-purple-500">
           <span class="text-white text-xs font-bold uppercase tracking-widest mb-2 block">Presente & Enfoque</span>
-          <h2 class="text-2xl text-white mb-3">Desarrollador y Tecnico informático</h2>
-          <p class="text-ink-200 leading-relaxed mb-4">
+          <h2 class="text-2xl text-white mb-3">Desarrollador y Técnico Informático</h2>
+          <p class="text-gray-400 leading-relaxed mb-4">
             Actualmente resido en Sevilla, donde compagino mi formación técnica con proyectos personales de automatización. Me considero un profesional híbrido: entiendo la infraestructura gracias a SMR y la creación de producto gracias a DAM.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-accent-light text-xs">Entusiasta tecnologico</span>
-            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-xs">Hardware & Software</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-ink-200 text-xs">Refinando mi inglés</span>
+            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-xs">Entusiasta tecnológico</span>
+            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-300 text-xs">Hardware & Software</span>
+            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs">Refinando mi inglés</span>
           </div>
         </div>
       </article>
 
       <article class="relative group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-ink-950 border-2 border-dashed border-ink-200"></div>
+        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-dashed border-gray-500"></div>
         <div class="p-6">
-          <h2 class="text-xl text-ink-200 mb-2">Próximo capítulo...</h2>
-          <p class="text-ink-200/50 italic text-sm">
-            Buscando aplicar esta visión técnica en entornos profesionales.
-          </p>
+          <h2 class="text-xl text-gray-400 mb-2">Próximo capítulo...</h2>
+          <p class="text-gray-500 italic text-sm">Buscando aplicar esta visión técnica en entornos profesionales.</p>
         </div>
       </article>
     </div>
 
     <footer class="mt-20 pt-8 border-t border-white/5 text-center">
-      <p class="text-ink-200/30 text-xs uppercase tracking-widest">
-        Pedro Barrante Vázquez · <span id="year"></span>
-      </p>
+      <p class="text-gray-500 text-xs uppercase tracking-widest">Pedro Barrante Vázquez · <span id="year"></span></p>
     </footer>
-
   </main>
 
   <script>

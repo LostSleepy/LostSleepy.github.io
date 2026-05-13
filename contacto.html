@@ -1,108 +1,133 @@
 <!doctype html>
 <html lang="es" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Contacto con el creador de la wiki fan-made de Jujutsu Kaisen." />
-    <title>Contacto | Wiki JJK</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contacto con el creador de la wiki fan-made de Jujutsu Kaisen." />
+  <title>Contacto | Wiki JJK</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              display: ['"Shippori Mincho"', 'serif'],
-              body:    ['"DM Sans"', 'sans-serif'],
-            },
-            colors: {
-              ink: {
-                50: '#f0eee9', 100: '#d4cfc6', 200: '#a89f91',
-                900: '#1a1714', 950: '#0d0c0a',
-              },
-              curse: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#4c1d95' },
-            },
-            animation: {
-              'fade-up': 'fadeUp 0.6s ease both',
-            },
-            keyframes: {
-              fadeUp: {
-                '0%':   { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-            },
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Shippori Mincho"', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
+            curse: { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease both',
+            'slide-up': 'slideUp 0.8s ease both',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
+            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
+            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
           },
         },
-      }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
-    <style>
-      body { font-family: 'DM Sans', sans-serif; }
-      h1, h2 { font-family: 'Shippori Mincho', serif; }
-      .accent-line { background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent); height: 2px; }
-      .glow { box-shadow: 0 0 40px rgba(124,58,237,0.15); }
-    </style>
-  </head>
+      },
+    }
+  </script>
 
-  <body class="bg-ink-950 text-ink-100 antialiased min-h-screen flex flex-col">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
 
-    <!-- Nav mínima -->
-    <nav class="border-b border-white/5 px-6 py-4">
-      <div class="max-w-3xl mx-auto flex items-center justify-between">
-        <a href="./index.html" class="flex items-center gap-2 text-ink-200 hover:text-curse-light transition-colors text-sm">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-          </svg>
-          Volver a la wiki
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2 { font-family: 'Shippori Mincho', serif; }
+    .accent-line { background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent); height: 2px; }
+    .glass-nav {
+      background: rgba(13, 12, 10, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .glow { box-shadow: 0 0 40px rgba(124,58,237,0.15); }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #7c3aed;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+
+<body class="bg-ink-950 text-ink-100 antialiased min-h-screen flex flex-col">
+
+  <!-- ══════ NAVEGACIÓN UNIFICADA ══════ -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors">
+        <span class="text-lg font-display font-bold">呪</span>
+        <span class="text-sm font-medium hidden sm:inline">Wiki JJK</span>
+      </a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="index.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Inicio</a>
+        <a href="index.html#personajes" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Personajes</a>
+        <a href="contacto.html" class="nav-link text-curse-light">Contacto</a>
+        <a href="privacidad.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Privacidad</a>
+        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/30 transition-all">Creador</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex items-center justify-center px-6 pt-24">
+    <div class="max-w-lg w-full text-center animate-slide-up">
+      <div class="relative">
+        <p class="text-[10rem] font-display text-curse/10 mb-4 select-none animate-float leading-none">連</p>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink-950 pointer-events-none"></div>
+      </div>
+
+      <p class="text-curse-light text-xs tracking-widest uppercase mb-4">Contacto</p>
+      <h1 class="text-5xl font-bold text-white mb-4">Sleepy</h1>
+      <div class="accent-line w-20 mx-auto mb-8"></div>
+
+      <p class="text-ink-200 leading-relaxed mb-12 max-w-md mx-auto">
+        Si quieres contactar con el creador de esta wiki, encontrarás todos los enlaces a sus redes sociales y formas de contacto en su portfolio personal.
+      </p>
+
+      <a href="Sleepy/redessociales.html"
+         class="glow inline-flex items-center gap-3 px-8 py-4 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark hover:shadow-lg hover:shadow-curse/20 transition-all duration-300 mb-6 group">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+        </svg>
+        Ver redes sociales
+      </a>
+
+      <div>
+        <a href="Sleepy/index.html" class="text-ink-200/60 text-sm hover:text-curse-light transition-colors underline underline-offset-4">
+          o visita el portfolio completo
         </a>
-        <span class="text-ink-200/40 text-xs font-display">呪術廻戦</span>
       </div>
-    </nav>
+    </div>
+  </main>
 
-    <main class="flex-1 flex items-center justify-center px-6 py-24">
-      <div class="max-w-lg w-full text-center animate-fade-up">
+  <footer class="border-t border-white/5 py-8 px-6 mt-12">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <p class="text-ink-200/40 text-xs">© <span id="year-footer"></span> LostSleepy · Wiki fan-made</p>
+      <a href="privacidad.html" class="text-ink-200/40 hover:text-curse-light text-xs transition-colors">Privacidad</a>
+    </div>
+  </footer>
 
-        <!-- Kanji decorativo -->
-        <p class="text-8xl font-display text-curse/20 mb-8 select-none">連</p>
+  <script>
+    document.getElementById('year-footer').textContent = new Date().getFullYear();
+  </script>
 
-        <p class="text-curse-light text-xs tracking-widest uppercase mb-4">Contacto</p>
-        <h1 class="text-4xl font-bold text-white mb-4">Sleepy</h1>
-        <div class="accent-line w-20 mx-auto mb-8"></div>
-
-        <p class="text-ink-200 leading-relaxed mb-12">
-          Si quieres contactar con el creador de esta wiki, encontrarás todos los enlaces a sus redes sociales y formas de contacto en su portfolio personal.
-        </p>
-
-        <!-- Botón principal al portfolio de redes -->
-        <a href="Sleepy/redessociales.html"
-           class="glow inline-flex items-center gap-3 px-8 py-4 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark transition-all duration-300 mb-6">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-          </svg>
-          Ver redes sociales
-        </a>
-
-        <div>
-          <a href="Sleepy/index.html"
-             class="text-ink-200/60 text-sm hover:text-curse-light transition-colors underline underline-offset-4">
-            o visita el portfolio completo
-          </a>
-        </div>
-
-      </div>
-    </main>
-
-    <!-- Footer mínimo -->
-    <footer class="border-t border-white/5 py-8 px-6">
-      <div class="max-w-3xl mx-auto flex items-center justify-between">
-        <p class="text-ink-200/40 text-xs">© <script>document.write(new Date().getFullYear());</script> LostSleepy · Wiki fan-made</p>
-        <a href="privacidad.html" class="text-ink-200/40 hover:text-curse-light text-xs transition-colors">Privacidad</a>
-      </div>
-    </footer>
-
-  </body>
+</body>
 </html>
