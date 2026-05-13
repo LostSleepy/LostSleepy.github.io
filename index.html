@@ -156,6 +156,33 @@
     .nav-link:hover::after { width: 100%; }
 
     * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+
+    /* ─── RESPONSIVE MÓVIL ─── */
+    @media (max-width: 480px) {
+      .kanji-watermark { font-size: 8rem !important; }
+      .char-card { animation: none !important; opacity: 1 !important; transform: none !important; }
+      nav > div > div:last-child { gap: 0.35rem; }
+      nav .px-6 { padding-left: 0.75rem; padding-right: 0.75rem; }
+      nav .text-sm { font-size: 0.65rem; }
+      nav .hidden\.sm\:inline { display: none; }
+      nav a:last-child { display: none; }
+      .seal { width: 36px; height: 36px; font-size: 0.9rem; }
+      section .text-3xl { font-size: 1.5rem !important; }
+      .text-2xl { font-size: 1.15rem !important; }
+      .p-8 { padding: 1.25rem; }
+      .px-6 { padding-left: 1rem; padding-right: 1rem; }
+      .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
+      .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      .gap-10 { gap: 1.5rem; }
+      .mb-14 { margin-bottom: 2rem; }
+    }
+    @media (max-width: 360px) {
+      nav > div > div:last-child { gap: 0.2rem; }
+      nav .text-sm { font-size: 0.55rem; }
+      nav a:nth-child(4) { display: none; }
+      h1.text-6xl { font-size: 1.75rem !important; }
+      header .text-2xl { font-size: 1rem !important; }
+    }
   </style>
 </head>
 

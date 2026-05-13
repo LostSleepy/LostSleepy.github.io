@@ -99,6 +99,34 @@
     }
     .clearfix::after { content:''; display:table; clear:both; }
     * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+
+    /* ─── RESPONSIVE MÓVIL ─── */
+    @media (max-width: 480px) {
+      nav > div > div:last-child { gap: 0.35rem; }
+      nav .px-6 { padding-left: 0.75rem; padding-right: 0.75rem; }
+      nav .text-sm { font-size: 0.65rem; }
+      nav a:last-child { display: none; }
+      header h1 { font-size: 2.25rem !important; }
+      header .text-2xl { font-size: 1.15rem !important; }
+      section h2.text-3xl { font-size: 1.5rem !important; }
+      .px-6 { padding-left: 1rem; padding-right: 1rem; }
+      main.py-16 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      .space-y-24 > * + * { margin-top: 3rem; }
+      .float-img-right, .float-img-left { float: none !important; margin: 0 auto 1rem !important; width: 100% !important; max-width: 280px; display: block; }
+      .float-img-right figure, .float-img-left figure { width: 100% !important; }
+      .float-img-left .w-64, .float-img-right .w-56 { width: 100% !important; }
+      .grid-cols-3 .aspect-\[4\/5\] { aspect-ratio: 3/4; }
+      header .py-14 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+      .char-nav ul { gap: 0.15rem; }
+      .char-nav .px-3 { padding-left: 0.4rem; padding-right: 0.4rem; }
+      .char-nav .text-sm { font-size: 0.6rem; }
+      footer .flex-col.sm\:flex-row { gap: 0.75rem; }
+      header > div:first-of-type.flex { flex-wrap: wrap; gap: 0.25rem; justify-content: center; }
+    }
+    @media (max-width: 360px) {
+      nav > div > div:last-child { gap: 0.2rem; }
+      nav .text-sm { font-size: 0.55rem; }
+    }
   </style>
 </head>
 
