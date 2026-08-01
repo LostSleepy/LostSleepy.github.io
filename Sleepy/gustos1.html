@@ -6,6 +6,7 @@
   <meta name="description" content="Pasiones e intereses de Pedro Barrante - Sleepy." />
   <title>Mis Pasiones | Pedro Barrante</title>
 
+  <script>document.documentElement.classList.add('js');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -26,14 +27,28 @@
             sevilla: '#b91c1c',
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
-            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.9s ease both',
+            'gradient-x': 'gradientX 8s ease infinite',
+            'ping-slow': 'pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-in-out infinite',
           },
           keyframes: {
-            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
-            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
-            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            gradientX: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%':      { backgroundPosition: '100% 50%' },
+            },
+            pingSlow: {
+              '0%': { transform: 'scale(1)', opacity: '0.8' },
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            },
+            pulseRing: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(99,102,241,0.35)' },
+              '50%':      { boxShadow: '0 0 0 14px rgba(99,102,241,0)' },
+            },
           },
         },
       },
@@ -48,7 +63,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; overflow-x: hidden; }
-    h1, h2 { font-family: 'Shippori Mincho', serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
 
     body::before {
       content: '';
@@ -62,18 +77,47 @@
       z-index: 0;
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(-22px); }
+    }
+
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
     }
-    .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
-    .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-1 { width: 420px; height: 420px; background: rgba(99,102,241,0.14); top: -120px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 320px; height: 320px; background: rgba(168,85,247,0.12); bottom: -80px; left: -60px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-3 { width: 260px; height: 260px; background: rgba(59,130,246,0.09); top: 45%; left: 55%; animation: float 7s ease-in-out infinite 2s; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(167,139,250,0.35);
+      box-shadow: 0 24px 60px -20px rgba(99,102,241,0.35);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1, #a78bfa);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientX 6s ease infinite;
+    }
 
     .nav-glass {
-      background: rgba(10,10,26,0.85);
+      background: rgba(10,10,26,0.82);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(99,102,241,0.15);
@@ -90,75 +134,70 @@
       width: 0;
       height: 2px;
       background: linear-gradient(90deg, #6366f1, #a78bfa);
-      transition: width 0.3s ease;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-link:hover::after { width: 100%; }
     .nav-link:hover { color: #a78bfa; }
 
-    .bento-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    @media (min-width: 768px) {
-      .bento-grid {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, auto);
-      }
-    }
+    /* Bento */
     .bento-item {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 2rem;
-      padding: 2rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
     }
-    .bento-item:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.12);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(99,102,241,0.1);
+    .bento-glow {
+      position: absolute;
+      top: -48px;
+      right: -48px;
+      width: 140px;
+      height: 140px;
+      border-radius: 9999px;
+      filter: blur(56px);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
     }
+    .bento-item:hover .bento-glow { opacity: 1; }
+
     .tag {
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: #a78bfa;
       margin-bottom: 1rem;
       display: block;
       font-weight: 600;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    /* Reveal on scroll (solo con JS) */
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Combinar transiciones del hover con el reveal (especificidad mayor, tras .reveal.revealed) */
+    .glass-card.reveal {
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .glass-card.reveal.revealed:hover { transform: translateY(-6px); }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a0a1a; }
     ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
 
-    /* ─── RESPONSIVE MÓVIL ─── */
     @media (max-width: 480px) {
       nav > div > div:last-child { gap: 0.25rem; }
       nav .px-4 { padding-left: 0.75rem; padding-right: 0.75rem; }
       nav .text-sm { font-size: 0.65rem; }
       nav a:last-child { display: none; }
-      h1.text-5xl { font-size: 2.25rem !important; }
-      .bento-item h2.text-3xl { font-size: 1.5rem !important; }
-      .bento-item h2.text-2xl { font-size: 1.25rem !important; }
-      .px-4 { padding-left: 1rem; padding-right: 1rem; }
-      .pt-24 { padding-top: 5rem; }
-      .orb-1, .orb-2 { width: 200px !important; height: 200px !important; }
+      .orb-1, .orb-2, .orb-3 { width: 200px !important; height: 200px !important; }
       .bento-item { padding: 1.25rem !important; }
-      .bento-item .grid-cols-1 { gap: 0.75rem; }
     }
     @media (max-width: 360px) {
       nav > div > div:last-child { gap: 0.15rem; }
@@ -171,11 +210,13 @@
 
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8">
+  <!-- ══════ NAVEGACIÓN ══════ -->
+  <nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8 transition-all duration-500">
     <div class="max-w-6xl mx-auto flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">S</span>
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:rotate-[360deg] transition-transform duration-700 shadow-lg shadow-purple-500/20">S</span>
         <span class="text-white font-display text-lg hidden sm:inline">Sleepy</span>
       </a>
       <div class="flex items-center gap-1 md:gap-4">
@@ -188,106 +229,201 @@
     </div>
   </nav>
 
-  <div class="relative z-10 max-w-6xl mx-auto pt-24 pb-16 px-4 md:px-8">
-    <header class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-      <div>
-        <a href="index.html" class="text-purple-400 text-sm hover:text-white transition-colors mb-4 inline-block">← Volver al inicio</a>
-        <h1 class="text-5xl font-bold text-white font-display gradient-text">Mis Pasiones</h1>
+  <!-- ══════ CONTENIDO ══════ -->
+  <main class="relative z-10 max-w-6xl mx-auto pt-24 pb-16 px-4 md:px-8">
+
+    <!-- Cabecera -->
+    <header class="mb-14 animate-fade-in">
+      <a href="index.html" class="flex w-fit items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors text-sm group mb-8">
+        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Volver al perfil
+      </a>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-300 text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase mb-5 animate-pulse-ring">
+        <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping-slow"></span>
+        Gustos &amp; Pasiones
       </div>
-      <p class="text-gray-500 text-sm hidden md:block italic">Made by Sleepy</p>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">Mis Pasiones</h1>
+      <p class="text-gray-400 text-base sm:text-lg max-w-xl leading-relaxed">
+        Lo que me mueve, me inspira y define mi forma de ver el mundo — y de diseñar.
+      </p>
     </header>
 
-    <div class="bento-grid">
-      <section class="bento-item md:col-span-2 md:row-span-1 group">
-        <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-          <svg class="w-20 h-20 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-        </div>
-        <span class="tag">Música</span>
-        <h2 class="text-3xl font-bold text-white mb-4">Travis Scott</h2>
-        <p class="text-gray-400 leading-relaxed">Inspiración pura desde que tenía 15 años. No es solo música; es la estética de <em class="text-purple-300">Astroworld</em> y la atmósfera de <em class="text-purple-300">Utopía</em> lo que me impulsa a buscar siempre la vanguardia en lo que diseño.</p>
-      </section>
+    <!-- ══════ BENTO GRID ══════ -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
 
-      <section class="bento-item md:col-span-1 group">
-        <span class="tag">Hardware</span>
-        <h2 class="text-2xl font-bold text-white mb-2">Me flipa el PC</h2>
-        <p class="text-gray-400 text-sm">Como técnico me gusta el montaje, la optimización y benchmarks. También me encanta informarme de las nuevas tecnologías y programas.</p>
-      </section>
-
-      <section class="bento-item md:col-span-1 group">
-        <span class="tag">Gaming</span>
-        <h2 class="text-2xl font-bold text-white mb-2">Gamer a tiempo completo</h2>
-        <p class="text-gray-400 text-sm">Juego a varias cosas, entre ellas Fortnite, CS:GO, distintos juegos de Steam y sobre todo Resident Evil.</p>
-      </section>
-
-      <section class="bento-item md:col-span-1 md:row-span-2 border-l-4 border-l-purple-500 group">
-        <span class="tag text-purple-400">Anime & Manga</span>
-        <h2 class="text-2xl font-bold text-white mb-4">Jujutsu Kaisen</h2>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4">Fan absoluto del Shonen. Coleccionista de su manga y ahora creador de su propia Wiki.</p>
-        <div class="mt-4 p-3 bg-purple-500/10 rounded-xl border border-purple-500/20">
-          <p class="text-[10px] text-purple-300 uppercase tracking-tighter">Personaje Favorito</p>
-          <p class="text-xs text-white">Itadori</p>
-        </div>
-        <div class="mt-4 p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
-          <p class="text-[10px] text-indigo-300 uppercase tracking-tighter">NOTA</p>
-          <p class="text-xs text-white">Veo muchísimos más animes pero JJK es mi favorito 😁</p>
+      <!-- Travis Scott (2 col) -->
+      <section class="glass-card bento-item md:col-span-2 p-7 md:p-8 group reveal">
+        <div class="bento-glow bg-fuchsia-500/20"></div>
+        <div class="relative">
+          <span class="tag">🎧 Música</span>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Travis Scott</h2>
+          <p class="text-gray-400 leading-relaxed">
+            Inspiración pura desde que tenía 15 años. No es solo música; es la estética de <em class="text-fuchsia-300">Astroworld</em> y la atmósfera de <em class="text-fuchsia-300">Utopía</em> lo que me impulsa a buscar siempre la vanguardia en lo que diseño.
+          </p>
         </div>
       </section>
 
-      <section class="bento-item md:col-span-2 relative group overflow-hidden">
-        <div class="absolute -bottom-4 -right-4 text-sevilla/5 transform rotate-12 group-hover:scale-110 transition-transform duration-700">
-          <svg class="w-40 h-40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <!-- Hardware -->
+      <section class="glass-card bento-item md:col-span-1 p-7 group reveal reveal-delay-1">
+        <div class="bento-glow bg-indigo-500/20"></div>
+        <div class="relative">
+          <span class="tag">🖥️ Hardware</span>
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Me flipa el PC</h2>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Como técnico me gusta el montaje, la optimización y benchmarks. También me encanta informarme de las nuevas tecnologías y programas.
+          </p>
         </div>
-        <span class="tag">Personal & Lifestyle</span>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative z-10">
+      </section>
+
+      <!-- Gaming -->
+      <section class="glass-card bento-item md:col-span-1 p-7 group reveal reveal-delay-2">
+        <div class="bento-glow bg-sky-500/20"></div>
+        <div class="relative">
+          <span class="tag">🎮 Gaming</span>
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Gamer a tiempo completo</h2>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Juego a varias cosas, entre ellas Fortnite, CS:GO, distintos juegos de Steam y sobre todo <strong class="text-sky-300">Resident Evil</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Jujutsu Kaisen (columna, 2 filas) -->
+      <section class="glass-card bento-item md:col-span-1 md:row-span-2 p-7 group reveal reveal-delay-1 hover:border-purple-400/50">
+        <div class="bento-glow bg-purple-500/25"></div>
+        <div class="relative">
+          <span class="tag">⛩️ Anime &amp; Manga</span>
+          <h2 class="text-2xl font-bold text-white mb-4">Jujutsu Kaisen</h2>
+          <p class="text-gray-400 text-sm leading-relaxed mb-5">
+            Fan absoluto del Shonen. Coleccionista de su manga y ahora creador de su propia Wiki.
+          </p>
+          <div class="p-4 bg-purple-500/10 rounded-2xl border border-purple-500/20 mb-3">
+            <p class="text-[10px] text-purple-300 uppercase tracking-widest mb-1">Personaje Favorito</p>
+            <p class="text-sm text-white">虎杖悠仁 — Itadori</p>
+          </div>
+          <div class="p-4 bg-indigo-500/10 rounded-2xl border border-indigo-500/20">
+            <p class="text-[10px] text-indigo-300 uppercase tracking-widest mb-1">Nota</p>
+            <p class="text-xs text-gray-300">Veo muchísimos más animes pero JJK es mi favorito 😁</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal & Lifestyle (2 col) -->
+      <section class="glass-card bento-item md:col-span-2 p-7 md:p-8 group reveal reveal-delay-2 hover:border-sevilla/40">
+        <div class="bento-glow bg-red-500/15"></div>
+        <span class="tag relative">❤️ Personal &amp; Lifestyle</span>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
           <div class="space-y-6">
             <div>
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sevilla">⚽</span>
+                <span class="text-sevilla text-lg">⚽</span>
                 <h3 class="text-white font-bold text-sm">Sevilla FC</h3>
               </div>
               <p class="text-gray-400 text-xs leading-relaxed">Casta y coraje. Más que un club, es la identidad de mi ciudad y mi familia.</p>
             </div>
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-purple-400">🚗</span>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-purple-400 text-lg">🚗</span>
                 <h3 class="text-white font-bold text-sm">Carnet de Conducir</h3>
               </div>
-              <div class="w-full bg-white/5 rounded-full h-1.5 mb-2">
-                <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-1.5 rounded-full" style="width: 75%"></div>
+              <!-- Teórico aprobado -->
+              <div class="mb-3">
+                <div class="flex items-center justify-between mb-1">
+                  <p class="text-[10px] text-gray-500 uppercase tracking-widest">Teórico</p>
+                  <p class="text-[10px] text-emerald-400 font-semibold uppercase tracking-widest">Aprobado ✓</p>
+                </div>
+                <div class="w-full bg-white/5 rounded-full h-1.5">
+                  <div class="bg-emerald-500 h-1.5 rounded-full w-full"></div>
+                </div>
               </div>
-              <p class="text-[10px] text-gray-500 uppercase tracking-tighter">Estado: En fase de test diarios</p>
+              <!-- Prácticas en curso -->
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <p class="text-[10px] text-gray-500 uppercase tracking-widest">Prácticas</p>
+                  <p class="text-[10px] text-purple-300 font-semibold uppercase tracking-widest">Por empezar</p>
+                </div>
+                <div class="w-full bg-white/5 rounded-full h-1.5">
+                  <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-1.5 rounded-full transition-all duration-1000" style="width: 8%"></div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="space-y-6">
             <div>
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-indigo-400">🤝</span>
+                <span class="text-indigo-400 text-lg">🤝</span>
                 <h3 class="text-white font-bold text-sm">Círculo Cercano</h3>
               </div>
               <p class="text-gray-400 text-xs leading-relaxed">Lealtad ante todo. Un grupo cerrado donde la palabra vale más que cualquier contrato.</p>
             </div>
           </div>
         </div>
-        <div class="mt-8 pt-4 border-t border-white/5 flex justify-between items-center">
+
+        <div class="mt-8 pt-4 border-t border-white/5 flex justify-between items-center relative">
           <p class="text-[10px] text-gray-600 font-mono tracking-widest">📍 SEVILLA, SPAIN</p>
           <p class="text-[10px] text-sevilla font-bold uppercase tracking-widest animate-pulse">Never Surrender</p>
         </div>
       </section>
 
-      <section class="bento-item md:col-span-1 group">
-        <span class="tag">Creative</span>
-        <h2 class="text-xl font-bold text-white mb-2">Estilo</h2>
-        <p class="text-gray-400 text-xs italic">Siempre buscando la estética en lo que hago. No es solo que funcione, es que transmita algo y se vea impecable.</p>
+      <!-- Estilo -->
+      <section class="glass-card bento-item md:col-span-1 p-7 group reveal reveal-delay-3 hover:border-emerald-400/40">
+        <div class="bento-glow bg-emerald-500/15"></div>
+        <div class="relative">
+          <span class="tag">✨ Creative</span>
+          <h2 class="text-xl md:text-2xl font-bold text-white mb-3">Estilo</h2>
+          <p class="text-gray-400 text-xs italic leading-relaxed">
+            Siempre buscando la estética en lo que hago. No es solo que funcione, es que transmita algo y se vea impecable.
+          </p>
+        </div>
       </section>
     </div>
 
-    <footer class="mt-16 text-center">
-      <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em]">Pedro Barrante · <span id="year"></span> · Dev Mini-Portfolio</p>
-    </footer>
-  </div>
+    <!-- ══════ CTA ══════ -->
+    <div class="mt-16 text-center reveal">
+      <p class="text-gray-500 text-sm mb-5">¿Te ha picado la curiosidad?</p>
+      <a href="redessociales.html"
+         class="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-medium tracking-wide text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.5)]">
+        <span class="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></span>
+        <span class="relative z-10">Conectar conmigo</span>
+        <svg class="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </main>
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="relative z-10 border-t border-white/5 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">Pedro Barrante · <span id="current-year"></span> · Dev Portfolio</p>
+      <div class="flex items-center gap-5 text-gray-500 text-xs">
+        <a href="redessociales.html" class="hover:text-purple-300 transition-colors">Redes</a>
+        <a href="formulariocontacto.html" class="hover:text-purple-300 transition-colors">Contacto</a>
+        <a href="../index.html" class="hover:text-purple-300 transition-colors">Wiki JJK</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // ═════ Año del footer ═════
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // ═════ Navbar: sombra al hacer scroll ═════
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-lg', window.scrollY > 20);
+    }, { passive: true });
+
+    // ═════ Reveal on scroll ═════
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

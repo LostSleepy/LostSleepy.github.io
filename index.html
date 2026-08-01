@@ -7,6 +7,7 @@
   <title>Wiki Jujutsu Kaisen | Fan-Made por Sleepy</title>
 
   <!-- Tailwind CDN -->
+  <script>document.documentElement.classList.add('js');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,44 +20,57 @@
           colors: {
             ink: {
               50:  '#f0eee9', 100: '#d4cfc6', 200: '#a89f91',
-              900: '#1a1714', 950: '#0d0c0a',
+              700: '#3a332c', 800: '#262220', 900: '#1a1714', 950: '#0d0c0a',
             },
             curse: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#4c1d95' },
-            blood: { DEFAULT: '#b91c1c', light: '#fca5a5' },
+            blood: { DEFAULT: '#b91c1c', light: '#fca5a5', dark: '#7f1d1d' },
             infinity: { DEFAULT: '#0ea5e9', light: '#7dd3fc', dark: '#0369a1' },
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease both',
-            'fade-in': 'fadeIn 0.7s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
-            'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+            'slide-up': 'slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
             'float': 'float 6s ease-in-out infinite',
-            'shimmer': 'shimmer 3s ease-in-out infinite',
+            'float-slow': 'float 9s ease-in-out infinite',
+            'gradient-x': 'gradientX 8s ease infinite',
+            'spin-slow': 'spin 14s linear infinite',
+            'spin-slower': 'spin 22s linear infinite reverse',
+            'ping-slow': 'pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-in-out infinite',
+            'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
+            'tilt': 'tilt 8s ease-in-out infinite',
           },
           keyframes: {
-            fadeUp: {
-              '0%':   { opacity: '0', transform: 'translateY(24px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeIn: {
-              '0%':   { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
             slideUp: {
-              '0%':   { opacity: '0', transform: 'translateY(40px) scale(0.95)' },
+              '0%':   { opacity: '0', transform: 'translateY(48px) scale(0.96)' },
               '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
             },
             glowPulse: {
-              '0%, 100%': { opacity: '0.6' },
-              '50%':      { opacity: '1' },
+              '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+              '50%':      { opacity: '1', transform: 'scale(1.05)' },
             },
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
-              '50%':      { transform: 'translateY(-20px)' },
+              '50%':      { transform: 'translateY(-22px)' },
             },
-            shimmer: {
-              '0%': { backgroundPosition: '-200% 0' },
-              '100%': { backgroundPosition: '200% 0' },
+            gradientX: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%':      { backgroundPosition: '100% 50%' },
+            },
+            pingSlow: {
+              '0%': { transform: 'scale(1)', opacity: '0.8' },
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            },
+            pulseRing: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(124,58,237,0.35)' },
+              '50%':      { boxShadow: '0 0 0 18px rgba(124,58,237,0)' },
+            },
+            bounceSoft: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%':      { transform: 'translateY(8px)' },
+            },
+            tilt: {
+              '0%, 100%': { transform: 'rotate(-1.5deg)' },
+              '50%':      { transform: 'rotate(1.5deg)' },
             },
           },
         },
@@ -71,10 +85,11 @@
   <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
 
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
+    body { font-family: 'DM Sans', sans-serif; background-color: #0d0c0a; }
     h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
 
-    .hero-noise::before {
+    /* ─── Fondo con ruido sutil ─── */
+    .noise::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -83,62 +98,40 @@
       z-index: 1;
     }
 
+    /* ─── Kanji gigante de fondo ─── */
     .kanji-watermark {
       font-family: 'Shippori Mincho', serif;
-      font-size: 28rem;
+      font-size: 30rem;
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(124, 58, 237, 0.08);
+      -webkit-text-stroke: 1.5px rgba(124, 58, 237, 0.12);
       user-select: none;
       pointer-events: none;
+      will-change: transform;
     }
 
+    /* ─── Línea degradada ─── */
     .accent-line {
       background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent);
       height: 2px;
     }
 
+    /* ─── Navegación con cristal ─── */
     .glass-nav {
-      background: rgba(13, 12, 10, 0.8);
+      background: rgba(13, 12, 10, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .glass-card {
-      background: rgba(26, 23, 20, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(26, 23, 20, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .char-card .char-overlay {
-      background: linear-gradient(to top, rgba(76,29,149,0.9) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-    .char-card:hover .char-overlay { opacity: 1; }
-    .char-card:hover img { transform: scale(1.08); }
-    .char-card img { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-    .char-card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-4px); }
-    .char-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-
-    .seal {
-      width: 56px; height: 56px;
-      border: 2px solid rgba(124,58,237,0.4);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Shippori Mincho', serif;
-      font-size: 1.4rem;
-      color: rgba(124,58,237,0.7);
-      flex-shrink: 0;
-    }
-
-    .char-card:nth-child(1) { animation-delay: 0.05s; }
-    .char-card:nth-child(2) { animation-delay: 0.15s; }
-    .char-card:nth-child(3) { animation-delay: 0.25s; }
-    .char-card:nth-child(4) { animation-delay: 0.35s; }
-
+    /* ─── Enlaces de navegación ─── */
     .nav-link {
       position: relative;
       transition: color 0.3s ease;
@@ -146,99 +139,232 @@
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -3px;
       left: 0;
       width: 0;
-      height: 1px;
-      background: #7c3aed;
-      transition: width 0.3s ease;
+      height: 1.5px;
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-link:hover::after { width: 100%; }
 
-    * { scrollbar-width: thin; scrollbar-color: #4c1d95 #1a1714; }
+    /* ─── Tarjetas de personaje ─── */
+    .char-card { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; }
+    .char-card:hover { transform: translateY(-10px); border-color: rgba(124,58,237,0.45); box-shadow: 0 24px 48px -16px rgba(124,58,237,0.35); }
+    .char-card img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .char-card:hover img { transform: scale(1.1); }
+    .char-overlay {
+      background: linear-gradient(to top, rgba(76,29,149,0.92) 0%, rgba(124,58,237,0.25) 45%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .char-card:hover .char-overlay { opacity: 1; }
 
-    /* ─── RESPONSIVE MÓVIL ─── */
+    /* ─── Sello circular ─── */
+    .seal {
+      width: 52px; height: 52px;
+      border: 2px solid rgba(124,58,237,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.3rem;
+      color: rgba(124,58,237,0.75);
+      flex-shrink: 0;
+      transition: all 0.4s ease;
+    }
+    .seal:hover { border-color: #7c3aed; color: #a78bfa; box-shadow: 0 0 24px rgba(124,58,237,0.4); transform: rotate(360deg); }
+
+    /* ─── Texto con brillo ─── */
+    .text-glow { text-shadow: 0 0 30px rgba(167,139,250,0.55), 0 0 60px rgba(124,58,237,0.3); }
+
+    /* ─── Reveal on scroll (solo con JS, para no ocultar contenido sin él) ─── */
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Combinar transiciones del hover con el reveal (especificidad mayor, tras .reveal.revealed) ─── */
+    .char-card.reveal {
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .char-card.reveal.revealed:hover { transform: translateY(-10px); }
+
+    /* ─── Scrollbar ─── */
+    * { scrollbar-width: thin; scrollbar-color: #4c1d95 #0d0c0a; }
+
+    /* ─── Lightbox ─── */
+    .lightbox-open { overflow: hidden; }
+
+    /* ─── Responsive móvil ─── */
     @media (max-width: 480px) {
-      .kanji-watermark { font-size: 8rem !important; }
-      .char-card { animation: none !important; opacity: 1 !important; transform: none !important; }
-      nav > div > div:last-child { gap: 0.35rem; }
+      .kanji-watermark { font-size: 9rem !important; }
       nav .px-6 { padding-left: 0.75rem; padding-right: 0.75rem; }
       nav .text-sm { font-size: 0.65rem; }
-      nav .hidden\.sm\:inline { display: none; }
       nav a:last-child { display: none; }
-      .seal { width: 36px; height: 36px; font-size: 0.9rem; }
-      section .text-3xl { font-size: 1.5rem !important; }
-      .text-2xl { font-size: 1.15rem !important; }
-      .p-8 { padding: 1.25rem; }
-      .px-6 { padding-left: 1rem; padding-right: 1rem; }
-      .py-24 { padding-top: 3rem; padding-bottom: 3rem; }
-      .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-      .gap-10 { gap: 1.5rem; }
-      .mb-14 { margin-bottom: 2rem; }
+      .seal { width: 40px; height: 40px; font-size: 1rem; }
     }
     @media (max-width: 360px) {
-      nav > div > div:last-child { gap: 0.2rem; }
+      nav > div > div:last-child { gap: 0.35rem; }
       nav .text-sm { font-size: 0.55rem; }
       nav a:nth-child(4) { display: none; }
-      h1.text-6xl { font-size: 1.75rem !important; }
-      header .text-2xl { font-size: 1rem !important; }
     }
   </style>
 </head>
 
-<body class="bg-ink-950 text-ink-100 antialiased">
+<body class="bg-ink-950 text-ink-100 antialiased overflow-x-hidden">
 
-  <!-- ══════════════ NAVEGACIÓN UNIFICADA ══════════════ -->
-  <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors">
-        <span class="text-lg font-display font-bold">呪</span>
+  <!-- ══════════════ NAVEGACIÓN ══════════════ -->
+  <nav id="navbar" class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3 transition-all duration-500">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors group">
+        <span class="text-lg font-display font-bold inline-block group-hover:rotate-[360deg] transition-transform duration-700">呪</span>
         <span class="text-sm font-medium hidden sm:inline">Wiki JJK</span>
       </a>
       <div class="flex items-center gap-6 text-sm">
         <a href="index.html" class="nav-link text-curse-light">Inicio</a>
-        <a href="index.html#personajes" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Personajes</a>
+        <a href="#personajes" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Personajes</a>
+        <a href="#tecnica" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Técnicas</a>
+        <a href="#galeria" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Galería</a>
         <a href="contacto.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Contacto</a>
-        <a href="privacidad.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Privacidad</a>
-        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/30 transition-all">Creador</a>
+        <a href="privacidad.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors hidden md:inline">Privacidad</a>
+        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/40 hover:border-curse/60 hover:shadow-lg hover:shadow-curse/25 transition-all">
+          Creador
+        </a>
       </div>
     </div>
   </nav>
 
   <!-- ══════════════ HERO ══════════════ -->
-  <header class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden hero-noise pt-16">
-    <div class="absolute inset-0 bg-gradient-to-b from-ink-950 via-[#0f0c1a] to-ink-950"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-curse-dark/15 blur-[150px] animate-glow-pulse"></div>
-    <div class="absolute top-20 right-20 w-40 h-40 rounded-full bg-curse/5 blur-[60px] animate-float"></div>
-    <div class="absolute bottom-20 left-20 w-60 h-60 rounded-full bg-blood/5 blur-[80px] animate-float" style="animation-delay: 2s;"></div>
-    <div class="kanji-watermark absolute select-none opacity-60">呪</div>
+  <header id="hero" class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink-950 via-[#120e1e] to-ink-950"></div>
+    <!-- Orbes de energía -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[760px] rounded-full bg-curse-dark/25 blur-[140px] animate-glow-pulse"></div>
+    <div class="absolute top-24 right-16 w-44 h-44 rounded-full bg-curse/10 blur-[70px] animate-float"></div>
+    <div class="absolute bottom-28 left-16 w-60 h-60 rounded-full bg-blood/10 blur-[90px] animate-float-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-infinity/10 blur-[50px] animate-float" style="animation-delay: 4s;"></div>
+    <!-- Kanji con paralaje -->
+    <div id="kanji-parallax" class="kanji-watermark absolute select-none opacity-70">呪</div>
+    <!-- Partículas -->
+    <div id="particles" class="absolute inset-0 z-[2] pointer-events-none"></div>
 
     <div class="relative z-10 text-center px-6 animate-slide-up">
-      <p class="text-curse-light text-xs tracking-[0.35em] uppercase mb-6 font-medium">Fan Wiki · Spoilers</p>
-      <h1 class="text-6xl sm:text-8xl font-bold text-white leading-tight mb-4 drop-shadow-lg">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-curse/40 bg-curse/10 text-curse-light text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase mb-8 animate-pulse-ring">
+        <span class="w-1.5 h-1.5 rounded-full bg-curse-light animate-ping-slow"></span>
+        Fan Wiki · Spoilers
+      </span>
+      <h1 class="text-6xl sm:text-8xl lg:text-9xl font-bold text-white leading-tight mb-5 drop-shadow-[0_0_45px_rgba(124,58,237,0.45)] text-glow">
         呪術廻戦
       </h1>
-      <p class="text-2xl sm:text-4xl text-ink-200 font-light mb-2">Jujutsu Kaisen</p>
-      <div class="accent-line w-32 mx-auto my-6"></div>
+      <p class="text-2xl sm:text-4xl text-ink-200 font-light mb-3 bg-gradient-to-r from-curse-light via-blood-light to-infinity-light bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
+        Jujutsu Kaisen
+      </p>
+      <div class="accent-line w-36 mx-auto my-7 rounded-full"></div>
       <p class="text-ink-200 text-base sm:text-lg max-w-md mx-auto leading-relaxed">
         Explora el universo de los hechiceros, las maldiciones y las técnicas más oscuras.
       </p>
-      <a href="#personajes"
-         class="mt-10 inline-flex items-center gap-2 px-8 py-3 border border-curse/50 text-curse-light rounded-full text-sm tracking-widest uppercase hover:bg-curse/20 hover:border-curse transition-all duration-300 group">
-        Explorar
-        <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg>
-      </a>
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#personajes"
+           class="group relative inline-flex items-center gap-2 px-9 py-3.5 rounded-full text-sm tracking-widest uppercase font-medium text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)]">
+          <span class="absolute inset-0 bg-gradient-to-r from-curse via-[#6d28d9] to-curse bg-[length:200%_auto] animate-gradient-x"></span>
+          <span class="relative z-10">Explorar</span>
+          <svg class="relative z-10 w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </a>
+        <a href="#galeria"
+           class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-white/15 text-ink-100 text-sm tracking-widest uppercase hover:border-curse/60 hover:text-curse-light hover:bg-curse/10 transition-all duration-300 group">
+          <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          Galería
+        </a>
+      </div>
     </div>
-    <div class="absolute bottom-0 left-0 right-0 accent-line"></div>
+
+    <a href="#stats" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-ink-200/70 hover:text-curse-light transition-colors animate-bounce-soft">
+      <span class="text-[0.6rem] tracking-[0.3em] uppercase">Desliza</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7m14-8l-7 7-7-7"/>
+      </svg>
+    </a>
   </header>
 
-  <!-- ══════════════ PERSONAJES ══════════════ -->
+  <!-- ══════════════ ESTADÍSTICAS ══════════════ -->
   <main>
-    <section id="personajes" class="relative py-24 px-6">
-      <div class="max-w-5xl mx-auto">
-        <div class="flex items-center gap-5 mb-14">
+    <section id="stats" class="relative py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-5 mb-14 reveal">
+          <div class="seal">数</div>
+          <div>
+            <p class="text-curse-light text-xs tracking-widest uppercase">Cifras</p>
+            <h2 class="text-3xl font-bold text-white">El universo en números</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Contadores -->
+          <div class="glass-card rounded-2xl p-6 sm:p-8 text-center reveal reveal-delay-1 group hover:border-curse/40 hover:-translate-y-1 transition-all duration-300">
+            <p class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-curse-light to-blood-light mb-2">
+              <span class="counter" data-target="271">0</span>
+            </p>
+            <p class="text-ink-200 text-xs sm:text-sm uppercase tracking-widest">Capítulos del manga</p>
+            <div class="mt-4 h-1 w-full rounded-full bg-white/5 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-curse to-blood"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-8 text-center reveal reveal-delay-2 group hover:border-blood/40 hover:-translate-y-1 transition-all duration-300">
+            <p class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blood-light to-infinity-light mb-2">
+              <span class="counter" data-target="59">0</span>
+            </p>
+            <p class="text-ink-200 text-xs sm:text-sm uppercase tracking-widest">Episodios del anime</p>
+            <div class="mt-4 h-1 w-full rounded-full bg-white/5 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-blood to-infinity"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-8 text-center reveal reveal-delay-3 group hover:border-infinity/40 hover:-translate-y-1 transition-all duration-300">
+            <p class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-infinity-light to-curse-light mb-2">
+              <span class="counter" data-target="16">0</span>
+            </p>
+            <p class="text-ink-200 text-xs sm:text-sm uppercase tracking-widest">Usuarios de dominio</p>
+            <div class="mt-4 h-1 w-full rounded-full bg-white/5 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-infinity to-curse"></div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 sm:p-8 text-center reveal reveal-delay-4 group hover:border-curse/40 hover:-translate-y-1 transition-all duration-300">
+            <p class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-curse-light to-blood-light mb-2">
+              <span class="counter" data-target="100">0</span><span>+</span>
+            </p>
+            <p class="text-ink-200 text-xs sm:text-sm uppercase tracking-widest">Personajes con nombre</p>
+            <div class="mt-4 h-1 w-full rounded-full bg-white/5 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-curse to-blood"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-ink-200/40 text-[0.65rem] sm:text-xs mt-8 text-center leading-relaxed reveal">
+          Cifras verificadas al final de la obra (2024–2026): manga concluido en 271 capítulos; 59 episodios de anime
+          (24 + 23 + 12 de la temporada 3); 16 usuarios que manifiestan expansión de dominio en el manga
+          <span class="text-ink-200/60">—incluye el dominio incompleto de Megumi y el choque triple colapsado del Juego de la Matanza—</span>;
+          más de 100 personajes con nombre según el canon y las guías oficiales.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════ PERSONAJES ══════════════ -->
+    <section id="personajes" class="relative py-24 px-6 border-t border-white/5">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-curse-dark/5 to-transparent pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto relative">
+        <div class="flex items-center gap-5 mb-14 reveal">
           <div class="seal">人</div>
           <div>
             <p class="text-curse-light text-xs tracking-widest uppercase">Personajes</p>
@@ -246,62 +372,250 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <a href="PersonajesJujutsu/Itadori.html"
-             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900 shadow-xl">
+             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer bg-ink-900 reveal reveal-delay-1">
             <div class="aspect-[3/4] overflow-hidden">
               <img src="multimediajujutsu/Itadori.jpg" alt="Itadori Yūji" loading="lazy" class="w-full h-full object-cover object-top" />
             </div>
             <div class="char-overlay absolute inset-0 rounded-2xl"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+            <div class="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
               <p class="text-white font-semibold text-sm leading-tight drop-shadow-lg">Itadori Yūji</p>
-              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg">虎杖悠仁</p>
+              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity">虎杖悠仁</p>
+              <span class="inline-block mt-2 text-[0.6rem] uppercase tracking-widest text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Ficha completa →</span>
             </div>
           </a>
 
           <a href="PersonajesJujutsu/Megumi.html"
-             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900 shadow-xl">
+             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer bg-ink-900 reveal reveal-delay-2">
             <div class="aspect-[3/4] overflow-hidden">
               <img src="multimediajujutsu/Megumi.jpg" alt="Megumi Fushiguro" loading="lazy" class="w-full h-full object-cover object-top" />
             </div>
             <div class="char-overlay absolute inset-0 rounded-2xl"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+            <div class="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
               <p class="text-white font-semibold text-sm leading-tight drop-shadow-lg">Megumi Fushiguro</p>
-              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg">伏黒恵</p>
+              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity">伏黒恵</p>
+              <span class="inline-block mt-2 text-[0.6rem] uppercase tracking-widest text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Ficha completa →</span>
             </div>
           </a>
 
           <a href="PersonajesJujutsu/Nobara.html"
-             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900 shadow-xl">
+             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer bg-ink-900 reveal reveal-delay-3">
             <div class="aspect-[3/4] overflow-hidden">
               <img src="multimediajujutsu/Nobara.jpg" alt="Nobara Kugisaki" loading="lazy" class="w-full h-full object-cover object-top" />
             </div>
             <div class="char-overlay absolute inset-0 rounded-2xl"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+            <div class="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
               <p class="text-white font-semibold text-sm leading-tight drop-shadow-lg">Nobara Kugisaki</p>
-              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg">釘崎野薔薇</p>
+              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity">釘崎野薔薇</p>
+              <span class="inline-block mt-2 text-[0.6rem] uppercase tracking-widest text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Ficha completa →</span>
             </div>
           </a>
 
           <a href="PersonajesJujutsu/Gojo.html"
-             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer animate-fade-up bg-ink-900 shadow-xl">
+             class="char-card group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer bg-ink-900 reveal reveal-delay-4">
             <div class="aspect-[3/4] overflow-hidden">
               <img src="multimediajujutsu/Gojo.jpg" alt="Satoru Gojo" loading="lazy" class="w-full h-full object-cover object-top" />
             </div>
             <div class="char-overlay absolute inset-0 rounded-2xl"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 z-10">
+            <div class="absolute bottom-0 left-0 right-0 p-4 z-10 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
               <p class="text-white font-semibold text-sm leading-tight drop-shadow-lg">Satoru Gojo</p>
-              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg">五条悟</p>
+              <p class="text-curse-light text-xs mt-0.5 drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity">五条悟</p>
+              <span class="inline-block mt-2 text-[0.6rem] uppercase tracking-widest text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Ficha completa →</span>
             </div>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- ══════════════ TÉCNICA MALDITA / DOMINIO ══════════════ -->
+    <section id="tecnica" class="relative py-24 px-6 overflow-hidden border-t border-white/5">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-curse/10 blur-[130px] animate-glow-pulse pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+        <!-- Dominio visual -->
+        <div class="relative flex items-center justify-center reveal">
+          <div class="relative w-64 h-64 sm:w-80 sm:h-80">
+            <!-- Anillos giratorios -->
+            <div class="absolute inset-0 rounded-full border border-curse/30 animate-spin-slow"></div>
+            <div class="absolute inset-4 rounded-full border border-dashed border-blood/30 animate-spin-slower"></div>
+            <div class="absolute inset-8 rounded-full border border-infinity/20 animate-spin-slow" style="animation-duration: 30s;"></div>
+            <!-- Núcleo -->
+            <div class="absolute inset-12 rounded-full bg-gradient-to-br from-curse-dark via-[#3b0f66] to-blood-dark blur-md animate-glow-pulse"></div>
+            <div class="absolute inset-16 rounded-full bg-gradient-to-br from-curse to-blood animate-glow-pulse flex items-center justify-center shadow-[0_0_80px_rgba(124,58,237,0.6)]">
+              <span class="font-display text-4xl sm:text-5xl text-white drop-shadow-lg animate-tilt">闘</span>
+            </div>
+            <!-- Partículas orbitando -->
+            <div class="absolute -top-2 left-1/2 w-2.5 h-2.5 rounded-full bg-curse-light shadow-[0_0_20px_rgba(167,139,250,0.9)] animate-spin-slow origin-bottom" style="transform-origin: 0 130px;"></div>
+            <div class="absolute bottom-6 right-1 w-2 h-2 rounded-full bg-blood-light shadow-[0_0_16px_rgba(252,165,165,0.9)] animate-spin-slower origin-bottom-left"></div>
+            <div class="absolute top-10 right-2 w-1.5 h-1.5 rounded-full bg-infinity-light shadow-[0_0_14px_rgba(125,211,252,0.9)] animate-spin-slow" style="animation-duration: 18s;"></div>
+            <!-- Ondas de expansión -->
+            <div class="absolute inset-0 rounded-full border-2 border-curse/40 animate-ping-slow pointer-events-none"></div>
+            <div class="absolute inset-0 rounded-full border border-blood/30 animate-ping-slow pointer-events-none" style="animation-delay: 0.8s;"></div>
+          </div>
+        </div>
+
+        <!-- Texto y técnicas -->
+        <div class="reveal reveal-delay-2">
+          <div class="flex items-center gap-5 mb-8">
+            <div class="seal">術</div>
+            <div>
+              <p class="text-curse-light text-xs tracking-widest uppercase">Técnica Maldita</p>
+              <h2 class="text-3xl font-bold text-white">Expansión de Dominio</h2>
+            </div>
+          </div>
+          <p class="text-ink-200 leading-relaxed mb-8">
+            La técnica definitiva: un espacio sellado donde la energía maldita del usuario se materializa,
+            garantizando el acierto de todo ataque. Estas son algunas de las expansiones de dominio del canon:
+          </p>
+          <div class="space-y-4">
+            <div class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:border-curse/40 transition-all duration-300 hover:translate-x-1">
+              <span class="w-10 h-10 rounded-lg bg-curse/15 border border-curse/30 flex items-center justify-center text-curse-light font-display text-lg group-hover:rotate-12 transition-transform">無</span>
+              <div>
+                <p class="text-white font-semibold text-sm">Vacío Ilimitado</p>
+                <p class="text-ink-200 text-xs">Satoru Gojo · 無量空処 · Unlimited Void</p>
+              </div>
+            </div>
+            <div class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:border-blood/40 transition-all duration-300 hover:translate-x-1">
+              <span class="w-10 h-10 rounded-lg bg-blood/15 border border-blood/30 flex items-center justify-center text-blood-light font-display text-lg group-hover:rotate-12 transition-transform">魔</span>
+              <div>
+                <p class="text-white font-semibold text-sm">Santuario Malévolo</p>
+                <p class="text-ink-200 text-xs">Ryomen Sukuna · 伏魔御厨子 · Malevolent Shrine</p>
+              </div>
+            </div>
+            <div class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:border-infinity/40 transition-all duration-300 hover:translate-x-1">
+              <span class="w-10 h-10 rounded-lg bg-infinity/15 border border-infinity/30 flex items-center justify-center text-infinity-light font-display text-lg group-hover:rotate-12 transition-transform">庭</span>
+              <div>
+                <p class="text-white font-semibold text-sm">Jardín de las Sombras Quiméricas <span class="text-infinity-light text-[0.6rem] uppercase tracking-widest align-middle">· incompleto</span></p>
+                <p class="text-ink-200 text-xs">Megumi Fushiguro · 嵌合暗翳庭 · Chimera Shadow Garden</p>
+              </div>
+            </div>
+            <div class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:border-curse/40 transition-all duration-300 hover:translate-x-1">
+              <span class="w-10 h-10 rounded-lg bg-curse/15 border border-curse/30 flex items-center justify-center text-curse-light font-display text-lg group-hover:rotate-12 transition-transform">円</span>
+              <div>
+                <p class="text-white font-semibold text-sm">Autoencarnación de la Perfección</p>
+                <p class="text-ink-200 text-xs">Mahito · 自閉円頓裹 · Self-Embodiment of Perfection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ GALERÍA MULTIMEDIA ══════════════ -->
+    <section id="galeria" class="py-24 px-6 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-5 mb-14 reveal">
+          <div class="seal">画</div>
+          <div>
+            <p class="text-curse-light text-xs tracking-widest uppercase">Multimedia</p>
+            <h2 class="text-3xl font-bold text-white">Galería</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          <button type="button" data-img="multimediajujutsu/Gojo/GojoPurpuraGIF.gif" data-caption="Gojo · Técnica Hueco Púrpura"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-1 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Gojo/GojoPurpuraGIF.gif" alt="Gojo usando Hueco Púrpura" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Gojo · Hueco Púrpura</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Itadori/ItadoriPeleaManga.jpg" data-caption="Itadori · Pelea en el manga"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-2 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Itadori/ItadoriPeleaManga.jpg" alt="Itadori en una pelea del manga" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Itadori · Manga</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Megumi/MegumiExpansionDominio.jpg" data-caption="Megumi · Expansión de Dominio"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-3 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Megumi/MegumiExpansionDominio.jpg" alt="Megumi expandiendo su dominio" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Megumi · Dominio</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Sukuna/SukunaDisManga.jpg" data-caption="Sukuna · Arte promocional"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-4 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Sukuna/SukunaDisManga.jpg" alt="Arte promocional de Ryomen Sukuna" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Sukuna · Promo</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Nobara/NobaraVudu.jpg" data-caption="Nobara · Técnica del Muñeco de Paja"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-1 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Nobara/NobaraVudu.jpg" alt="Nobara usando su técnica del muñeco de paja" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Nobara · Muñeco de Paja</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Maki/MakiMangaFullyRealized.jpg" data-caption="Maki · Fuerza total"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-2 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Maki/MakiMangaFullyRealized.jpg" alt="Maki en su estado de fuerza total" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Maki · Fuerza total</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Yuta/YutaConRika.jpg" data-caption="Yuta y Rika"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-3 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Yuta/YutaConRika.jpg" alt="Yuta junto a Rika" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Yuta · Rika</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+
+          <button type="button" data-img="multimediajujutsu/Nanami/NanamivsMahito.jpg" data-caption="Nanami vs Mahito"
+                  class="gallery-item group relative rounded-2xl overflow-hidden border border-white/5 cursor-pointer reveal reveal-delay-4 focus:outline-none focus:ring-2 focus:ring-curse">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src="multimediajujutsu/Nanami/NanamivsMahito.jpg" alt="Nanami Kento enfrentándose a Mahito" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 text-left">
+              <p class="text-white text-xs font-medium">Nanami vs Mahito</p>
+              <p class="text-curse-light text-[0.6rem] mt-0.5">Ampliar ▸</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- ══════════════ PRESENTACIÓN ══════════════ -->
     <section class="py-20 px-6 border-t border-white/5">
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-        <article class="animate-fade-up">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+        <article class="reveal">
           <div class="flex items-center gap-4 mb-8">
             <div class="seal">書</div>
             <div>
@@ -317,24 +631,24 @@
           </p>
         </article>
 
-        <aside class="rounded-2xl border border-curse/30 bg-curse-dark/10 p-8 animate-fade-up glass-card" style="animation-delay: 0.2s;">
+        <aside class="rounded-2xl border border-curse/30 bg-curse-dark/10 p-8 glass-card reveal reveal-delay-2 hover:border-curse/50 hover:shadow-[0_0_40px_rgba(124,58,237,0.15)] transition-all duration-500">
           <div class="flex items-center gap-3 mb-5">
-            <svg class="w-5 h-5 text-curse-light flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-curse-light flex-shrink-0 animate-pulse-ring" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
             </svg>
             <h3 class="text-white font-semibold">A tener en cuenta</h3>
           </div>
           <ul class="space-y-3 text-ink-200 text-sm">
-            <li class="flex items-start gap-2">
-              <span class="text-curse-light mt-1">▸</span>
+            <li class="flex items-start gap-2 group hover:text-ink-100 transition-colors">
+              <span class="text-curse-light mt-1 group-hover:translate-x-1 transition-transform">▸</span>
               Páginas individuales por personaje.
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-blood-light mt-1">▸</span>
+            <li class="flex items-start gap-2 group hover:text-ink-100 transition-colors">
+              <span class="text-blood-light mt-1 group-hover:translate-x-1 transition-transform">▸</span>
               <span><strong class="text-blood-light">Alerta:</strong> contiene spoilers del manga.</span>
             </li>
-            <li class="flex items-start gap-2">
-              <span class="text-curse-light mt-1">▸</span>
+            <li class="flex items-start gap-2 group hover:text-ink-100 transition-colors">
+              <span class="text-curse-light mt-1 group-hover:translate-x-1 transition-transform">▸</span>
               Proyecto educativo sin ánimo de lucro.
             </li>
           </ul>
@@ -344,8 +658,9 @@
   </main>
 
   <!-- ══════════════ FOOTER ══════════════ -->
-  <footer class="border-t border-white/5 py-14 px-6">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+  <footer class="border-t border-white/5 py-14 px-6 relative overflow-hidden">
+    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-curse/5 blur-[100px] pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
       <div class="max-w-sm">
         <p class="text-xs text-ink-200 uppercase tracking-widest mb-2">Aviso Legal</p>
         <p class="text-ink-200 text-sm leading-relaxed">
@@ -354,7 +669,7 @@
       </div>
       <nav class="flex flex-col sm:flex-row items-start sm:items-center gap-4" aria-label="Enlaces secundarios">
         <a href="Sleepy/index.html"
-           class="px-6 py-2.5 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark hover:shadow-lg hover:shadow-curse/20 transition-all">
+           class="px-6 py-2.5 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark hover:scale-105 hover:shadow-lg hover:shadow-curse/30 transition-all">
           Conoce al creador
         </a>
         <div class="flex gap-5 text-sm text-ink-200">
@@ -363,14 +678,135 @@
         </div>
       </nav>
     </div>
-    <div class="max-w-5xl mx-auto mt-10 pt-6 border-t border-white/5 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto relative mt-10 pt-6 border-t border-white/5 flex items-center justify-between">
       <p class="text-ink-200/50 text-xs">© <span id="year-footer"></span> LostSleepy · Wiki fan-made</p>
-      <p class="text-ink-200/30 text-xs font-display">呪術廻戦</p>
+      <p class="text-ink-200/30 text-xs font-display group cursor-default">呪術廻戦</p>
     </div>
   </footer>
 
+  <!-- ══════════════ LIGHTBOX ══════════════ -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink-950/95 backdrop-blur-md p-4" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+    <button id="lightbox-close" class="absolute top-5 right-5 w-11 h-11 rounded-full border border-white/15 text-ink-100 hover:text-blood-light hover:border-blood/50 hover:rotate-90 transition-all duration-300 flex items-center justify-center" aria-label="Cerrar">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <figure class="max-w-3xl w-full animate-slide-up">
+      <div class="rounded-2xl overflow-hidden border border-curse/30 shadow-[0_0_80px_rgba(124,58,237,0.3)]">
+        <img id="lightbox-img" src="" alt="" class="w-full max-h-[70vh] object-contain bg-ink-900" />
+      </div>
+      <figcaption id="lightbox-caption" class="mt-4 text-center text-ink-200 text-sm"></figcaption>
+    </figure>
+  </div>
+
   <script>
+    // ═════ Año del footer ═════
     document.getElementById('year-footer').textContent = new Date().getFullYear();
+
+    // ═════ Navbar: sombra al hacer scroll ═════
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-lg', window.scrollY > 20);
+      navbar.classList.toggle('shadow-curse/20', window.scrollY > 20);
+    }, { passive: true });
+
+    // ═════ Kanji con paralaje ═════
+    const kanji = document.getElementById('kanji-parallax');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        kanji.style.transform = 'translateY(' + y * 0.35 + 'px)';
+        kanji.style.opacity = Math.max(0, 0.7 - y / 900);
+      }
+    }, { passive: true });
+
+    // ═════ Partículas del hero ═════
+    (function () {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      const COLORS = ['rgba(167,139,250,0.7)', 'rgba(252,165,165,0.6)', 'rgba(125,211,252,0.6)'];
+      for (let i = 0; i < 26; i++) {
+        const dot = document.createElement('span');
+        const size = Math.random() * 3 + 1.5;
+        dot.style.cssText = [
+          'position:absolute',
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'border-radius:50%',
+          'background:' + COLORS[i % COLORS.length],
+          'left:' + Math.random() * 100 + '%',
+          'top:' + Math.random() * 100 + '%',
+          'opacity:' + (Math.random() * 0.6 + 0.2),
+          'box-shadow:0 0 12px ' + COLORS[i % COLORS.length],
+          'animation:float ' + (5 + Math.random() * 6) + 's ease-in-out infinite',
+          'animation-delay:' + Math.random() * 5 + 's',
+        ].join(';');
+        container.appendChild(dot);
+      }
+    })();
+
+    // ═════ Reveal on scroll ═════
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ═════ Contadores animados ═════
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1600;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(step);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ═════ Lightbox ═════
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    let lastFocused = null;
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lastFocused = document.activeElement;
+        lightboxImg.src = item.dataset.img;
+        lightboxImg.alt = item.querySelector('img').alt;
+        lightboxCaption.textContent = item.dataset.caption;
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+        document.body.classList.add('lightbox-open');
+        lightboxClose.focus();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.classList.remove('lightbox-open');
+      if (lastFocused) lastFocused.focus();
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 
 </body>

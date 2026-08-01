@@ -6,6 +6,7 @@
   <meta name="description" content="Pedro Barrante - Desarrollador DAM & Técnico SMR. Portfolio personal." />
   <title>Pedro Barrante | Desarrollador DAM</title>
 
+  <script>document.documentElement.classList.add('js');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,16 +26,45 @@
             },
           },
           animation: {
-            'fade-up': 'fadeUp 0.8s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
-            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
-            'float': 'float 6s ease-in-out infinite',
+            'slide-up': 'slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
+            'fade-in': 'fadeIn 0.9s ease both',
+            'gradient-x': 'gradientX 8s ease infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'spin-slower': 'spin 20s linear infinite reverse',
+            'ping-slow': 'pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-in-out infinite',
+            'marquee': 'marquee 28s linear infinite',
+            'blink': 'blink 1s step-end infinite',
           },
           keyframes: {
-            fadeUp: { '0%':{ opacity:'0', transform:'translateY(30px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
-            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
-            glowPulse: { '0%,100%':{ opacity:'0.3' }, '50%':{ opacity:'0.6' } },
-            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
+            slideUp: {
+              '0%':   { opacity: '0', transform: 'translateY(48px) scale(0.96)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            },
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            gradientX: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%':      { backgroundPosition: '100% 50%' },
+            },
+            pingSlow: {
+              '0%': { transform: 'scale(1)', opacity: '0.8' },
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            },
+            pulseRing: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(99,102,241,0.35)' },
+              '50%':      { boxShadow: '0 0 0 16px rgba(99,102,241,0)' },
+            },
+            marquee: {
+              '0%':   { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%':      { opacity: '0' },
+            },
           },
         },
       },
@@ -48,8 +78,9 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; overflow-x: hidden; }
-    h1 { font-family: 'Shippori Mincho', serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
 
+    /* Fondo con rejilla */
     body::before {
       content: '';
       position: fixed;
@@ -62,32 +93,55 @@
       z-index: 0;
     }
 
+    /* Keyframes float definidos aquí para que orbes y partículas funcionen (el CDN no los emite sin la utility) */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(-22px); }
+    }
+
+    /* Orbes flotantes */
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
     }
-    .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
-    .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
-    .orb-3 { width: 250px; height: 250px; background: rgba(59,130,246,0.08); top: 50%; left: 50%; animation: float 7s ease-in-out infinite 2s; }
+    .orb-1 { width: 420px; height: 420px; background: rgba(99,102,241,0.14); top: -120px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 320px; height: 320px; background: rgba(168,85,247,0.12); bottom: -80px; left: -60px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-3 { width: 260px; height: 260px; background: rgba(59,130,246,0.09); top: 45%; left: 55%; animation: float 7s ease-in-out infinite 2s; }
 
+    /* Glassmorphism */
     .glass-card {
       background: rgba(255,255,255,0.04);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .profile-gradient {
-      background: radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, transparent 70%);
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(167,139,250,0.35);
+      box-shadow: 0 24px 60px -20px rgba(99,102,241,0.35);
     }
+
+    /* Texto degradado */
     .gradient-text {
-      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
+      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1, #a78bfa);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradientX 6s ease infinite;
+    }
+
+    /* Navegación */
+    .nav-glass {
+      background: rgba(10,10,26,0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(99,102,241,0.15);
     }
     .nav-link {
       position: relative;
@@ -101,17 +155,36 @@
       width: 0;
       height: 2px;
       background: linear-gradient(90deg, #6366f1, #a78bfa);
-      transition: width 0.3s ease;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-link:hover::after { width: 100%; }
     .nav-link:hover { color: #a78bfa; }
-    .nav-glass {
-      background: rgba(10,10,26,0.85);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(99,102,241,0.15);
+
+    /* Anillo cónico del avatar */
+    .avatar-ring {
+      background: conic-gradient(from 0deg, #6366f1, #a78bfa, #c084fc, #6366f1);
     }
 
+    /* Marquesina: máscara de desvanecido */
+    .marquee-mask {
+      mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+    }
+
+    /* Reveal on scroll (solo con JS) */
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a0a1a; }
     ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
@@ -123,14 +196,8 @@
       nav .px-4 { padding-left: 0.75rem; padding-right: 0.75rem; }
       nav .text-sm { font-size: 0.65rem; }
       nav a:last-child { display: none; }
-      h1 { font-size: 2rem !important; }
-      section.glass-card { padding: 1.25rem !important; }
-      .px-4 { padding-left: 1rem; padding-right: 1rem; }
-      .pt-24 { padding-top: 5rem; }
-      nav .grid-cols-1 { gap: 0.75rem; }
       .orb-1, .orb-2, .orb-3 { width: 200px !important; height: 200px !important; }
-      .w-24 { width: 5rem; height: 5rem; }
-      .w-24 ~ .text-3xl { font-size: 1.5rem; }
+      .w-28 { width: 5.5rem; height: 5.5rem; }
     }
     @media (max-width: 360px) {
       nav > div > div:last-child { gap: 0.15rem; }
@@ -145,10 +212,11 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 
-  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8">
+  <!-- ══════ NAVEGACIÓN ══════ -->
+  <nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8 transition-all duration-500">
     <div class="max-w-6xl mx-auto flex items-center justify-between h-16">
       <a href="../index.html" class="flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">S</span>
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:rotate-[360deg] transition-transform duration-700 shadow-lg shadow-purple-500/20">S</span>
         <span class="text-white font-display text-lg hidden sm:inline">Sleepy</span>
       </a>
       <div class="flex items-center gap-1 md:gap-4">
@@ -161,83 +229,319 @@
     </div>
   </nav>
 
-  <main class="relative z-10 pt-24 pb-16 px-4 md:px-8 min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-2xl animate-slide-up">
+  <!-- ══════ HERO ══════ -->
+  <main class="relative z-10 pt-28 pb-10 px-4 md:px-8 overflow-hidden">
 
-      <div class="mb-8">
+    <!-- Partículas -->
+    <div id="particles" class="absolute inset-0 z-0 pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+
+      <!-- Volver -->
+      <div class="mb-10 animate-fade-in">
         <a href="../index.html" class="inline-flex items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors text-sm group">
           <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
           Volver a la Wiki Jujutsu Kaisen
         </a>
       </div>
 
-      <section class="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-4 opacity-5">
-          <svg class="w-24 h-24 text-purple-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.1 14.1H3.9L12 5.45z"/></svg>
+      <!-- Hero -->
+      <header class="text-center max-w-3xl mx-auto animate-slide-up">
+        <div class="flex w-fit mx-auto items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 text-emerald-300 text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase mb-8 animate-pulse-ring">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping-slow"></span>
+          Abierto a oportunidades
         </div>
 
-        <header class="flex flex-col items-center text-center mb-10">
-          <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-3xl flex items-center justify-center text-3xl font-bold text-white shadow-lg mb-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+        <div class="relative block w-fit mx-auto mb-10">
+          <!-- Anillo cónico giratorio -->
+          <div class="absolute -inset-2 avatar-ring rounded-full blur-[6px] opacity-70 animate-spin-slow"></div>
+          <div class="absolute -inset-2 avatar-ring rounded-full opacity-90 animate-spin-slower"></div>
+          <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-3xl font-bold text-white shadow-2xl shadow-purple-500/30 overflow-hidden">
             PB
-          </div>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Pedro Barrante</h1>
-          <p class="text-purple-300 font-medium tracking-wide uppercase text-xs">Desarrollador DAM & Técnico SMR</p>
-          <p class="text-gray-500 text-xs mt-3">🎂 4 de septiembre de 2003</p>
-        </header>
-
-        <div class="space-y-8">
-          <p class="text-gray-400 text-center leading-relaxed max-w-md mx-auto">
-            Tengo <span id="edad" class="text-purple-300 font-bold text-xl"></span> años y me apasiona construir soluciones digitales elegantes. Explora mi trayectoria y proyectos a través de mis secciones personales.
-          </p>
-
-          <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="biografia.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
-              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📖</span>
-              <span class="text-sm font-medium text-gray-200">Biografía</span>
-            </a>
-            <a href="gustos1.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
-              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">⭐</span>
-              <span class="text-sm font-medium text-gray-200">Gustos</span>
-            </a>
-            <a href="redessociales.html" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-purple-500/10 border border-white/5 hover:border-purple-500/30 transition-all group hover:-translate-y-1 duration-300">
-              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">📱</span>
-              <span class="text-sm font-medium text-gray-200">Redes</span>
-            </a>
-            <a href="https://lostsleepy.github.io/pagina-web-cv/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-5 rounded-2xl bg-white/5 hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 transition-all group hover:-translate-y-1 duration-300">
-              <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">💼</span>
-              <span class="text-sm font-medium text-gray-200">Portfolio CV</span>
-              <span class="text-[10px] text-emerald-400/60 mt-1">externo ↗</span>
-            </a>
-          </nav>
-
-          <div class="pt-6 border-t border-white/5">
-            <a href="formulariocontacto.html" class="flex items-center justify-center gap-3 w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-2xl hover:from-purple-500 hover:to-indigo-500 transition-all shadow-xl active:scale-95 group">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              Contactar conmigo
-            </a>
+            <span class="absolute inset-0 bg-gradient-to-t from-transparent to-white/10"></span>
           </div>
         </div>
 
-        <footer class="mt-12 text-center">
-          <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">© <span id="current-year"></span> Pedro Barrante · Dev Mini-Portfolio</p>
-        </footer>
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold gradient-text mb-3">Pedro Barrante</h1>
+
+        <p class="text-purple-300 font-medium tracking-wide uppercase text-xs sm:text-sm mb-5">Desarrollador DAM &amp; Técnico SMR</p>
+
+        <!-- Máquina de escribir -->
+        <p class="font-mono text-sm sm:text-base text-gray-300 mb-6 min-h-6">
+          <span class="text-purple-400">$</span> <span id="typewriter"></span><span class="inline-block w-2 h-4 bg-purple-400 ml-0.5 align-middle animate-blink"></span>
+        </p>
+
+        <p class="text-gray-400 leading-relaxed max-w-lg mx-auto mb-4">
+          Me apasiona construir soluciones digitales elegantes, del <strong class="text-purple-300">hardware</strong> al <strong class="text-indigo-300">código</strong>.
+        </p>
+        <p class="text-gray-500 text-sm mb-8">
+          🎂 4 de septiembre de 2003 · <span id="edad" class="text-purple-300 font-bold"></span> años · Sevilla
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <a href="formulariocontacto.html"
+             class="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-medium tracking-wide text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] w-full sm:w-auto justify-center">
+            <span class="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></span>
+            <svg class="relative z-10 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="relative z-10">Contactar conmigo</span>
+          </a>
+          <a href="redessociales.html"
+             class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-white/15 text-gray-200 text-sm tracking-wide hover:border-purple-400/60 hover:text-purple-300 hover:bg-purple-500/10 transition-all duration-300 group w-full sm:w-auto justify-center">
+            <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            Ver mis redes
+          </a>
+        </div>
+      </header>
+
+      <!-- ══════ MARQUESINA DE TECNOLOGÍAS ══════ -->
+      <div class="marquee-mask overflow-hidden py-4 mb-20 reveal">
+        <div class="flex gap-10 w-max animate-marquee">
+          <span class="flex items-center gap-10 text-gray-500 font-mono text-xs uppercase tracking-widest">
+            <span class="hover:text-purple-300 transition-colors">HTML5</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">CSS3</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Tailwind CSS</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">JavaScript</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">GitHub Pages</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Formspree</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">UI / UX</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Responsive Design</span><span class="text-purple-500/40">✦</span>
+          </span>
+          <span class="flex items-center gap-10 text-gray-500 font-mono text-xs uppercase tracking-widest" aria-hidden="true">
+            <span class="hover:text-purple-300 transition-colors">HTML5</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">CSS3</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Tailwind CSS</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">JavaScript</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">GitHub Pages</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Formspree</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">UI / UX</span><span class="text-purple-500/40">✦</span>
+            <span class="hover:text-purple-300 transition-colors">Responsive Design</span><span class="text-purple-500/40">✦</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- ══════ CIFRAS CLAVE ══════ -->
+      <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+        <div class="glass-card rounded-2xl p-6 text-center reveal reveal-delay-1 group hover:border-purple-400/40">
+          <p class="text-4xl font-bold gradient-text mb-1"><span class="counter" data-target="2">0</span></p>
+          <p class="text-gray-400 text-xs uppercase tracking-widest">Titulaciones</p>
+          <p class="text-gray-500 text-[0.65rem] mt-1">DAM + SMR</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center reveal reveal-delay-2 group hover:border-purple-400/40">
+          <p class="text-4xl font-bold gradient-text mb-1"><span class="counter" data-target="1">0</span></p>
+          <p class="text-gray-400 text-xs uppercase tracking-widest">Wiki fan-made</p>
+          <p class="text-gray-500 text-[0.65rem] mt-1">Jujutsu Kaisen</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center reveal reveal-delay-3 group hover:border-purple-400/40">
+          <p class="text-4xl font-bold gradient-text mb-1"><span class="counter" data-target="8">0</span></p>
+          <p class="text-gray-400 text-xs uppercase tracking-widest">Plataformas</p>
+          <p class="text-gray-500 text-[0.65rem] mt-1">GitHub, Twitch, Spotify…</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center reveal reveal-delay-4 group hover:border-purple-400/40">
+          <p class="text-4xl font-bold gradient-text mb-1"><span class="counter" data-target="100">0</span>%</p>
+          <p class="text-gray-400 text-xs uppercase tracking-widest">Pasión</p>
+          <p class="text-gray-500 text-[0.65rem] mt-1">Tecnología &amp; café</p>
+        </div>
+      </section>
+
+      <!-- ══════ BENTO GRID ══════ -->
+      <section class="mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-2 reveal">Explora mi mundo</h2>
+        <p class="text-gray-500 text-sm text-center mb-10 reveal reveal-delay-1">Cuatro caminos para conocerme mejor.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Biografía -->
+          <a href="biografia.html" class="glass-card group relative rounded-3xl p-7 overflow-hidden reveal reveal-delay-1">
+            <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-purple-500/10 blur-2xl group-hover:bg-purple-500/20 transition-colors duration-500"></div>
+            <span class="text-3xl mb-5 inline-block group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">📖</span>
+            <h3 class="text-lg font-bold text-white mb-2">Biografía</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">De SMR a DAM: mi trayectoria en el mundo técnico.</p>
+            <span class="inline-flex items-center gap-1 text-purple-400 text-xs mt-5 opacity-60 group-hover:opacity-100 group-hover:gap-2 transition-all">Ver trayectoria <span>→</span></span>
+          </a>
+
+          <!-- Gustos -->
+          <a href="gustos1.html" class="glass-card group relative rounded-3xl p-7 overflow-hidden reveal reveal-delay-2">
+            <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-indigo-500/10 blur-2xl group-hover:bg-indigo-500/20 transition-colors duration-500"></div>
+            <span class="text-3xl mb-5 inline-block group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">⭐</span>
+            <h3 class="text-lg font-bold text-white mb-2">Gustos</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Pasiones, Sevilla FC y creatividad sin límites.</p>
+            <span class="inline-flex items-center gap-1 text-purple-400 text-xs mt-5 opacity-60 group-hover:opacity-100 group-hover:gap-2 transition-all">Ver gustos <span>→</span></span>
+          </a>
+
+          <!-- Redes -->
+          <a href="redessociales.html" class="glass-card group relative rounded-3xl p-7 overflow-hidden reveal reveal-delay-3">
+            <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-fuchsia-500/10 blur-2xl group-hover:bg-fuchsia-500/20 transition-colors duration-500"></div>
+            <span class="text-3xl mb-5 inline-block group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">📱</span>
+            <h3 class="text-lg font-bold text-white mb-2">Redes</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">GitHub, LinkedIn, Twitch y todo mi hub social.</p>
+            <span class="inline-flex items-center gap-1 text-purple-400 text-xs mt-5 opacity-60 group-hover:opacity-100 group-hover:gap-2 transition-all">Conectar <span>→</span></span>
+          </a>
+
+          <!-- Portfolio CV -->
+          <a href="https://lostsleepy.github.io/pagina-web-cv/" target="_blank" rel="noopener noreferrer" class="glass-card group relative rounded-3xl p-7 overflow-hidden reveal reveal-delay-4 hover:border-emerald-400/40">
+            <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-emerald-500/10 blur-2xl group-hover:bg-emerald-500/20 transition-colors duration-500"></div>
+            <span class="text-3xl mb-5 inline-block group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">💼</span>
+            <h3 class="text-lg font-bold text-white mb-2">Portfolio CV</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">Mi CV profesional completo en versión web.</p>
+            <span class="inline-flex items-center gap-1 text-emerald-400 text-xs mt-5 opacity-60 group-hover:opacity-100 group-hover:gap-2 transition-all">Externo <span>↗</span></span>
+          </a>
+        </div>
+
+        <!-- Tarjeta destacada: Wiki JJK -->
+        <a href="../index.html" class="glass-card group relative rounded-3xl p-8 mt-5 overflow-hidden reveal flex flex-col sm:flex-row items-start sm:items-center gap-6 hover:border-purple-400/50">
+          <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] rounded-full bg-purple-600/15 blur-[80px] group-hover:bg-purple-600/25 transition-colors duration-700"></div>
+          <div class="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white text-xl font-display font-bold shadow-lg shadow-purple-500/25 group-hover:rotate-6 group-hover:scale-110 transition-transform duration-500 flex-shrink-0">呪</div>
+          <div class="relative flex-1">
+            <p class="text-purple-300 text-xs uppercase tracking-widest mb-1">Proyecto destacado</p>
+            <h3 class="text-xl font-bold text-white mb-1">Wiki Jujutsu Kaisen</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">La wiki fan-made que diseñé con Tailwind CSS: 271 capítulos documentados, expansiones de dominio y una galería multimedia.</p>
+          </div>
+          <span class="relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all group-hover:scale-105 flex-shrink-0">
+            Visitar la wiki
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+      </section>
+
+      <!-- ══════ CTA FINAL ══════ -->
+      <section class="glass-card relative rounded-3xl p-10 sm:p-14 text-center overflow-hidden reveal">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-transparent to-indigo-600/10"></div>
+        <div class="relative">
+          <p class="text-purple-300 font-mono text-xs uppercase tracking-widest mb-3">¿Hablamos?</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">¿Tienes un proyecto en mente?</h2>
+          <p class="text-gray-400 max-w-md mx-auto mb-8">
+            Estoy abierto a colaboraciones, prácticas y nuevos retos donde pueda aportar mi visión técnica.
+          </p>
+          <a href="formulariocontacto.html"
+             class="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full text-sm font-medium tracking-wide text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(99,102,241,0.55)]">
+            <span class="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></span>
+            <span class="relative z-10">Empezar conversación</span>
+            <svg class="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
       </section>
     </div>
   </main>
 
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="relative z-10 border-t border-white/5 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">© <span id="current-year"></span> Pedro Barrante · Dev Portfolio</p>
+      <div class="flex items-center gap-5 text-gray-500 text-xs">
+        <a href="redessociales.html" class="hover:text-purple-300 transition-colors">Redes</a>
+        <a href="formulariocontacto.html" class="hover:text-purple-300 transition-colors">Contacto</a>
+        <a href="../index.html" class="hover:text-purple-300 transition-colors">Wiki JJK</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
+    // ═════ Edad dinámica ═════
     function calcularEdad(fechaNacimiento) {
       const hoy = new Date();
       const cumple = new Date(fechaNacimiento);
       let edad = hoy.getFullYear() - cumple.getFullYear();
       const mes = hoy.getMonth() - cumple.getMonth();
-      if (mes < 0 || (mes === 0 && hoy.getDate() < cumple.getDate())) {
-        edad--;
-      }
+      if (mes < 0 || (mes === 0 && hoy.getDate() < cumple.getDate())) edad--;
       return edad;
     }
     document.getElementById("edad").textContent = calcularEdad("2003-09-04");
     document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    // ═════ Navbar: sombra al hacer scroll ═════
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-lg', window.scrollY > 20);
+      navbar.classList.toggle('shadow-purple-900/20', window.scrollY > 20);
+    }, { passive: true });
+
+    // ═════ Máquina de escribir ═════
+    (function () {
+      const el = document.getElementById('typewriter');
+      if (!el) return;
+      const roles = ['Desarrollador DAM', 'Técnico SMR', 'Creador de la Wiki JJK', 'Apasionado del UI/UX'];
+      let roleIndex = 0, charIndex = 0, deleting = false;
+      function tick() {
+        const current = roles[roleIndex];
+        if (!deleting) {
+          charIndex++;
+          el.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            setTimeout(tick, 2200);
+            return;
+          }
+          setTimeout(tick, 70);
+        } else {
+          charIndex--;
+          el.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            setTimeout(tick, 350);
+            return;
+          }
+          setTimeout(tick, 35);
+        }
+      }
+      setTimeout(tick, 600);
+    })();
+
+    // ═════ Partículas del hero ═════
+    (function () {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      const COLORS = ['rgba(167,139,250,0.6)', 'rgba(129,140,248,0.5)', 'rgba(99,102,241,0.5)'];
+      for (let i = 0; i < 20; i++) {
+        const dot = document.createElement('span');
+        const size = Math.random() * 2.5 + 1;
+        dot.style.cssText = [
+          'position:absolute',
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'border-radius:50%',
+          'background:' + COLORS[i % COLORS.length],
+          'left:' + Math.random() * 100 + '%',
+          'top:' + (Math.random() * 60) + '%',
+          'opacity:' + (Math.random() * 0.5 + 0.15),
+          'box-shadow:0 0 10px ' + COLORS[i % COLORS.length],
+          'animation:float ' + (5 + Math.random() * 6) + 's ease-in-out infinite',
+          'animation-delay:' + Math.random() * 5 + 's',
+        ].join(';');
+        container.appendChild(dot);
+      }
+    })();
+
+    // ═════ Reveal on scroll ═════
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ═════ Contadores animados ═════
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1400;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        };
+        requestAnimationFrame(step);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
   </script>
 </body>
 </html>

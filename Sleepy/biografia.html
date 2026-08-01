@@ -6,6 +6,7 @@
   <meta name="description" content="Trayectoria profesional de Pedro Barrante - de SMR a DAM." />
   <title>Trayectoria | Pedro Barrante</title>
 
+  <script>document.documentElement.classList.add('js');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -25,16 +26,33 @@
             },
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
-            'fade-in': 'fadeIn 0.8s ease both',
-            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.9s ease both',
+            'gradient-x': 'gradientX 8s ease infinite',
+            'ping-slow': 'pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-in-out infinite',
+            'blink': 'blink 1s step-end infinite',
           },
           keyframes: {
-            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
-            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
-            fadeIn: { '0%':{ opacity:'0' }, '100%':{ opacity:'1' } },
-            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
+            fadeIn: {
+              '0%':   { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            gradientX: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%':      { backgroundPosition: '100% 50%' },
+            },
+            pingSlow: {
+              '0%': { transform: 'scale(1)', opacity: '0.8' },
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            },
+            pulseRing: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(99,102,241,0.35)' },
+              '50%':      { boxShadow: '0 0 0 14px rgba(99,102,241,0)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1' },
+              '50%':      { opacity: '0' },
+            },
           },
         },
       },
@@ -48,7 +66,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: #0a0a1a; color: #e2e8f0; min-height: 100vh; overflow-x: hidden; }
-    h1, h2 { font-family: 'Shippori Mincho', serif; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
 
     body::before {
       content: '';
@@ -62,35 +80,47 @@
       z-index: 0;
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%      { transform: translateY(-22px); }
+    }
+
     .orb {
       position: fixed;
       border-radius: 50%;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
     }
-    .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
-    .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-1 { width: 420px; height: 420px; background: rgba(99,102,241,0.14); top: -120px; right: -100px; animation: float 8s ease-in-out infinite; }
+    .orb-2 { width: 320px; height: 320px; background: rgba(168,85,247,0.12); bottom: -80px; left: -60px; animation: float 10s ease-in-out infinite reverse; }
+    .orb-3 { width: 260px; height: 260px; background: rgba(59,130,246,0.09); top: 45%; left: 55%; animation: float 7s ease-in-out infinite 2s; }
 
-    .timeline-line {
-      background: linear-gradient(to bottom, transparent, #6366f1, #a78bfa, transparent);
-    }
-    .glass-item {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    .glass-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 1.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .glass-item:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.12);
-      transform: translateY(-3px);
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(167,139,250,0.35);
+      box-shadow: 0 24px 60px -20px rgba(99,102,241,0.35);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1, #a78bfa);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientX 6s ease infinite;
     }
 
     .nav-glass {
-      background: rgba(10,10,26,0.85);
+      background: rgba(10,10,26,0.82);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(99,102,241,0.15);
@@ -107,37 +137,58 @@
       width: 0;
       height: 2px;
       background: linear-gradient(90deg, #6366f1, #a78bfa);
-      transition: width 0.3s ease;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-link:hover::after { width: 100%; }
     .nav-link:hover { color: #a78bfa; }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    /* Línea de tiempo */
+    .timeline-track {
+      position: absolute;
+      left: 0px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.06);
     }
+    .timeline-progress {
+      position: absolute;
+      left: 0px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      border-radius: 9999px;
+      background: linear-gradient(to bottom, #6366f1, #a78bfa, #c084fc);
+      box-shadow: 0 0 14px rgba(99,102,241,0.6);
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 0.15s linear;
+    }
+
+    /* Reveal on scroll (solo con JS) */
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a0a1a; }
     ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.3); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.5); }
 
-    /* ─── RESPONSIVE MÓVIL ─── */
     @media (max-width: 480px) {
       nav > div > div:last-child { gap: 0.25rem; }
       nav .px-4 { padding-left: 0.75rem; padding-right: 0.75rem; }
       nav .text-sm { font-size: 0.65rem; }
       nav a:last-child { display: none; }
-      h1 { font-size: 2rem !important; }
-      h2.text-2xl { font-size: 1.25rem !important; }
-      .px-4 { padding-left: 1rem; padding-right: 1rem; }
-      .pt-24 { padding-top: 5rem; }
-      .orb-1, .orb-2 { width: 200px !important; height: 200px !important; }
-      .glass-item .p-6 { padding: 1.25rem !important; }
-      .pl-8 { padding-left: 1.25rem; }
-      .mb-16 { margin-bottom: 2.5rem; }
+      .orb-1, .orb-2, .orb-3 { width: 200px !important; height: 200px !important; }
     }
     @media (max-width: 360px) {
       nav > div > div:last-child { gap: 0.15rem; }
@@ -150,11 +201,13 @@
 
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8">
+  <!-- ══════ NAVEGACIÓN ══════ -->
+  <nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50 px-4 md:px-8 transition-all duration-500">
     <div class="max-w-6xl mx-auto flex items-center justify-between h-16">
       <a href="index.html" class="flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">S</span>
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm group-hover:rotate-[360deg] transition-transform duration-700 shadow-lg shadow-purple-500/20">S</span>
         <span class="text-white font-display text-lg hidden sm:inline">Sleepy</span>
       </a>
       <div class="flex items-center gap-1 md:gap-4">
@@ -167,79 +220,169 @@
     </div>
   </nav>
 
-  <main class="relative z-10 max-w-3xl mx-auto pt-24 pb-16 px-4 md:px-8">
-    <header class="mb-16 animate-fade-up">
-      <a href="index.html" class="inline-flex items-center gap-2 text-purple-400 hover:text-white transition-colors mb-8 group">
-        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7 7-7"/></svg>
-        Regresar al perfil
-      </a>
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs text-purple-300 mb-4 border border-purple-500/20" style="background:rgba(99,102,241,0.08)">
-        <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-        Trayectoria
-      </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 gradient-text">Mi Trayectoria</h1>
-      <p class="text-gray-400 text-lg max-w-xl">
-        De los sistemas al desarrollo: una evolución constante basada en la curiosidad técnica y la resolución de problemas.
-      </p>
-    </header>
+  <!-- ══════ CONTENIDO ══════ -->
+  <main class="relative z-10 pt-24 pb-16 px-4 md:px-8">
+    <div class="max-w-3xl mx-auto">
 
-    <div class="relative pl-8 animate-fade-up">
-      <div class="absolute left-0 top-0 bottom-0 w-px timeline-line"></div>
+      <!-- Cabecera -->
+      <header class="mb-14 animate-fade-in">
+        <a href="index.html" class="flex w-fit items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors text-sm group mb-8">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Regresar al perfil
+        </a>
 
-      <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-purple-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
-        <div class="glass-item p-6 md:p-8">
-          <span class="text-purple-400 text-xs font-bold uppercase tracking-widest mb-2 block">Cimientos Técnicos</span>
-          <h2 class="text-2xl text-white mb-3">Técnico en SMR</h2>
-          <p class="text-gray-400 leading-relaxed">
-            Inicié mi camino dominando la base de todo: los sistemas y las redes. Esta etapa me permitió entender el "hierro", la infraestructura y el despliegue técnico necesario para que cualquier software pueda respirar.
-          </p>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-300 text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase mb-5 animate-pulse-ring">
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping-slow"></span>
+          Trayectoria
         </div>
-      </article>
 
-      <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-indigo-500 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></div>
-        <div class="glass-item p-6 md:p-8">
-          <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2 block">Especialización Superior</span>
-          <h2 class="text-2xl text-white mb-3">Grado Superior en DAM</h2>
-          <p class="text-gray-400 leading-relaxed">
-            Tras consolidar los sistemas, di el salto al desarrollo de aplicaciones multiplataforma. En MEDAC perfeccioné la lógica de programación y la creación de soluciones escalables, enfocándome en la eficiencia del código y la experiencia de usuario.
-          </p>
-        </div>
-      </article>
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Mi Trayectoria</h1>
+        <p class="text-gray-400 text-base sm:text-lg max-w-xl leading-relaxed">
+          De los sistemas al desarrollo: una evolución constante basada en la curiosidad técnica y la resolución de problemas.
+        </p>
+        <p class="font-mono text-xs text-gray-600 mt-4">
+          <span class="text-purple-400">$</span> cat trayectoria.txt<span class="inline-block w-2 h-3 bg-purple-400 ml-1 align-middle animate-blink"></span>
+        </p>
+      </header>
 
-      <article class="relative mb-16 group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(167,139,250,0.5)]"></div>
-        <div class="glass-item p-6 md:p-8 border-l-4 border-l-purple-500">
-          <span class="text-white text-xs font-bold uppercase tracking-widest mb-2 block">Presente & Enfoque</span>
-          <h2 class="text-2xl text-white mb-3">Desarrollador y Técnico Informático</h2>
-          <p class="text-gray-400 leading-relaxed mb-4">
-            Actualmente resido en Sevilla, donde compagino mi formación técnica con proyectos personales de automatización. Me considero un profesional híbrido: entiendo la infraestructura gracias a SMR y la creación de producto gracias a DAM.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-xs">Entusiasta tecnológico</span>
-            <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-300 text-xs">Hardware & Software</span>
-            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs">Refinando mi inglés</span>
+      <!-- Línea de tiempo -->
+      <div id="timeline" class="relative">
+
+        <!-- Pista y progreso -->
+        <div class="timeline-track" aria-hidden="true"></div>
+        <div id="timeline-progress" class="timeline-progress" aria-hidden="true"></div>
+
+        <!-- Capítulo 1: SMR -->
+        <article class="relative mb-14 reveal group">
+          <div class="absolute left-0 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-purple-500 shadow-[0_0_12px_rgba(99,102,241,0.6)] group-hover:scale-125 transition-transform duration-300"></div>
+          <div class="glass-card ml-12 p-6 md:p-8 group">
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-flex items-center gap-2 text-purple-400 text-xs font-bold uppercase tracking-widest">
+                <span class="w-8 h-8 rounded-lg bg-purple-500/15 border border-purple-500/25 flex items-center justify-center text-sm">🖥️</span>
+                Cimientos Técnicos
+              </span>
+              <span class="text-gray-600 font-mono text-[0.65rem]">01</span>
+            </div>
+            <h2 class="text-xl md:text-2xl text-white mb-3">Técnico en SMR</h2>
+            <p class="text-gray-400 leading-relaxed">
+              Inicié mi camino dominando la base de todo: los sistemas y las redes. Esta etapa me permitió entender el "hierro", la infraestructura y el despliegue técnico necesario para que cualquier software pueda respirar.
+            </p>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="relative group">
-        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-dashed border-gray-500"></div>
-        <div class="p-6">
-          <h2 class="text-xl text-gray-400 mb-2">Próximo capítulo...</h2>
-          <p class="text-gray-500 italic text-sm">Buscando aplicar esta visión técnica en entornos profesionales.</p>
-        </div>
-      </article>
+        <!-- Capítulo 2: DAM -->
+        <article class="relative mb-14 reveal reveal-delay-1">
+          <div class="absolute left-0 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-indigo-500 shadow-[0_0_12px_rgba(129,140,248,0.6)]"></div>
+          <div class="glass-card ml-12 p-6 md:p-8 group hover:border-indigo-400/40">
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-widest">
+                <span class="w-8 h-8 rounded-lg bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-sm">💻</span>
+                Especialización Superior
+              </span>
+              <span class="text-gray-600 font-mono text-[0.65rem]">02</span>
+            </div>
+            <h2 class="text-xl md:text-2xl text-white mb-3">Grado Superior en DAM</h2>
+            <p class="text-gray-400 leading-relaxed">
+              Tras consolidar los sistemas, di el salto al desarrollo de aplicaciones multiplataforma. En MEDAC perfeccioné la lógica de programación y la creación de soluciones escalables, enfocándome en la eficiencia del código y la experiencia de usuario.
+            </p>
+          </div>
+        </article>
+
+        <!-- Capítulo 3: Presente -->
+        <article class="relative mb-14 reveal reveal-delay-2">
+          <div class="absolute left-0 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-white shadow-[0_0_16px_rgba(167,139,250,0.7)]"></div>
+          <div class="glass-card ml-12 p-6 md:p-8 group relative overflow-hidden hover:border-fuchsia-400/40">
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-fuchsia-500/10 blur-3xl group-hover:bg-fuchsia-500/20 transition-colors duration-700"></div>
+            <div class="flex items-center justify-between mb-3 relative">
+              <span class="inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest">
+                <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-sm">🚀</span>
+                Presente &amp; Enfoque
+              </span>
+              <span class="text-gray-600 font-mono text-[0.65rem]">03</span>
+            </div>
+            <h2 class="text-xl md:text-2xl text-white mb-3 relative">Desarrollador y Técnico Informático</h2>
+            <p class="text-gray-400 leading-relaxed mb-5 relative">
+              Actualmente resido en Sevilla, donde compagino mi formación técnica con proyectos personales de automatización. Me considero un profesional híbrido: entiendo la infraestructura gracias a SMR y la creación de producto gracias a DAM.
+            </p>
+            <div class="flex flex-wrap gap-2 relative">
+              <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-300 text-xs">Entusiasta tecnológico</span>
+              <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-300 text-xs">Hardware &amp; Software</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs">Refinando mi inglés</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Capítulo 4: Próximo capítulo -->
+        <article class="relative reveal reveal-delay-3">
+          <div class="absolute left-0 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#0a0a1a] border-2 border-dashed border-gray-500"></div>
+          <div class="ml-12 py-2">
+            <span class="text-gray-500 font-mono text-[0.65rem] uppercase tracking-widest block mb-2">To be continued</span>
+            <h2 class="text-lg text-gray-300 mb-1">Próximo capítulo...</h2>
+            <p class="text-gray-500 italic text-sm">Buscando aplicar esta visión técnica en entornos profesionales.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center reveal">
+        <a href="formulariocontacto.html"
+           class="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full text-sm font-medium tracking-wide text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.5)]">
+          <span class="absolute inset-0 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 bg-[length:200%_auto] animate-gradient-x"></span>
+          <span class="relative z-10">¿Quieres saber más?</span>
+          <svg class="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
     </div>
-
-    <footer class="mt-20 pt-8 border-t border-white/5 text-center">
-      <p class="text-gray-500 text-xs uppercase tracking-widest">Pedro Barrante Vázquez · <span id="year"></span></p>
-    </footer>
   </main>
 
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="relative z-10 border-t border-white/5 py-10 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">Pedro Barrante Vázquez · <span id="current-year"></span></p>
+      <div class="flex items-center gap-5 text-gray-500 text-xs">
+        <a href="redessociales.html" class="hover:text-purple-300 transition-colors">Redes</a>
+        <a href="formulariocontacto.html" class="hover:text-purple-300 transition-colors">Contacto</a>
+        <a href="../index.html" class="hover:text-purple-300 transition-colors">Wiki JJK</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // ═════ Año del footer ═════
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // ═════ Navbar: sombra al hacer scroll ═════
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-lg', window.scrollY > 20);
+    }, { passive: true });
+
+    // ═════ Línea de tiempo: progreso al hacer scroll ═════
+    const timeline = document.getElementById('timeline');
+    const progress = document.getElementById('timeline-progress');
+    function updateTimeline() {
+      const rect = timeline.getBoundingClientRect();
+      const viewport = window.innerHeight;
+      const start = viewport * 0.6;          // cuando el inicio entra al 60% del viewport
+      const end = Math.max(rect.height - viewport * 0.4, 1); // fin de la línea (guard anti-NaN)
+      const scrolled = Math.min(Math.max(viewport - rect.top - start, 0), end);
+      const pct = Math.min(scrolled / end, 1);
+      progress.style.transform = 'scaleY(' + pct + ')';
+    }
+    window.addEventListener('scroll', updateTimeline, { passive: true });
+    window.addEventListener('resize', updateTimeline, { passive: true });
+    updateTimeline();
+
+    // ═════ Reveal on scroll ═════
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

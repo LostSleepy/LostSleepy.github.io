@@ -6,6 +6,7 @@
   <meta name="description" content="Política de privacidad de la wiki fan-made de Jujutsu Kaisen por Sleepy." />
   <title>Privacidad | Wiki JJK</title>
 
+  <script>document.documentElement.classList.add('js');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,181 +17,394 @@
             body: ['"DM Sans"', 'sans-serif'],
           },
           colors: {
-            ink: { 50:'#f0eee9', 100:'#d4cfc6', 200:'#a89f91', 900:'#1a1714', 950:'#0d0c0a' },
-            curse: { DEFAULT:'#7c3aed', light:'#a78bfa', dark:'#4c1d95' },
+            ink: {
+              50:  '#f0eee9', 100: '#d4cfc6', 200: '#a89f91',
+              700: '#3a332c', 800: '#262220', 900: '#1a1714', 950: '#0d0c0a',
+            },
+            curse: { DEFAULT: '#7c3aed', light: '#a78bfa', dark: '#4c1d95' },
+            blood: { DEFAULT: '#b91c1c', light: '#fca5a5', dark: '#7f1d1d' },
+            infinity: { DEFAULT: '#0ea5e9', light: '#7dd3fc', dark: '#0369a1' },
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
+            'slide-up': 'slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'float-slow': 'float 9s ease-in-out infinite',
+            'gradient-x': 'gradientX 8s ease infinite',
+            'ping-slow': 'pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-in-out infinite',
           },
           keyframes: {
-            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
-            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
+            slideUp: {
+              '0%':   { opacity: '0', transform: 'translateY(48px) scale(0.96)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            },
+            glowPulse: {
+              '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+              '50%':      { opacity: '1', transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%':      { transform: 'translateY(-22px)' },
+            },
+            gradientX: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%':      { backgroundPosition: '100% 50%' },
+            },
+            pingSlow: {
+              '0%': { transform: 'scale(1)', opacity: '0.8' },
+              '75%, 100%': { transform: 'scale(1.8)', opacity: '0' },
+            },
+            pulseRing: {
+              '0%, 100%': { boxShadow: '0 0 0 0 rgba(124,58,237,0.35)' },
+              '50%':      { boxShadow: '0 0 0 18px rgba(124,58,237,0)' },
+            },
           },
         },
       },
     }
   </script>
 
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="shortcut icon" href="multimediajujutsu/Iconos/favicon.png" type="image/png" />
 
   <style>
-    body { font-family: 'DM Sans', sans-serif; }
-    h1, h2 { font-family: 'Shippori Mincho', serif; }
-    .accent-line { background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent); height: 2px; }
+    body { font-family: 'DM Sans', sans-serif; background-color: #0d0c0a; }
+    h1, h2, h3 { font-family: 'Shippori Mincho', serif; }
+
+    .noise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .kanji-watermark {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 22rem;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(124, 58, 237, 0.12);
+      user-select: none;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .accent-line {
+      background: linear-gradient(90deg, #7c3aed, #b91c1c, transparent);
+      height: 2px;
+    }
+
     .glass-nav {
-      background: rgba(13, 12, 10, 0.8);
+      background: rgba(13, 12, 10, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
+
     .glass-card {
-      background: rgba(26, 23, 20, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(26, 23, 20, 0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124, 58, 237, 0.35);
+      box-shadow: 0 18px 40px -16px rgba(124, 58, 237, 0.25);
     }
+
+    .nav-link { position: relative; transition: color 0.3s ease; }
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -3px;
       left: 0;
       width: 0;
-      height: 1px;
-      background: #7c3aed;
-      transition: width 0.3s ease;
+      height: 1.5px;
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .nav-link:hover::after { width: 100%; }
 
-    /* ─── RESPONSIVE MÓVIL ─── */
+    .seal {
+      width: 52px; height: 52px;
+      border: 2px solid rgba(124,58,237,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.3rem;
+      color: rgba(124,58,237,0.75);
+      flex-shrink: 0;
+      transition: all 0.4s ease;
+    }
+    .seal:hover { border-color: #7c3aed; color: #a78bfa; box-shadow: 0 0 24px rgba(124,58,237,0.4); transform: rotate(360deg); }
+
+    html.js .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    * { scrollbar-width: thin; scrollbar-color: #4c1d95 #0d0c0a; }
+
     @media (max-width: 480px) {
-      nav > div > div:last-child { gap: 0.35rem; }
+      .kanji-watermark { font-size: 8rem !important; }
       nav .px-6 { padding-left: 0.75rem; padding-right: 0.75rem; }
       nav .text-sm { font-size: 0.65rem; }
       nav a:last-child { display: none; }
-      h1.text-4xl { font-size: 1.75rem !important; }
-      section h2.text-xl { font-size: 1.1rem !important; }
-      .p-8 { padding: 1.25rem !important; }
-      .px-6 { padding-left: 1rem; padding-right: 1rem; }
-      .space-y-12 > * + * { margin-top: 1.5rem; }
-      .pt-28 { padding-top: 5rem; }
+      .seal { width: 40px; height: 40px; font-size: 1rem; }
+      h1.text-5xl { font-size: 2rem !important; }
     }
     @media (max-width: 360px) {
-      nav > div > div:last-child { gap: 0.2rem; }
+      nav > div > div:last-child { gap: 0.35rem; }
       nav .text-sm { font-size: 0.55rem; }
       nav a:nth-child(4) { display: none; }
     }
   </style>
 </head>
 
-<body class="bg-ink-950 text-ink-100 antialiased min-h-screen">
+<body class="bg-ink-950 text-ink-100 antialiased min-h-screen overflow-x-hidden">
 
-  <!-- ══════ NAVEGACIÓN UNIFICADA ══════ -->
-  <nav class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors">
-        <span class="text-lg font-display font-bold">呪</span>
+  <!-- ══════ NAVEGACIÓN ══════ -->
+  <nav id="navbar" class="glass-nav fixed top-0 left-0 right-0 z-50 px-6 py-3 transition-all duration-500">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-curse-light transition-colors group">
+        <span class="text-lg font-display font-bold inline-block group-hover:rotate-[360deg] transition-transform duration-700">呪</span>
         <span class="text-sm font-medium hidden sm:inline">Wiki JJK</span>
       </a>
       <div class="flex items-center gap-6 text-sm">
         <a href="index.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Inicio</a>
         <a href="index.html#personajes" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Personajes</a>
+        <a href="index.html#tecnica" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Técnicas</a>
+        <a href="index.html#galeria" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Galería</a>
         <a href="contacto.html" class="nav-link text-ink-200 hover:text-curse-light transition-colors">Contacto</a>
         <a href="privacidad.html" class="nav-link text-curse-light">Privacidad</a>
-        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/30 transition-all">Creador</a>
+        <a href="Sleepy/index.html" class="px-4 py-1.5 bg-curse/20 border border-curse/30 text-curse-light rounded-full text-xs hover:bg-curse/40 hover:border-curse/60 hover:shadow-lg hover:shadow-curse/25 transition-all">
+          Creador
+        </a>
       </div>
     </div>
   </nav>
 
-  <main class="max-w-3xl mx-auto px-6 pt-28 pb-20 animate-slide-up">
-    <header class="mb-14">
-      <p class="text-curse-light text-xs tracking-widest uppercase mb-4">Aviso legal</p>
-      <h1 class="text-4xl font-bold text-white mb-4">Política de Privacidad</h1>
-      <div class="accent-line w-24 mb-6"></div>
-      <p class="text-ink-200 text-sm">
-        Última actualización: <span id="current-date"></span>
-      </p>
-    </header>
+  <!-- ══════ HERO ══════ -->
+  <header class="relative pt-32 pb-16 px-6 overflow-hidden noise">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink-950 via-[#120e1e] to-ink-950"></div>
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[560px] h-[320px] rounded-full bg-curse-dark/20 blur-[130px] animate-glow-pulse"></div>
+    <div class="absolute top-20 right-16 w-36 h-36 rounded-full bg-curse/10 blur-[70px] animate-float"></div>
+    <div class="absolute bottom-8 left-16 w-44 h-44 rounded-full bg-infinity/8 blur-[80px] animate-float-slow" style="animation-delay: 2s;"></div>
+    <div id="kanji-parallax" class="kanji-watermark absolute select-none opacity-70">秘</div>
 
-    <div class="space-y-12 text-ink-200 leading-relaxed">
-      <section class="glass-card rounded-2xl p-8 animate-fade-up">
-        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-          Naturaleza del proyecto
-        </h2>
+    <div class="relative z-10 max-w-4xl mx-auto text-center animate-slide-up">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-curse/40 bg-curse/10 text-curse-light text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase mb-8 animate-pulse-ring">
+        <span class="w-1.5 h-1.5 rounded-full bg-curse-light animate-ping-slow"></span>
+        Aviso legal
+      </span>
+      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-tight mb-5 drop-shadow-[0_0_45px_rgba(124,58,237,0.4)]">
+        Política de Privacidad
+      </h1>
+      <div class="accent-line w-28 mx-auto my-6 rounded-full"></div>
+      <p class="text-ink-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+        Tu privacidad importa. Este sitio está pensado para ser <strong class="text-white">transparente</strong>:
+        así de sencillo tratamos tus datos — o mejor dicho, cómo no los tratamos.
+      </p>
+      <p class="mt-6 inline-flex items-center gap-2 text-ink-200/70 text-xs">
+        Última actualización:
+        <span id="current-date" class="text-curse-light font-medium"></span>
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 pb-20 -mt-4">
+
+    <!-- ══════ RESUMEN RÁPIDO ══════ -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+      <div class="glass-card rounded-2xl p-5 text-center reveal reveal-delay-1">
+        <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-curse/15 border border-curse/30 flex items-center justify-center">
+          <svg class="w-5 h-5 text-curse-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <p class="text-white text-xs font-semibold uppercase tracking-widest">Sin datos</p>
+        <p class="text-ink-200/70 text-[0.65rem] mt-1 leading-snug">No recogemos datos personales</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 text-center reveal reveal-delay-2">
+        <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-blood/15 border border-blood/30 flex items-center justify-center">
+          <svg class="w-5 h-5 text-blood-light" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M8 13v.01" />
+            <path d="M12 17v.01" />
+            <path d="M12 12v.01" />
+            <path d="M16 14v.01" />
+            <path d="M11 8v.01" />
+            <path d="M13.148 3.476l2.667 1.104a4 4 0 0 0 4.656 6.14l.053 .132a3 3 0 0 1 0 2.296q -.745 1.18 -1.024 1.852q -.283 .684 -.66 2.216a3 3 0 0 1 -1.624 1.623q -1.572 .394 -2.216 .661q -.712 .295 -1.852 1.024a3 3 0 0 1 -2.296 0q -1.203 -.754 -1.852 -1.024q -.707 -.292 -2.216 -.66a3 3 0 0 1 -1.623 -1.624q -.397 -1.577 -.661 -2.216q -.298 -.718 -1.024 -1.852a3 3 0 0 1 0 -2.296q .719 -1.116 1.024 -1.852q .257 -.62 .66 -2.216a3 3 0 0 1 1.624 -1.623q 1.547 -.384 2.216 -.661q .687 -.285 1.852 -1.024a3 3 0 0 1 2.296 0" />
+          </svg>
+        </div>
+        <p class="text-white text-xs font-semibold uppercase tracking-widest">Sin cookies</p>
+        <p class="text-ink-200/70 text-[0.65rem] mt-1 leading-snug">Ni propias ni de terceros</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 text-center reveal reveal-delay-3">
+        <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-infinity/15 border border-infinity/30 flex items-center justify-center">
+          <svg class="w-5 h-5 text-infinity-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <p class="text-white text-xs font-semibold uppercase tracking-widest">Sin rastreo</p>
+        <p class="text-ink-200/70 text-[0.65rem] mt-1 leading-snug">Ni analíticas ni anuncios</p>
+      </div>
+
+      <div class="glass-card rounded-2xl p-5 text-center reveal reveal-delay-4">
+        <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-curse/15 border border-curse/30 flex items-center justify-center">
+          <svg class="w-5 h-5 text-curse-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <p class="text-white text-xs font-semibold uppercase tracking-widest">Sin lucro</p>
+        <p class="text-ink-200/70 text-[0.65rem] mt-1 leading-snug">Proyecto 100% educativo</p>
+      </div>
+    </section>
+
+    <!-- ══════ SECCIONES DETALLADAS ══════ -->
+    <div class="space-y-6 text-ink-200 leading-relaxed">
+
+      <section class="glass-card rounded-2xl p-8 reveal">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="seal">項</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Naturaleza del proyecto</h2>
+        </div>
         <p>
           Esta wiki es un proyecto personal, educativo y sin ánimo de lucro creado por Pedro Barrante Vázquez. No está afiliado de ninguna forma a Gege Akutami, Shueisha, MAPPA ni ninguna entidad oficial relacionada con Jujutsu Kaisen.
         </p>
       </section>
 
-      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.1s;">
-        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-          Datos que recogemos
-        </h2>
+      <section class="glass-card rounded-2xl p-8 reveal reveal-delay-1">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="seal">録</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Datos que recogemos</h2>
+        </div>
         <p class="mb-4">
           Esta web <strong class="text-white">no recoge ningún dato personal</strong> de forma activa. No hay formularios de registro, cuentas de usuario ni sistemas de seguimiento propios.
         </p>
         <p>
           Al estar alojada en <strong class="text-white">GitHub Pages</strong>, el servidor de GitHub puede registrar información técnica básica (dirección IP, navegador, páginas visitadas) según su propia
-          <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-curse-light hover:underline">política de privacidad</a>.
+          <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer" class="text-curse-light hover:text-white hover:underline underline-offset-4 transition-colors">política de privacidad</a>.
         </p>
       </section>
 
-      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.2s;">
-        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-          Cookies
-        </h2>
+      <section class="glass-card rounded-2xl p-8 reveal reveal-delay-2">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="seal">菓</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Cookies</h2>
+        </div>
         <p>
           Este sitio <strong class="text-white">no utiliza cookies</strong> propias de ningún tipo. No hay analíticas, publicidad ni rastreo de comportamiento.
         </p>
       </section>
 
-      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.3s;">
-        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-          Contenido de terceros
-        </h2>
+      <section class="glass-card rounded-2xl p-8 reveal reveal-delay-3">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="seal">画</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Contenido de terceros</h2>
+        </div>
         <p>
           Las imágenes y contenidos relacionados con Jujutsu Kaisen pertenecen a sus respectivos propietarios. Se usan exclusivamente con fines fan-made, educativos y sin ningún tipo de beneficio económico.
         </p>
       </section>
 
-      <section class="glass-card rounded-2xl p-8 animate-fade-up" style="animation-delay: 0.4s;">
-        <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-3">
-          <span class="w-1 h-6 bg-curse rounded-full inline-block"></span>
-          Contacto
-        </h2>
-        <p>
+      <section class="glass-card rounded-2xl p-8 reveal reveal-delay-4">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="seal">連</div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Contacto</h2>
+        </div>
+        <p class="mb-4">
           Si tienes alguna consulta sobre este aviso, puedes ponerte en contacto a través de la
-          <a href="contacto.html" class="text-curse-light hover:underline">página de contacto</a>.
+          <a href="contacto.html" class="text-curse-light hover:text-white hover:underline underline-offset-4 transition-colors">página de contacto</a>.
+        </p>
+        <p>
+          Las consultas se atienden a través de las
+          <a href="Sleepy/redessociales.html" class="text-curse-light hover:text-white hover:underline underline-offset-4 transition-colors">redes sociales del creador</a>.
         </p>
       </section>
     </div>
   </main>
 
-  <footer class="border-t border-white/5 py-8 px-6 mt-10">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <p class="text-ink-200/40 text-xs">© <span id="year-footer"></span> LostSleepy · Wiki fan-made</p>
-      <a href="index.html" class="text-ink-200/40 hover:text-curse-light text-xs transition-colors">Inicio</a>
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="border-t border-white/5 py-14 px-6 relative overflow-hidden">
+    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-curse/5 blur-[100px] pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div class="max-w-sm">
+        <p class="text-xs text-ink-200 uppercase tracking-widest mb-2">Aviso Legal</p>
+        <p class="text-ink-200 text-sm leading-relaxed">
+          Proyecto fan-made. Jujutsu Kaisen es propiedad de Gege Akutami, Shueisha y MAPPA.
+        </p>
+      </div>
+      <nav class="flex flex-col sm:flex-row items-start sm:items-center gap-4" aria-label="Enlaces secundarios">
+        <a href="Sleepy/index.html"
+           class="px-6 py-2.5 bg-curse text-white rounded-full text-sm font-medium tracking-wide hover:bg-curse-dark hover:scale-105 hover:shadow-lg hover:shadow-curse/30 transition-all">
+          Conoce al creador
+        </a>
+        <div class="flex gap-5 text-sm text-ink-200">
+          <a href="index.html" class="hover:text-curse-light transition-colors">Inicio</a>
+          <a href="contacto.html"  class="hover:text-curse-light transition-colors">Contacto</a>
+        </div>
+      </nav>
+    </div>
+    <div class="max-w-6xl mx-auto relative mt-10 pt-6 border-t border-white/5 flex items-center justify-between">
+      <p class="text-ink-200/50 text-xs">© <span id="year-footer"></span> LostSleepy · Wiki fan-made</p>
+      <p class="text-ink-200/30 text-xs font-display">呪術廻戦</p>
     </div>
   </footer>
 
   <script>
+    // ═════ Año del footer ═════
     document.getElementById('year-footer').textContent = new Date().getFullYear();
-    const dateEl = document.getElementById("current-date");
+
+    // ═════ Fecha de última actualización ═════
+    const dateEl = document.getElementById('current-date');
     if (dateEl) {
-      const options = { month: "long", year: "numeric" };
-      dateEl.textContent = new Intl.DateTimeFormat("es-ES", options).format(new Date());
+      const options = { month: 'long', year: 'numeric' };
+      dateEl.textContent = new Intl.DateTimeFormat('es-ES', options).format(new Date());
     }
+
+    // ═════ Navbar: sombra al hacer scroll ═════
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('shadow-lg', window.scrollY > 20);
+    }, { passive: true });
+
+    // ═════ Kanji con paralaje ═════
+    const kanji = document.getElementById('kanji-parallax');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 0.9) {
+        kanji.style.transform = 'translateY(' + y * 0.3 + 'px)';
+        kanji.style.opacity = Math.max(0, 0.7 - y / 700);
+      }
+    }, { passive: true });
+
+    // ═════ Reveal on scroll ═════
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

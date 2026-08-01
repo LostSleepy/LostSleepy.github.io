@@ -25,14 +25,16 @@
             },
           },
           animation: {
-            'fade-up': 'fadeUp 0.7s ease both',
-            'slide-up': 'slideUp 0.8s ease both',
-            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.8s ease both',
+            'gradient-x': 'gradientX 4s ease infinite',
+            'ping-slow': 'pingSlow 1.6s cubic-bezier(0, 0, 0.2, 1) infinite',
+            'pulse-ring': 'pulseRing 2.5s ease-out infinite',
           },
           keyframes: {
-            fadeUp: { '0%':{ opacity:'0', transform:'translateY(20px)' }, '100%':{ opacity:'1', transform:'translateY(0)' } },
-            slideUp: { '0%':{ opacity:'0', transform:'translateY(40px) scale(0.95)' }, '100%':{ opacity:'1', transform:'translateY(0) scale(1)' } },
-            float: { '0%,100%':{ transform:'translateY(0px)' }, '50%':{ transform:'translateY(-15px)' } },
+            fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            gradientX: { '0%,100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } },
+            pingSlow: { '0%': { transform: 'scale(1)', opacity: '1' }, '75%,100%': { transform: 'scale(2.4)', opacity: '0' } },
+            pulseRing: { '0%': { boxShadow: '0 0 0 0 rgba(99,102,241,0.4)' }, '70%': { boxShadow: '0 0 0 10px rgba(99,102,241,0)' }, '100%': { boxShadow: '0 0 0 0 rgba(99,102,241,0)' } },
           },
         },
       },
@@ -69,6 +71,11 @@
     .orb-1 { width: 400px; height: 400px; background: rgba(99,102,241,0.12); top: -100px; right: -100px; animation: float 8s ease-in-out infinite; }
     .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.1); bottom: -50px; left: -50px; animation: float 10s ease-in-out infinite reverse; }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
     .nav-glass {
       background: rgba(10,10,26,0.85);
       backdrop-filter: blur(24px);
@@ -99,7 +106,27 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 2rem;
     }
+    .glass-card:hover {
+      border-color: rgba(99,102,241,0.3);
+      box-shadow: 0 20px 60px -15px rgba(99,102,241,0.15);
+    }
+
+    /* ─── Reveal on scroll (html.js) ─── */
+    html.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+    /* Restauración del hover de tarjetas glass (conflicto con .reveal.revealed) */
+    .glass-card.reveal { transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+    .glass-card.reveal.revealed:hover { transform: translateY(-6px); }
+
+    /* ─── Campos del formulario ─── */
+    .field { position: relative; }
+    .field label { transition: color 0.3s ease; }
+    .field:focus-within label { color: #a78bfa; }
+    .field .field-icon { position: absolute; left: 1.25rem; bottom: 1.15rem; color: rgba(255,255,255,0.25); transition: color 0.3s ease; pointer-events: none; }
+    .field:focus-within .field-icon { color: #a78bfa; }
+
     .glass-input {
+      width: 100%;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.1);
       color: white;
@@ -112,9 +139,7 @@
       box-shadow: 0 0 20px rgba(99,102,241,0.15);
       transform: scale(1.01);
     }
-    .glass-input::placeholder {
-      color: rgba(255,255,255,0.2);
-    }
+    .glass-input::placeholder { color: rgba(255,255,255,0.2); }
 
     .gradient-text {
       background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1);
@@ -122,6 +147,20 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
+    /* ─── Botón con barrido de brillo ─── */
+    .btn-shine { position: relative; overflow: hidden; }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: -150%;
+      width: 60%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+    .btn-shine:hover::after { left: 150%; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0a0a1a; }
@@ -139,7 +178,6 @@
       .pt-20 { padding-top: 4rem; }
       .orb-1, .orb-2 { width: 200px !important; height: 200px !important; }
       .glass-card .p-8 { padding: 1.25rem !important; }
-      form .grid.grid-cols-1 { gap: 0.75rem; }
     }
     @media (max-width: 360px) {
       nav > div > div:last-child { gap: 0.15rem; }
@@ -169,60 +207,265 @@
     </div>
   </nav>
 
-  <main class="relative z-10 min-h-screen flex items-center justify-center px-4 pt-20 pb-16">
-    <div class="w-full max-w-lg animate-slide-up">
-      <header class="text-center mb-10">
-        <a href="index.html" class="text-purple-400 text-sm hover:text-white transition-colors mb-4 inline-block">← Volver al inicio</a>
-        <div class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-xs text-purple-300 mb-4" style="display:inline-flex; background:rgba(255,255,255,0.03); border-color:rgba(99,102,241,0.2)">
-          <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+  <main class="relative z-10 min-h-screen px-4 pt-24 pb-16">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <header class="text-center mb-12 animate-fade-in">
+        <a href="index.html" class="flex w-fit items-center gap-2 text-gray-500 hover:text-purple-400 transition-colors text-sm group mb-8 mx-auto">
+          <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver al perfil
+        </a>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-300 text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase mb-6 animate-pulse-ring">
+          <span class="relative flex w-1.5 h-1.5">
+            <span class="absolute inline-flex w-full h-full rounded-full bg-purple-400 animate-ping-slow"></span>
+            <span class="relative inline-flex w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+          </span>
           Contacto
         </div>
-        <h1 class="text-4xl font-bold text-white font-display mb-2 gradient-text">¿Hablamos?</h1>
-        <p class="text-gray-400 text-sm italic">Hagamos realidad ese próximo proyecto.</p>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold gradient-text mb-3 font-display">¿Hablamos?</h1>
+        <p class="text-gray-400 text-sm sm:text-base italic">Hagamos realidad ese próximo proyecto.</p>
       </header>
 
-      <div class="glass-card p-8 shadow-2xl">
-        <form action="https://formspree.io/f/mnjwlzel" method="POST" class="space-y-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="space-y-2">
-              <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Nombre</label>
-              <input type="text" name="name" id="name" required placeholder="Tu nombre" class="w-full px-5 py-4 rounded-2xl glass-input text-sm" />
+      <!-- Grid: formulario + sidebar -->
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
+
+        <!-- Formulario -->
+        <div class="lg:col-span-3 glass-card p-6 sm:p-8 shadow-2xl reveal">
+          <form id="contactForm" action="https://formspree.io/f/mnjwlzel" method="POST" class="space-y-6" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="field space-y-2">
+                <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Nombre</label>
+                <div class="relative">
+                  <svg class="field-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <input type="text" name="name" id="name" required placeholder="Tu nombre" class="glass-input pl-12 px-5 py-4 rounded-2xl text-sm" />
+                </div>
+              </div>
+              <div class="field space-y-2">
+                <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Email</label>
+                <div class="relative">
+                  <svg class="field-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <input type="email" name="email" id="email" required placeholder="tu@email.com" class="glass-input pl-12 px-5 py-4 rounded-2xl text-sm" />
+                </div>
+              </div>
             </div>
-            <div class="space-y-2">
-              <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Email</label>
-              <input type="email" name="email" id="email" required placeholder="tu@email.com" class="w-full px-5 py-4 rounded-2xl glass-input text-sm" />
+
+            <div class="field space-y-2">
+              <label for="subject" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Asunto</label>
+              <div class="relative">
+                <svg class="field-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                </svg>
+                <input type="text" name="subject" id="subject" placeholder="¿En qué puedo ayudarte?" class="glass-input pl-12 px-5 py-4 rounded-2xl text-sm" />
+              </div>
+            </div>
+
+            <div class="field space-y-2">
+              <div class="flex items-center justify-between">
+                <label for="message" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Mensaje</label>
+                <span id="charCount" class="font-mono text-[0.65rem] text-gray-600 transition-colors">0 / 1000</span>
+              </div>
+              <div class="relative">
+                <svg class="field-icon w-4 h-4" style="bottom:1.15rem" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <textarea name="message" id="message" rows="5" maxlength="1000" required placeholder="Escribe aquí tu mensaje..." class="glass-input pl-12 px-5 py-4 rounded-2xl text-sm resize-none"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-shine group w-full py-5 bg-gradient-to-r from-purple-600 via-indigo-500 to-purple-600 bg-[length:200%_auto] animate-gradient-x text-white font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-purple-500/20 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3">
+              <span id="spinner" class="hidden w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+              <span id="btnText" class="flex items-center gap-3">
+                Enviar Mensaje
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </button>
+
+            <div id="formStatus" aria-live="polite" class="hidden"></div>
+
+            <input type="text" name="_gotcha" style="display:none" />
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-2 space-y-6">
+
+          <div class="glass-card p-6 sm:p-8 reveal reveal-delay-1">
+            <h2 class="font-mono text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-purple-300 mb-6">Información rápida</h2>
+            <ul class="space-y-5">
+              <li class="flex items-center gap-4 group">
+                <span class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-300 group-hover:scale-110 group-hover:border-purple-400/40 transition-all">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-[0.65rem] uppercase tracking-widest text-gray-500">Ubicación</p>
+                  <p class="text-sm text-white font-medium">Sevilla, España</p>
+                </div>
+              </li>
+              <li class="flex items-center gap-4 group">
+                <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-300 group-hover:scale-110 group-hover:border-emerald-400/40 transition-all">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-[0.65rem] uppercase tracking-widest text-gray-500">Disponibilidad</p>
+                  <p class="text-sm text-white font-medium">Abierto a oportunidades</p>
+                </div>
+              </li>
+              <li class="flex items-center gap-4 group">
+                <span class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-300 group-hover:scale-110 group-hover:border-sky-400/40 transition-all">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-[0.65rem] uppercase tracking-widest text-gray-500">Idiomas</p>
+                  <p class="text-sm text-white font-medium">Español · Refinando mi inglés</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+            <p class="text-xs text-gray-500 mb-4">¿Prefieres otro canal? Estoy en todas partes.</p>
+            <a href="redessociales.html" class="flex w-fit items-center gap-3 group text-sm text-gray-300 hover:text-purple-300 transition-colors">
+              <span class="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-300 group-hover:scale-110 group-hover:border-indigo-400/40 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </span>
+              Mis redes sociales
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Terminal decorativo -->
+          <div class="glass-card p-6 reveal reveal-delay-2 overflow-hidden">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              <span class="ml-3 font-mono text-[0.65rem] text-gray-500 tracking-widest uppercase">sleepy@dev: ~</span>
+            </div>
+            <div class="font-mono text-xs text-gray-400 space-y-1.5">
+              <p><span class="text-emerald-400">➜</span> <span class="text-purple-300">~</span> cat mensaje_pendiente.txt</p>
+              <p class="text-gray-500">Cargando...</p>
+              <p class="text-gray-500">Esperando tu mensaje<span class="inline-block w-2 h-4 bg-purple-400/80 ml-1 align-middle animate-pulse"></span></p>
+              <p><span class="text-emerald-400">➜</span> <span class="text-purple-300">~</span> <span class="inline-block w-2 h-4 bg-purple-400/80 ml-1 align-middle animate-pulse"></span></p>
             </div>
           </div>
 
-          <div class="space-y-2">
-            <label for="subject" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Asunto</label>
-            <input type="text" name="subject" id="subject" placeholder="¿En qué puedo ayudarte?" class="w-full px-5 py-4 rounded-2xl glass-input text-sm" />
-          </div>
-
-          <div class="space-y-2">
-            <label for="message" class="text-xs font-bold uppercase tracking-widest text-gray-400 ml-1">Mensaje</label>
-            <textarea name="message" id="message" rows="5" required placeholder="Escribe aquí tu mensaje..." class="w-full px-5 py-4 rounded-2xl glass-input text-sm resize-none"></textarea>
-          </div>
-
-          <button type="submit" class="w-full py-5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-2xl hover:from-purple-500 hover:to-indigo-500 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3 group">
-            Enviar Mensaje
-            <svg class="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-
-          <input type="text" name="_gotcha" style="display:none" />
-        </form>
+        </div>
       </div>
 
-      <footer class="mt-12 text-center">
+      <footer class="mt-16 text-center">
         <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">Pedro Barrante · Professional Inquiry · <span id="year"></span></p>
       </footer>
     </div>
   </main>
 
   <script>
+    // Año dinámico
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    document.documentElement.classList.add('js');
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Contador de caracteres
+    const message = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    message.addEventListener('input', () => {
+      const len = message.value.length;
+      charCount.textContent = len + ' / 1000';
+      charCount.classList.toggle('text-amber-400', len > 850);
+      charCount.classList.toggle('text-rose-400', len >= 1000);
+    });
+
+    // Envío AJAX a Formspree (sin recargar la página)
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const spinner = document.getElementById('spinner');
+    const btnText = document.getElementById('btnText');
+    const statusBox = document.getElementById('formStatus');
+
+    function showStatus(ok, text) {
+      statusBox.classList.remove('hidden');
+      statusBox.className = 'rounded-2xl border px-5 py-4 text-sm flex items-center gap-3 ' +
+        (ok
+          ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+          : 'border-rose-500/30 bg-rose-500/10 text-rose-300');
+      statusBox.innerHTML =
+        (ok
+          ? '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+          : '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>') +
+        '<span>' + text + '</span>';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Estado de carga
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-80', 'cursor-wait');
+      spinner.classList.remove('hidden');
+      btnText.classList.add('hidden');
+      statusBox.classList.add('hidden');
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          showStatus(true, '¡Mensaje enviado! Gracias por escribirme, te responderé pronto.');
+          form.reset();
+          charCount.textContent = '0 / 1000';
+          charCount.classList.remove('text-amber-400', 'text-rose-400');
+        } else {
+          const data = await res.json().catch(() => ({}));
+          const msg = (data.errors && data.errors[0] && data.errors[0].message) || 'Inténtalo de nuevo o escríbeme por redes.';
+          showStatus(false, 'Ups, algo salió mal. ' + msg);
+        }
+      } catch (err) {
+        showStatus(false, 'No se pudo enviar. Comprueba tu conexión o escríbeme por redes.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-80', 'cursor-wait');
+        spinner.classList.add('hidden');
+        btnText.classList.remove('hidden');
+      }
+    });
   </script>
 </body>
 </html>
